@@ -1,0 +1,1723 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI Engineer Akademi</title>
+<meta name="description" content="roadmap.sh AI Engineer yol haritasına dayalı, oyunlaştırılmış Türkçe eğitim: 17 seviye, XP, boss sınavları ve kaynaklar.">
+<meta property="og:title" content="AI Engineer Akademi">
+<meta property="og:description" content="Seviye seviye AI Engineer ol: 17 seviye, 170+ ders, boss sınavları ve ipuçları.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#080d12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect width='30' height='30' rx='9' fill='%230d1620'/%3E%3Ccircle cx='9' cy='20' r='2.6' fill='%233ee0c9'/%3E%3Ccircle cx='15' cy='10' r='2.6' fill='%23fff'/%3E%3Ccircle cx='21' cy='19' r='2.6' fill='%23ff8d5e'/%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<script>window.AIEA_API="/api";</script>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sabit uygulama çubuğu → hero + 17 segmentli öğrenme hattı → yan modül menüsü + kart ızgarasında dersler */
+:root{
+  --bg:#f5f7f9; --bg-2:#eaeef2; --surface:#ffffff; --surface-2:#f0f3f6;
+  --ink:#0d1620; --muted:#5d6b7a; --line:#dde3ea; --line-strong:#c9d2dc;
+  --accent:#0a9b8a; --accent-ink:#ffffff; --accent-soft:rgba(10,155,138,.11);
+  --hot:#f0703f; --hot-soft:rgba(240,112,63,.12);
+  --ok:#14955a; --bad:#d14b37;
+  --glow-a:rgba(10,155,138,.20); --glow-b:rgba(240,112,63,.14);
+  --code-bg:#0e161f; --code-ink:#d6e1ea; --code-muted:#6c7d8d; --code-k:#5ee0cf; --code-s:#ffae86;
+  --shadow:0 1px 2px rgba(13,22,32,.05),0 8px 24px -12px rgba(13,22,32,.14);
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:16px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#080d12; --bg-2:#0e151c; --surface:#111a22; --surface-2:#16212b;
+  --ink:#e8eef4; --muted:#8a99a8; --line:#1f2b36; --line-strong:#2b3a47;
+  --accent:#3ee0c9; --accent-ink:#04201c; --accent-soft:rgba(62,224,201,.12);
+  --hot:#ff8d5e; --hot-soft:rgba(255,141,94,.13);
+  --ok:#4fd88d; --bad:#ff7a63;
+  --glow-a:rgba(62,224,201,.16); --glow-b:rgba(255,141,94,.10);
+  --code-bg:#060a0e; --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -14px rgba(0,0,0,.6); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#080d12; --bg-2:#0e151c; --surface:#111a22; --surface-2:#16212b;
+  --ink:#e8eef4; --muted:#8a99a8; --line:#1f2b36; --line-strong:#2b3a47;
+  --accent:#3ee0c9; --accent-ink:#04201c; --accent-soft:rgba(62,224,201,.12);
+  --hot:#ff8d5e; --hot-soft:rgba(255,141,94,.13);
+  --ok:#4fd88d; --bad:#ff7a63;
+  --glow-a:rgba(62,224,201,.16); --glow-b:rgba(255,141,94,.10);
+  --code-bg:#060a0e; --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px -14px rgba(0,0,0,.6); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-padding-top:84px}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:-20% -10% auto;height:70vh;z-index:-1;pointer-events:none;
+  background:radial-gradient(40% 50% at 15% 30%,var(--glow-a),transparent 70%),radial-gradient(35% 45% at 85% 10%,var(--glow-b),transparent 70%)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.container{max-width:1240px;margin:0 auto}
+
+/* App bar */
+.appbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.appbar .container{display:flex;align-items:center;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.brand svg{flex:none}
+.brand small{font-family:var(--f-mono);font-weight:400;font-size:11px;color:var(--muted);padding:2px 7px;border:1px solid var(--line);border-radius:99px;margin-left:2px}
+.searchbox{flex:1;max-width:440px;margin-left:auto;position:relative}
+.searchbox input{width:100%;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:14px;padding:0 64px 0 38px;transition:border-color .2s,box-shadow .2s}
+.searchbox input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.searchbox svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.kbd{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-family:var(--f-mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px;background:var(--surface-2)}
+.ring{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.ring svg{transform:rotate(-90deg)}
+.ring .track{stroke:var(--line)}
+.ring .val{stroke:var(--accent);transition:stroke-dashoffset .6s cubic-bezier(.2,.8,.2,1)}
+.ring b{font-family:var(--f-display);font-size:15px;font-variant-numeric:tabular-nums}
+.ring span{display:block;font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.1}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;padding-block:48px 36px;align-items:stretch}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;padding:5px 12px 5px 6px;border-radius:99px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);width:fit-content}
+.pill i{font-style:normal;font-family:var(--f-mono);font-size:10.5px;background:var(--accent);color:var(--accent-ink);padding:2px 8px;border-radius:99px;letter-spacing:.04em}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px);line-height:.98;letter-spacing:-.035em;margin:20px 0 18px;text-wrap:balance}
+h1 .grad{background:linear-gradient(100deg,var(--accent) 10%,var(--hot) 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{max-width:56ch;color:var(--muted);font-size:17px;margin:0 0 26px}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:12px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:14.5px;cursor:pointer;transition:transform .15s,border-color .2s,background .2s;box-shadow:var(--shadow)}
+.btn:hover{transform:translateY(-1px);border-color:var(--line-strong)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.ghost{box-shadow:none;background:transparent}
+.confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13.5px;color:var(--muted);margin-top:12px}
+.confirm button{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:13px}
+.confirm .danger{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 40%,transparent)}
+
+.bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-content:start}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow);min-width:0}
+.tile .n{font-family:var(--f-display);font-weight:800;font-size:30px;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
+.tile .l{font-size:12.5px;color:var(--muted);margin-top:6px}
+.tile.wide{grid-column:1/-1;display:grid;gap:12px}
+.tile-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.tile-head b{font-size:13.5px}
+.tile-head span{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.track17{display:grid;grid-template-columns:repeat(17,minmax(0,1fr));gap:4px}
+.seg{height:34px;border-radius:7px;background:var(--surface-2);border:1px solid var(--line);position:relative;overflow:hidden;cursor:pointer;padding:0;transition:transform .15s}
+.seg:hover{transform:translateY(-2px)}
+.seg i{position:absolute;inset:auto 0 0;background:linear-gradient(180deg,var(--accent),color-mix(in srgb,var(--accent) 70%,var(--hot)));transition:height .5s cubic-bezier(.2,.8,.2,1)}
+.seg.active{outline:2px solid var(--ink);outline-offset:1px}
+.legend{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+
+/* Ana ızgara */
+.layout{display:grid;grid-template-columns:268px minmax(0,1fr);gap:32px;padding-block:8px 72px;align-items:start}
+.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px);max-height:calc(100vh - 100px);overflow:auto;padding:6px;margin:-6px;scrollbar-width:thin}
+.side-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 10px 8px}
+.nav{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.nav button{width:100%;display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;padding:8px 10px;border-radius:10px;border:1px solid transparent;background:none;cursor:pointer;transition:background .15s}
+.nav button:hover{background:var(--surface)}
+.nav .num{font-family:var(--f-mono);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.nav .nm{font-size:14px;font-weight:500;line-height:1.3}
+.nav .mini{width:34px;height:4px;border-radius:99px;background:var(--line);overflow:hidden}
+.nav .mini i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.nav li.active button{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow)}
+.nav li.active .nm{font-weight:650}
+.nav li.active .num{color:var(--accent)}
+.nav li.complete .num{color:var(--ok)}
+.nav li[hidden]{display:none}
+
+/* Modül başlığı */
+.mod-head{position:relative;overflow:hidden;border-radius:22px;padding:30px 30px 26px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);isolation:isolate}
+.mod-head::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 120% at 100% 0%,var(--accent-soft),transparent 60%),radial-gradient(40% 90% at 0% 100%,var(--hot-soft),transparent 60%)}
+.mod-head .big{position:absolute;right:18px;top:-18px;font-family:var(--f-display);font-weight:800;font-size:150px;line-height:1;letter-spacing:-.06em;color:var(--ink);opacity:.05;z-index:-1;font-variant-numeric:tabular-nums}
+.chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{font-family:var(--f-mono);font-size:11.5px;padding:4px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+.chip.hot{background:var(--hot-soft);color:var(--hot)}
+.chip.plain{background:var(--surface-2);color:var(--muted)}
+h2{font-family:var(--f-display);font-weight:800;font-size:clamp(26px,3.6vw,40px);letter-spacing:-.03em;line-height:1.05;margin:16px 0 10px;text-wrap:balance}
+.mod-intro{margin:0;max-width:62ch;font-size:16.5px}
+.goal{display:flex;gap:10px;align-items:flex-start;margin-top:16px;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--bg) 60%,transparent);border:1px dashed var(--line-strong);max-width:62ch;font-size:14.5px}
+.goal b{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);padding-top:2px;white-space:nowrap}
+.mod-bar{margin-top:20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center}
+.mod-bar .bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.mod-bar .bar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.mod-bar span{font-family:var(--f-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.sec{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:36px 2px 14px;flex-wrap:wrap}
+.sec h3{margin:0;font-family:var(--f-display);font-weight:700;font-size:20px;letter-spacing:-.02em}
+.sec span{font-size:13px;color:var(--muted)}
+.seg-ctl{display:inline-flex;padding:3px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line)}
+.seg-ctl button{border:0;background:none;padding:5px 12px;border-radius:7px;font-size:13px;cursor:pointer;color:var(--muted);font-weight:500}
+.seg-ctl button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+
+/* Ders kartları */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{position:relative;display:grid;grid-template-rows:auto 1fr;gap:8px;padding:16px 16px 16px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);cursor:pointer;transition:transform .18s,border-color .2s,box-shadow .2s,background .2s;min-width:0}
+.card:hover{transform:translateY(-2px);border-color:var(--line-strong);box-shadow:var(--shadow)}
+.card input{position:absolute;opacity:0;pointer-events:none}
+.card:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.tag.tool::before{background:var(--hot)}
+.tick{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--line-strong);display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s;flex:none}
+.tick svg{opacity:0;transform:scale(.5);transition:opacity .2s,transform .25s cubic-bezier(.3,1.6,.5,1)}
+.card h4{margin:0;font-size:15.5px;font-weight:650;letter-spacing:-.01em;line-height:1.3}
+.card p{margin:4px 0 0;color:var(--muted);font-size:14px;line-height:1.5}
+.card.on{background:color-mix(in srgb,var(--accent) 7%,var(--surface));border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.card.on .tick{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.card.on .tick svg{opacity:1;transform:scale(1)}
+.empty{grid-column:1/-1;padding:28px;border-radius:var(--r);border:1px dashed var(--line-strong);color:var(--muted);text-align:center}
+
+/* Kod */
+.code{border-radius:var(--r);background:var(--code-bg);color:var(--code-ink);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
+.code-head{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.07);font-family:var(--f-mono);font-size:12px;color:var(--code-muted)}
+.dots{display:flex;gap:6px}
+.dots i{width:10px;height:10px;border-radius:50%;background:#3a4652}
+.dots i:first-child{background:#ff6b5e}.dots i:nth-child(2){background:#ffbd3e}.dots i:nth-child(3){background:#2fcd57}
+.code-head .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.copy{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--code-ink);border-radius:7px;padding:3px 10px;font-family:var(--f-mono);font-size:11.5px;cursor:pointer}
+.copy:hover{background:rgba(255,255,255,.1)}
+.code-body{overflow-x:auto}
+.code pre{margin:0;padding:16px 18px;font-family:var(--f-mono);font-size:13px;line-height:1.7;white-space:pre}
+.code .k{color:var(--code-k)} .code .s{color:var(--code-s)} .code .c{color:var(--code-muted)}
+
+/* Pekiştir */
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:14px;align-content:start;box-shadow:var(--shadow);min-width:0}
+.panel-k{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.panel-k i{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-style:normal}
+.panel.proj .panel-k i{background:var(--hot-soft);color:var(--hot)}
+.q{margin:0;font-weight:650;font-size:15.5px;line-height:1.4}
+.opts{display:grid;gap:8px}
+.opt{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--bg);padding:10px 12px;border-radius:11px;cursor:pointer;font-size:14.5px;transition:border-color .15s,background .15s}
+.opt b{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font-family:var(--f-mono);font-size:11.5px;background:var(--surface-2);border:1px solid var(--line);font-weight:500}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 9%,var(--bg))}
+.opt.right b{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 8%,var(--bg))}
+.opt.wrong b{background:var(--bad);border-color:var(--bad);color:var(--bg)}
+.why{margin:0;font-size:14px;color:var(--muted);padding:12px 14px;border-radius:11px;background:var(--surface-2)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;font-size:14.5px;counter-increment:s}
+.steps li::before{content:counter(s);width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;background:var(--hot-soft);color:var(--hot);font-weight:500}
+.steps li span{padding-top:4px}
+
+.pager{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:36px}
+.pg{display:grid;gap:4px;text-align:left;padding:16px 18px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface);cursor:pointer;transition:transform .15s,border-color .2s;min-width:0}
+.pg:hover{transform:translateY(-2px);border-color:var(--accent)}
+.pg small{font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+.pg b{font-family:var(--f-display);font-size:17px;letter-spacing:-.01em}
+.pg.next{text-align:right;grid-column:2}
+
+.foot{border-top:1px solid var(--line);padding-block:24px 36px;color:var(--muted);font-size:13px}
+.foot .container{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;pointer-events:none;
+  background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;font-weight:500;box-shadow:var(--shadow);transition:opacity .25s,transform .25s;z-index:70;max-width:calc(100% - 32px)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.fade{animation:fade .35s ease both}
+@keyframes fade{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+@media (max-width:960px){
+  .hero{grid-template-columns:minmax(0,1fr);padding-block:32px 24px}
+  .layout{grid-template-columns:minmax(0,1fr);gap:20px}
+  .side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);z-index:40;max-height:none;overflow:visible;margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px))) 0;
+    padding:10px max(16px,env(safe-area-inset-left,0px));background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .side-label{display:none}
+  .nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav button{grid-template-columns:auto auto;padding:6px 12px;border-color:var(--line);background:var(--surface);white-space:nowrap}
+  .nav .mini{display:none}
+  .two{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .appbar .container{gap:10px}
+  .brand small,.kbd,.ring span{display:none}
+  .brand .word{display:none}
+  .track17{gap:3px}
+  .seg{height:28px;border-radius:5px}
+  .mod-head{padding:22px 20px}
+  .mod-head .big{font-size:100px}
+  .bento{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tile{padding:12px}
+  .tile .n{font-size:24px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* ===== Oyun katmanı ===== */
+:root{--gold:#d39a12;--gold-soft:rgba(211,154,18,.13);--lock:#8b97a3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--gold:#ffc94a;--gold-soft:rgba(255,201,74,.12);--lock:#5e6c79}}
+:root[data-theme="dark"]{--gold:#ffc94a;--gold-soft:rgba(255,201,74,.12);--lock:#5e6c79}
+
+.lvl{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.lvl-badge{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--ink);color:var(--bg);font-family:var(--f-display);font-weight:800;font-size:16px;position:relative;font-variant-numeric:tabular-nums}
+.lvl-badge::after{content:"LV";position:absolute;top:-6px;right:-8px;font-family:var(--f-mono);font-size:8.5px;font-weight:500;background:var(--gold);color:#1b1300;padding:1px 4px;border-radius:5px;letter-spacing:.04em}
+.xpwrap{display:grid;gap:4px;min-width:150px}
+.xpline{display:flex;justify-content:space-between;gap:10px;font-size:12px}
+.xpline b{font-weight:650}
+.xpline span{color:var(--muted);font-family:var(--f-mono);font-size:11px;font-variant-numeric:tabular-nums}
+.xpbar{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.xpbar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--hot));transition:width .6s cubic-bezier(.2,.8,.2,1)}
+
+.tile .n.gold{color:var(--gold)}
+.seg.locked{background:repeating-linear-gradient(135deg,var(--surface-2) 0 5px,transparent 5px 10px);cursor:pointer}
+.seg.cleared{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.seg .lk{position:absolute;inset:0;display:grid;place-items:center;color:var(--lock)}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.bdg{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-family:var(--f-mono);font-size:10.5px;border:1px dashed var(--line-strong);color:var(--lock)}
+.bdg.got{border:0;background:linear-gradient(135deg,var(--gold),var(--hot));color:#1b1300;font-weight:600;box-shadow:0 4px 14px -6px var(--hot)}
+
+.mode{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-top:14px;cursor:pointer;width:fit-content}
+.mode input{appearance:none;width:34px;height:20px;border-radius:99px;background:var(--line-strong);position:relative;cursor:pointer;transition:background .2s;margin:0}
+.mode input::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:var(--surface);transition:transform .2s}
+.mode input:checked{background:var(--accent)}
+.mode input:checked::after{transform:translateX(14px)}
+
+.nav li.locked .nm{color:var(--lock)}
+.nav li.locked .num{color:var(--lock)}
+
+/* Kilit ekranı */
+.lockbox{margin-top:16px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;padding:18px;border-radius:var(--r);border:1px dashed var(--line-strong);background:var(--surface)}
+.lockbox .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--surface-2);color:var(--lock)}
+.lockbox p{margin:0;color:var(--muted);font-size:14.5px}
+.lockbox b{color:var(--ink)}
+.lockbox .btn{margin-top:10px;height:38px}
+.is-locked .cards{opacity:.55;pointer-events:none;filter:saturate(.4)}
+
+/* Kart (oyun) */
+.card{cursor:default}
+.card .open{position:absolute;inset:0;border:0;background:none;border-radius:inherit;cursor:pointer;z-index:1}
+.card .open:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.card .tickbtn{position:relative;z-index:2;border:0;background:none;padding:0;cursor:pointer;border-radius:50%}
+.card .tickbtn:hover .tick{border-color:var(--accent)}
+.card .meta{display:flex;gap:10px;align-items:center;margin-top:10px;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.card .meta .xp{color:var(--gold)}
+.card.on .meta .xp{text-decoration:line-through;opacity:.6}
+
+/* Boss */
+.boss{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.boss-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;background:linear-gradient(100deg,var(--hot-soft),var(--gold-soft));border-bottom:1px solid var(--line);flex-wrap:wrap}
+.boss-head h4{margin:0;font-family:var(--f-display);font-size:18px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.qdots{display:flex;gap:6px}
+.qdots i{width:26px;height:6px;border-radius:99px;background:var(--line-strong)}
+.qdots i.ok{background:var(--ok)}
+.qdots i.cur{background:var(--hot)}
+.boss-body{padding:20px;display:grid;gap:14px}
+.boss-gate{padding:28px 20px;display:grid;gap:10px;justify-items:center;text-align:center;color:var(--muted)}
+.boss-gate .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--surface-2);color:var(--lock)}
+.boss-gate b{color:var(--ink);font-size:16px}
+.gatebar{width:min(320px,100%);height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.gatebar i{display:block;height:100%;background:var(--accent)}
+.fb{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:14px}
+.fb.bad{color:var(--bad)} .fb.good{color:var(--ok);font-weight:600}
+.hintbtn{display:inline-flex;align-items:center;gap:6px;border:1px solid color-mix(in srgb,var(--gold) 50%,var(--line));background:var(--gold-soft);color:var(--ink);border-radius:10px;padding:7px 12px;font-size:13.5px;font-weight:600;cursor:pointer}
+.hintbtn svg{color:var(--gold)}
+.hintbtn.nudge{animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{box-shadow:0 0 0 0 var(--gold-soft)}50%{box-shadow:0 0 0 7px var(--gold-soft)}}
+.hint{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;padding:12px 14px;border-radius:12px;background:var(--gold-soft);border:1px solid color-mix(in srgb,var(--gold) 35%,transparent);font-size:14px}
+.hint svg{color:var(--gold);margin-top:2px}
+.hint small{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px}
+.boss-actions{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.boss-actions .note{font-size:12.5px;color:var(--muted);font-family:var(--f-mono)}
+.boss-won{padding:24px 20px;display:grid;gap:8px;justify-items:center;text-align:center}
+.boss-won .trophy{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),var(--hot));color:#1b1300}
+.boss-won b{font-family:var(--f-display);font-size:20px}
+.boss-won p{margin:0;color:var(--muted)}
+
+.projbtn{justify-self:start;margin-top:4px}
+.projbtn.done{background:var(--accent-soft);border-color:transparent;color:var(--accent);box-shadow:none}
+
+/* Ders paneli */
+.sheet-bg{position:fixed;inset:0;background:rgba(5,10,15,.45);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:80;opacity:0;transition:opacity .2s}
+.sheet-bg.show{opacity:1}
+.sheet{position:fixed;z-index:81;top:0;right:0;bottom:0;width:min(480px,100%);background:var(--surface);border-left:1px solid var(--line);box-shadow:-20px 0 60px -20px rgba(0,0,0,.35);
+  display:grid;grid-template-rows:auto minmax(0,1fr) auto;transform:translateX(100%);transition:transform .28s cubic-bezier(.2,.8,.2,1);
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
+.sheet.show{transform:none}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.sheet-head span{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.xbtn{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:var(--surface);cursor:pointer;display:grid;place-items:center}
+.sheet-body{overflow:auto;padding:22px 20px;display:grid;gap:16px;align-content:start}
+.sheet-body h3{margin:0;font-family:var(--f-display);font-size:26px;letter-spacing:-.02em;line-height:1.1;text-wrap:balance}
+.sheet-body .desc{margin:0;font-size:16px;line-height:1.6}
+.res-k{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:6px 0 -6px}
+.res{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.res a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);text-decoration:none;transition:border-color .15s,transform .15s}
+.res a:hover{border-color:var(--accent);transform:translateX(2px)}
+.res .ty{font-family:var(--f-mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding:3px 7px;border-radius:6px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.res .ty.v{background:var(--hot-soft);color:var(--hot)}
+.res .ty.o{background:var(--gold-soft);color:var(--gold)}
+.res .tt{font-size:14px;font-weight:500;overflow-wrap:anywhere}
+.res .ar{color:var(--muted)}
+.stuck{padding:14px;border-radius:12px;background:var(--surface-2);font-size:14px;color:var(--muted);display:grid;gap:6px}
+.stuck b{color:var(--ink)}
+.sheet-foot{padding:14px 20px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:space-between;align-items:center}
+.sheet-foot .btn{flex:1;justify-content:center}
+.sheet-foot .btn.primary.done{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+
+/* Seviye atlama */
+.lvlup{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:24px;background:rgba(5,10,15,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.lvlup canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.lvlup-card{position:relative;max-width:420px;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:30px 26px;text-align:center;display:grid;gap:12px;justify-items:center;box-shadow:0 30px 80px -20px rgba(0,0,0,.5);animation:pop .45s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:none;opacity:1}}
+.lvlup-card .big{font-family:var(--f-display);font-weight:800;font-size:64px;line-height:1;letter-spacing:-.04em;background:linear-gradient(120deg,var(--gold),var(--hot));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lvlup-card .k{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.lvlup-card h3{margin:0;font-family:var(--f-display);font-size:24px;letter-spacing:-.02em}
+.lvlup-card p{margin:0;color:var(--muted)}
+.lvlup-card .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+
+@media (max-width:640px){
+  .xpwrap{min-width:0;width:92px}
+  .xpline span{display:none}
+  .searchbox input{padding-right:12px}
+}
+
+/* ===== Giriş / kullanıcı ===== */
+body.gated{overflow:hidden}
+.gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow:auto;
+  padding:max(24px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3)}
+.gate-card{width:min(440px,100%);background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px 26px;display:grid;gap:16px;box-shadow:0 30px 80px -24px rgba(0,0,0,.35);animation:pop .4s cubic-bezier(.3,1.4,.5,1) both}
+.gate-card h2{margin:0 0 6px;font-size:28px}
+.gsub{margin:0;color:var(--muted);font-size:14.5px}
+.fld{display:grid;gap:6px}
+.fld span{font-size:13px;font-weight:600}
+.fld em{font-style:normal;font-weight:400;color:var(--muted)}
+.fld input{height:46px;border-radius:12px;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink);font:inherit;font-size:15.5px;padding:0 14px;transition:border-color .2s,box-shadow .2s;width:100%}
+.fld input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.fld[hidden]{display:none}
+.gbtn{height:48px;justify-content:center;font-size:15px}
+.gerr{margin:0;color:var(--bad);font-size:13.5px}
+.gnote{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:none;font-family:var(--f-display);font-weight:700;font-size:13px;color:#1b1300;background:linear-gradient(135deg,var(--gold),var(--hot))}
+.av.sm{width:26px;height:26px;font-size:11px}
+.recog{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);animation:fade .3s ease both}
+.recog b{display:block;font-size:14.5px}
+.recog small{color:var(--muted);font-size:12.5px}
+.known{display:grid;gap:8px}
+.gk{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.acc{display:flex;gap:12px;align-items:center;text-align:left;padding:10px 12px;border-radius:14px;border:1px solid var(--line);background:var(--bg);cursor:pointer;transition:border-color .15s,transform .15s;min-width:0}
+.acc:hover{border-color:var(--accent);transform:translateY(-1px)}
+.acc>span:last-child{min-width:0}
+.acc b{display:block;font-size:14.5px}
+.acc small{display:block;color:var(--muted);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.hello{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:14.5px;color:var(--muted)}
+.hello b{color:var(--ink)}
+.hello[hidden]{display:none}
+
+.userbtn{border:0;background:none;padding:0;cursor:pointer;border-radius:50%;flex:none}
+.userbtn[hidden]{display:none}
+.userbtn .av{width:36px;height:36px;box-shadow:0 0 0 2px var(--bg),0 0 0 3px var(--line-strong)}
+.usermenu{position:fixed;z-index:55;top:calc(env(safe-area-inset-top,0px) + 70px);right:max(16px,env(safe-area-inset-right,0px));width:min(300px,calc(100% - 32px));
+  background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:14px;box-shadow:0 20px 50px -20px rgba(0,0,0,.4);animation:fade .2s ease both}
+.um-head{display:flex;gap:12px;align-items:center;min-width:0}
+.um-head>span:last-child{min-width:0}
+.um-head b{display:block}
+.um-head small{display:block;color:var(--muted);font-size:12.5px;overflow:hidden;text-overflow:ellipsis}
+.um-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0}
+.um-stats div{background:var(--surface-2);border-radius:10px;padding:8px 10px}
+.um-stats dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.um-stats dd{margin:2px 0 0;font-weight:650;font-size:14px;font-variant-numeric:tabular-nums}
+.um-name input{height:38px;font-size:14px}
+.um-sync{font-size:12.5px;color:var(--muted)}
+.usermenu .btn{justify-content:center;height:40px}
+
+/* ===== Yönetici paneli ===== */
+.admin{position:fixed;inset:0;z-index:95;display:grid;place-items:start center;overflow:auto;
+  padding:max(24px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.admin-card{width:min(980px,100%);background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:24px;display:grid;gap:18px;box-shadow:0 30px 80px -24px rgba(0,0,0,.35);animation:fade .25s ease both;min-width:0}
+.admin-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.admin-head h2{margin:8px 0 0;font-size:28px}
+.admin-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.admin-stats div{background:var(--surface-2);border-radius:14px;padding:14px}
+.admin-stats b{display:block;font-family:var(--f-display);font-size:26px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.admin-stats span{font-size:12.5px;color:var(--muted)}
+.admin-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.admin-tools .searchbox{flex:1;min-width:220px}
+.copyarea{width:100%;min-height:70px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-family:var(--f-mono);font-size:12px;padding:8px}
+.admin-table{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+.admin-table table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+.admin-table th{text-align:left;padding:0;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.admin-table th button{border:0;background:none;width:100%;text-align:inherit;padding:10px 12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);cursor:pointer}
+.admin-table th button[aria-pressed="true"]{color:var(--ink)}
+.admin-table th.n,.admin-table td.n{text-align:right;font-variant-numeric:tabular-nums}
+.admin-table td{padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+.admin-table tr:last-child td{border-bottom:0}
+.pl{display:flex;gap:10px;align-items:center}
+.pl b{display:block;font-size:14px}
+.pl small{display:block;color:var(--muted);font-size:12.5px}
+.adminbtn{background:var(--gold-soft);border-color:color-mix(in srgb,var(--gold) 40%,var(--line))}
+@media (max-width:640px){.admin-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-card{padding:18px}}
+
+/* ===== Yol haritası infografiği ===== */
+.rmap{padding-block:8px 40px}
+.rmap-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.rmap-head h2{margin:6px 0 0;font-size:clamp(24px,3.2vw,34px)}
+.rmap-head p{margin:6px 0 0;color:var(--muted);max-width:60ch}
+.eyb{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.legend2{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.legend2 span{display:inline-flex;align-items:center;gap:6px}
+.legend2 i{width:12px;height:12px;border-radius:50%;border:2px solid var(--line-strong);background:var(--surface)}
+.legend2 i.c{background:var(--ok);border-color:var(--ok)}
+.legend2 i.a{background:var(--surface);border-color:var(--hot);box-shadow:0 0 0 3px var(--hot-soft)}
+.legend2 i.l{background:repeating-linear-gradient(135deg,var(--surface-2) 0 3px,var(--line) 3px 5px)}
+.phases{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;position:relative}
+.phase{--pc:var(--accent);position:relative;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px 14px 14px;display:grid;gap:12px;align-content:start;min-width:0;box-shadow:var(--shadow)}
+.phase:nth-child(2){--pc:color-mix(in srgb,var(--accent) 50%,var(--gold))}
+.phase:nth-child(3){--pc:var(--gold)}
+.phase:nth-child(4){--pc:var(--hot)}
+.phase:nth-child(5){--pc:var(--ok)}
+.phase:not(:last-child)::after{content:"";position:absolute;right:-12px;top:34px;width:10px;height:10px;border-top:2px solid var(--line-strong);border-right:2px solid var(--line-strong);transform:rotate(45deg);z-index:1}
+.ph-top{display:grid;gap:4px}
+.ph-k{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ph-n{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--pc);font-weight:500;text-transform:uppercase}
+.ph-p{font-family:var(--f-mono);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ph-t{font-family:var(--f-display);font-weight:700;font-size:17px;letter-spacing:-.01em;line-height:1.2}
+.ph-d{font-size:12.5px;color:var(--muted);line-height:1.45}
+.ph-bar{height:4px;border-radius:99px;background:var(--line);overflow:hidden}
+.ph-bar i{display:block;height:100%;background:var(--pc);border-radius:99px;transition:width .5s}
+.stops{list-style:none;margin:0;padding:0;display:grid;gap:2px;position:relative}
+.stops::before{content:"";position:absolute;left:13px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--pc),color-mix(in srgb,var(--pc) 25%,var(--line)))}
+.stop button{width:100%;display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:center;text-align:left;border:0;background:none;padding:6px 6px 6px 0;border-radius:10px;cursor:pointer;transition:background .15s}
+.stop button:hover{background:var(--surface-2)}
+.sdot{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-mono);font-size:10.5px;font-weight:500;background:var(--surface);border:2px solid var(--pc);color:var(--pc);position:relative;z-index:1;font-variant-numeric:tabular-nums}
+.stop.cleared .sdot{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.stop.current .sdot{border-color:var(--hot);color:var(--hot);box-shadow:0 0 0 4px var(--hot-soft)}
+.stop.locked .sdot{border-color:var(--line-strong);color:var(--lock);background:var(--surface-2)}
+.stop.locked .stt{color:var(--muted)}
+.stt{display:block;font-size:13.5px;font-weight:600;line-height:1.25}
+.smeta{display:block;font-family:var(--f-mono);font-size:10.5px;color:var(--muted);margin-top:2px}
+.stop.current .smeta{color:var(--hot)}
+.ph-tools{display:flex;flex-wrap:wrap;gap:4px;padding-top:10px;border-top:1px dashed var(--line)}
+.ph-tools span{font-size:11px;padding:2px 7px;border-radius:6px;background:var(--surface-2);color:var(--muted)}
+.rmap-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px;padding:14px 16px;border-radius:16px;border:1px dashed var(--line-strong);font-size:14px;color:var(--muted)}
+.rmap-foot b{color:var(--ink)}
+.rmap-foot .btn{height:38px}
+@media (max-width:1100px){.phases{grid-template-columns:repeat(3,minmax(0,1fr))}.phase:nth-child(3)::after{display:none}}
+@media (max-width:760px){.phases{grid-template-columns:repeat(2,minmax(0,1fr))}.phase::after{display:none}}
+@media (max-width:520px){.phases{grid-template-columns:minmax(0,1fr)}
+  .phase:not(:last-child)::after{display:block;right:auto;left:50%;top:auto;bottom:-12px;transform:translateX(-50%) rotate(135deg)}}
+</style>
+
+<header class="appbar gutter">
+  <div class="container">
+    <div class="brand">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="9" fill="var(--ink)"/><circle cx="9" cy="20" r="2.6" fill="var(--accent)"/><circle cx="15" cy="10" r="2.6" fill="var(--bg)"/><circle cx="21" cy="19" r="2.6" fill="var(--hot)"/><path d="M9 20 15 10 21 19" stroke="var(--bg)" stroke-width="1.4" fill="none" opacity=".55"/></svg>
+      <span class="word">AI Engineer Akademi</span><small>TR</small>
+    </div>
+    <label class="searchbox" for="q">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Ders ara: RAG, MCP, embedding…" autocomplete="off" aria-label="Ders ara">
+      <span class="kbd">/</span>
+    </label>
+    <div class="lvl" aria-live="polite">
+      <div class="lvl-badge" id="lvlNum">1</div>
+      <div class="xpwrap"><div class="xpline"><b id="rankName">Meraklı</b><span id="xpTxt">0 XP</span></div><div class="xpbar"><i id="xpBar"></i></div></div>
+    </div>
+    <button class="userbtn" id="userBtn" type="button" aria-label="Hesabım" hidden><span class="av"></span></button>
+  </div>
+</header>
+
+<div class="gutter">
+<div class="container">
+  <section class="hero">
+    <div>
+      <p class="hello" id="hello" hidden></p>
+      <span class="pill"><i>OYUN</i> roadmap.sh AI Engineer yol haritası temelli</span>
+      <h1>Seviye seviye <span class="grad">AI Engineer</span> ol.</h1>
+      <p class="lede">17 seviye, her birinin sonunda bir boss sınavı. Dersleri bitir, XP topla, boss'u yen ve bir sonraki seviyenin kilidini aç. Takıldığın yerde ipucu al, her derste roadmap.sh'ın önerdiği makale ve videolara geç.</p>
+      <div class="cta">
+        <button class="btn primary" id="resume" type="button">Oyuna devam et
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button class="btn ghost" id="reset" type="button">Oyunu sıfırla</button>
+      </div>
+      <div class="confirm" id="resetConfirm" hidden>Tüm XP, rozet ve ilerleme silinecek. <button class="danger" id="resetYes" type="button">Evet, sıfırla</button><button id="resetNo" type="button">Vazgeç</button></div>
+      <label class="mode" for="freeMode"><input type="checkbox" id="freeMode"> Serbest mod: tüm seviyeleri aç</label>
+    </div>
+    <div class="bento">
+      <div class="tile"><div class="n" id="stLvl">1</div><div class="l">seviye / 17</div></div>
+      <div class="tile"><div class="n gold" id="stXp">0</div><div class="l">toplam XP</div></div>
+      <div class="tile"><div class="n" id="stBoss">0</div><div class="l">yenilen boss</div></div>
+      <div class="tile wide">
+        <div class="tile-head"><b>Seviye haritası</b><span id="hatTxt"></span></div>
+        <div class="track17" id="track"></div>
+        <div class="legend"><span>Seviye 1</span><span>dolu = bitirilen dersler</span><span>Seviye 17</span></div>
+      </div>
+      <div class="tile wide">
+        <div class="tile-head"><b>Rozetler</b><span id="bdgTxt"></span></div>
+        <div class="badges" id="badges"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="rmap" id="roadmap" aria-labelledby="rmapTitle">
+    <div class="rmap-head">
+      <div><span class="eyb">Yol haritası · roadmap.sh/ai-engineer</span><h2 id="rmapTitle">5 aşama, 17 seviye</h2>
+        <p>Temellerden üretime uzanan yol. Her durak bir seviye; üzerine tıklayıp derslerine geçebilirsin.</p></div>
+      <div class="legend2"><span><i class="c"></i>Geçildi</span><span><i class="a"></i>Sıradaki</span><span><i></i>Açık</span><span><i class="l"></i>Kilitli</span></div>
+    </div>
+    <div class="phases" id="phases"></div>
+    <div class="rmap-foot" id="rmapFoot"></div>
+  </section>
+  <div class="layout">
+    <aside class="side" aria-label="Seviyeler">
+      <p class="side-label">Seviyeler</p>
+      <ol class="nav" id="nav"></ol>
+    </aside>
+    <main id="main"></main>
+  </div>
+</div>
+</div>
+
+<footer class="foot gutter"><div class="container">
+  <span>Konu başlıkları ve kaynak bağlantıları <a href="https://roadmap.sh/ai-engineer" target="_blank" rel="noopener">roadmap.sh/ai-engineer</a> yol haritasından alınmıştır; açıklamalar, sorular ve ipuçları Türkçe hazırlanmıştır.</span>
+  <span>İlerleme yalnızca bu tarayıcıda saklanır.</span>
+</div></footer>
+
+<div class="sheet-bg" id="sheetBg" hidden></div>
+<aside class="sheet" id="sheet" aria-label="Ders ayrıntısı" hidden></aside>
+<div class="lvlup" id="lvlup" hidden></div>
+<div class="usermenu" id="userMenu" hidden></div>
+<div class="gate" id="gate" hidden></div>
+<div class="admin" id="admin" hidden></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const MODULES = [
+{id:"giris",t:"Giriş",goal:"Rolü tanımak ve AI Engineer'ı diğer rollerden ayırmak.",
+intro:"AI Engineer'ın ne yaptığını, ne yapmadığını ve ekip içinde nerede durduğunu öğreniyoruz.",
+lessons:[
+["AI Engineer nedir?","Hazır modelleri ve AI servislerini ürünlere entegre eden mühendis. Odak araştırma değil, uygulama: kullanıcıya değer üreten, güvenilir ve ölçülebilir özellikler."],
+["AI vs AGI","Bugünkü AI sistemleri dar görevlerde güçlüdür. AGI (genel yapay zeka) insan düzeyinde her alanda öğrenip akıl yürütebilen varsayımsal bir sistemdir; henüz yoktur."],
+["AI Engineer vs ML Engineer","ML Engineer veri hazırlar, model eğitir ve ince ayar yapar. AI Engineer ise hazır modelleri prompt, RAG, ajan ve API katmanlarıyla ürüne dönüştürür."],
+["Roller ve sorumluluklar","Model seçimi, prompt ve bağlam tasarımı, veri bağlama (RAG), değerlendirme, maliyet/gecikme yönetimi, güvenlik ve üretimde izleme."],
+["Ürün geliştirmeye etkisi","AI özellikleri prototip süresini kısaltır ama yeni riskler getirir: deterministik olmayan çıktılar, halüsinasyon ve değişken maliyet. Ürün kararları bu belirsizliği hesaba katmalıdır."]],
+quiz:{q:"Aşağıdakilerden hangisi tipik olarak AI Engineer'ın değil, ML Engineer'ın işidir?",o:["RAG hattı kurmak","Sıfırdan model eğitmek için veri seti hazırlamak","Prompt'ları değerlendirmek","API maliyetlerini izlemek"],a:1,why:"Model eğitimi ve veri hazırlığı ML Engineer'ın alanıdır. AI Engineer hazır modeller üzerinde çalışır."},
+project:{t:"Rol haritası çıkar",s:["Kullandığın 3 AI ürününü seç","Her birinde hangi model, hangi veri, hangi arayüz olduğunu tahmin et","AI Engineer'ın dokunduğu katmanları işaretle"]}},
+
+{id:"terimler",t:"Temel Terminoloji",goal:"Yol haritasının geri kalanında geçen kavramları tek yerde toplamak.",
+intro:"LLM'lerin nasıl çalıştığına dair zihinsel modeli kuruyoruz: token, bağlam penceresi, eğitim ve çıkarım.",
+lessons:[
+["LLM'ler","Büyük dil modelleri; devasa metin üzerinde eğitilip bir sonraki token'ı tahmin eden transformer tabanlı sinir ağları."],
+["LLM'ler nasıl çalışır?","Metin token'lara bölünür, vektörlere çevrilir, dikkat (attention) katmanlarından geçer ve model olası sonraki token için bir olasılık dağılımı üretir. Yanıt bu adımın tekrarıyla oluşur."],
+["Token'lar","Modelin işlediği en küçük metin parçaları. Fiyatlandırma, hız ve bağlam sınırı token cinsinden ölçülür. Türkçe metin İngilizceye göre genellikle daha fazla token tutar."],
+["Bağlam penceresi (context window)","Modelin tek seferde görebildiği toplam token sayısı: sistem prompt'u, geçmiş, belgeler ve yanıt dahil."],
+["Eğitim (Training)","Modelin ağırlıklarının veriden öğrenildiği pahalı süreç: ön eğitim, ardından talimat ve tercih ayarı."],
+["Çıkarım (Inference)","Eğitilmiş modelin yeni girdiye yanıt üretmesi. AI Engineer'ın günlük işi çoğunlukla çıkarım tarafındadır."],
+["Embedding","Metnin anlamını sayısal vektörle temsil etme. Benzer anlamlı metinler vektör uzayında birbirine yakın düşer."],
+["Vektör veritabanı","Embedding'leri saklayıp en yakın komşu araması yapmaya optimize edilmiş veritabanı."],
+["RAG","Retrieval-Augmented Generation: yanıt üretmeden önce ilgili belgeleri bulup bağlama ekleme."],
+["Prompt Engineering","Modelden istenen davranışı almak için talimatları, örnekleri ve formatı tasarlama."],
+["AI Ajanları","Bir hedef için araç çağıran, sonucu gözlemleyen ve sonraki adıma karar veren LLM döngüleri."],
+["Fine-tuning","Hazır bir modeli kendi verinle ek eğitime sokup belirli bir üsluba veya göreve uyarlamak."],
+["Model türleri","Metin, görsel, ses, embedding ve çok modlu modeller; ayrıca boyut ve akıl yürütme (reasoning) yeteneğine göre ayrışan aileler."]],
+quiz:{q:"Bağlam penceresi neyi sınırlar?",o:["Modelin eğitim verisini","Tek istekte görülebilen toplam token sayısını","Dakikadaki istek sayısını","Modelin dil sayısını"],a:1,why:"Context window, prompt + geçmiş + yanıt dahil tek seferde işlenebilen token miktarıdır."},
+project:{t:"Token sayacı",s:["Bir tokenizer kütüphanesi kur (ör. tiktoken)","Aynı metni Türkçe ve İngilizce say","Fark üzerinden maliyet tahmini çıkar"]}},
+
+{id:"modeller",t:"Önceden Eğitilmiş Modeller",goal:"Doğru işe doğru modeli seçebilmek.",
+intro:"Kapalı ve açık modellerin güçlü ve zayıf yanları, sağlayıcılar ve seçim kriterleri.",
+lessons:[
+["Önceden eğitilmiş modeller","Başkalarının büyük maliyetle eğittiği, API ya da indirilebilir ağırlık olarak sunulan modeller. Hızlı başlangıç sağlar ama verine özel bilgi içermez."],
+["Açık vs kapalı modeller","Kapalı modeller (API) genelde daha yeteneklidir ve bakımı kolaydır. Açık ağırlıklı modeller veri gizliliği, maliyet kontrolü ve özelleştirme sunar."],
+["Doğru modeli seçmek","Kalite, gecikme, maliyet, bağlam uzunluğu, çok modluluk, lisans ve veri yerleşimi gereksinimlerini kendi değerlendirme setinde karşılaştır."],
+["OpenAI modelleri (GPT, o-serisi)","Genel amaçlı GPT modelleri ve akıl yürütmeye odaklı o-serisi.","tool"],
+["Anthropic Claude","Uzun bağlam, kodlama ve ajan iş akışlarında güçlü model ailesi.","tool"],
+["Google Gemini","Çok modlu ve çok uzun bağlam desteğiyle öne çıkan model ailesi.","tool"],
+["Meta Llama","En yaygın açık ağırlıklı model ailelerinden biri.","tool"],
+["Mistral AI","Verimli açık ve ticari modeller sunan Avrupalı sağlayıcı.","tool"],
+["DeepSeek","Akıl yürütme ve kodlamada güçlü açık ağırlıklı modeller.","tool"],
+["Qwen","Alibaba'nın çok dilli açık model ailesi.","tool"],
+["Gemma","Google'ın küçük, yerelde çalışabilen açık modelleri.","tool"],
+["Cohere","Kurumsal arama, embedding ve rerank odaklı modeller.","tool"]],
+quiz:{q:"Hassas sağlık verisi şirket dışına çıkamıyorsa hangi seçenek öne çıkar?",o:["En büyük kapalı modeli kullanmak","Kendi altyapında çalışan açık ağırlıklı model","Modeli tamamen kaldırmak","Daha yüksek temperature"],a:1,why:"Self-hosted açık modeller veriyi kendi altyapında tutmanı sağlar."},
+project:{t:"Mini model karşılaştırması",s:["10 soruluk bir test seti hazırla","3 farklı modelden yanıt al","Kalite, süre ve maliyeti tabloya dök"]}},
+
+{id:"api",t:"Model API'leriyle Çalışmak",goal:"Sağlayıcı API'lerini üretim kalitesinde kullanmak.",
+intro:"SDK'lar, akış (streaming), yapılandırılmış çıktı, fonksiyon çağırma ve örnekleme parametreleri.",
+lessons:[
+["SDK'ları doğrudan kullanmak","Çerçeve eklemeden resmi SDK ile çalışmak davranışı anlamayı ve hata ayıklamayı kolaylaştırır."],
+["OpenAI Responses API","OpenAI'nin araç kullanımı ve çok adımlı etkileşimleri destekleyen güncel API'si.","tool"],
+["Claude Messages API","Anthropic'in mesaj tabanlı API'si: sistem prompt'u, roller, araçlar ve akış.","tool"],
+["Google Gemini API","Gemini modellerine metin, görsel ve ses girdisiyle erişim.","tool"],
+["OpenAI uyumlu API'ler","Birçok sağlayıcı ve yerel sunucu aynı istek formatını destekler; böylece sağlayıcı değiştirmek kolaylaşır."],
+["OpenRouter","Tek API anahtarıyla çok sayıda modele erişim sağlayan yönlendirici.","tool"],
+["Akışlı yanıtlar (streaming)","Yanıtı token token göndererek algılanan gecikmeyi düşürmek."],
+["Yapılandırılmış çıktılar","Modelden JSON şemasına uyan çıktı istemek; ayrıştırma hatalarını büyük ölçüde azaltır."],
+["Function calling","Model, tanımladığın fonksiyonlardan hangisinin hangi argümanlarla çağrılacağını önerir; çağrıyı senin kodun yapar."],
+["Prompt caching","Değişmeyen uzun prompt başlangıçlarını önbelleğe alarak maliyeti ve gecikmeyi düşürmek."],
+["Örnekleme parametreleri","Çıktının çeşitliliğini kontrol eden ayarlar."],
+["Temperature","Düşük değer daha tutarlı, yüksek değer daha yaratıcı ve değişken çıktı üretir."],
+["Top-K sampling","Her adımda yalnızca en olası K token arasından seçim yapılır."],
+["Top-P sampling","Kümülatif olasılığı P'ye ulaşan en küçük token kümesinden seçim yapılır."],
+["Tekrar cezaları","Aynı ifadelerin tekrarını azaltmak için frequency/presence penalty ayarları."]],
+code:{lang:"python",title:"Claude ile yapılandırılmış çıktı + akış",src:`<span class="k">import</span> anthropic
+client = anthropic.Anthropic()  <span class="c"># ANTHROPIC_API_KEY ortam değişkeni</span>
+
+<span class="k">with</span> client.messages.stream(
+    model=<span class="s">"claude-sonnet-5-5"</span>,
+    max_tokens=<span class="s">512</span>,
+    system=<span class="s">"Yalnızca JSON döndür: {\\"ozet\\": str, \\"etiketler\\": [str]}"</span>,
+    messages=[{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: metin}],
+) <span class="k">as</span> stream:
+    <span class="k">for</span> parca <span class="k">in</span> stream.text_stream:
+        print(parca, end=<span class="s">""</span>, flush=<span class="k">True</span>)`},
+quiz:{q:"Function calling'de fonksiyonu kim çalıştırır?",o:["Model, sağlayıcının sunucusunda","Senin uygulama kodun","Tarayıcı","Vektör veritabanı"],a:1,why:"Model yalnızca çağrı önerir (isim + argümanlar). Çalıştırma ve sonucu geri gönderme senin kodundadır."},
+project:{t:"Hava durumu asistanı",s:["get_weather fonksiyonunu tanımla","Modelin çağrı önerisini yakala ve çalıştır","Sonucu modele geri verip yanıtı akışla göster"]}},
+
+{id:"prompt",t:"Prompt Engineering",goal:"Tekrarlanabilir, test edilebilir prompt'lar yazmak.",
+intro:"Temel prompt teknikleri ve modeli istenen formata sokma yöntemleri.",
+lessons:[
+["Zero-shot prompting","Örnek vermeden, yalnızca açık talimatla görev tanımlamak."],
+["Few-shot prompting","Birkaç girdi-çıktı örneği vererek format ve üslubu göstermek."],
+["Chain-of-Thought","Modelden adım adım düşünmesini istemek; çok adımlı akıl yürütmede doğruluğu artırır."],
+["ReAct prompting","Düşünme (Reason) ve eylem (Act) adımlarını sırayla yazdırarak araç kullanımını yönlendirmek."],
+["System prompting","Modelin genel davranışını, rolünü ve sınırlarını sistem mesajında tanımlamak."],
+["Rol ve davranış","Modele bir uzman rolü ve ton vermek; çıktının seviyesini ve üslubunu belirler."],
+["Bağlamsal prompting","Görevle ilgili arka plan bilgisini (kullanıcı, alan, hedef) prompt'a eklemek."],
+["Prompt'ları kısıtlamak","Uzunluk, format, dil ve kapsam sınırları koyarak çıktıyı öngörülebilir kılmak."],
+["Girdi formatı","Talimatı veriden ayırmak için XML etiketleri, başlıklar veya ayraçlar kullanmak."]],
+code:{lang:"text",title:"Few-shot + ayraçlı girdi",src:`Müşteri yorumlarını <span class="s">olumlu / olumsuz / nötr</span> olarak sınıflandır.
+Yalnızca etiketi yaz.
+
+Yorum: "Kargo çok hızlıydı." → <span class="k">olumlu</span>
+Yorum: "Ürün kırık geldi." → <span class="k">olumsuz</span>
+
+&lt;yorum&gt;
+{kullanici_yorumu}
+&lt;/yorum&gt;`},
+quiz:{q:"Few-shot prompting'in temel faydası nedir?",o:["Modeli yeniden eğitmek","Beklenen formatı örnekle göstermek","Token sayısını azaltmak","Gecikmeyi sıfırlamak"],a:1,why:"Örnekler, açıklamadan daha net biçimde istenen çıktı formatını ve üslubu aktarır."},
+project:{t:"Prompt test tezgahı",s:["Aynı görev için zero-shot ve few-shot sürüm yaz","20 girdide ikisini çalıştır","Doğruluğu karşılaştır ve kazananı sürümle"]}},
+
+{id:"context",t:"Context Engineering",goal:"Modelin her adımda doğru bilgiyi, doğru miktarda görmesini sağlamak.",
+intro:"Prompt'un ötesinde: bağlam kaynakları, bellek, sıkıştırma ve çoklu ajanlarda bağlam yönetimi.",
+lessons:[
+["Context Engineering nedir?","Modelin bağlam penceresine neyin, hangi sırayla ve ne kadar gireceğini sistematik olarak tasarlama disiplini."],
+["Prompt vs Context Engineering","Prompt engineering talimatı yazar; context engineering talimat, araç sonuçları, bellek ve belgelerden oluşan tüm girdiyi yönetir."],
+["Bağlam kaynakları","Sistem prompt'u, konuşma geçmişi, RAG sonuçları, araç çıktıları, kullanıcı profili ve dosyalar."],
+["Bağlam katmanı nedir?","Kurum verisini modellere anlamlı biçimde sunan ara katman: metadata, sahiplik ve tanımlar."],
+["Veri katalogları: Atlan, DataHub","Verinin ne olduğunu ve nereden geldiğini tanımlayan katalog araçları; bağlam katmanını besler.","tool"],
+["Bağlam sıkıştırma (compaction)","Uzun geçmişi özetleyerek önemli bilgiyi koruyup token tüketimini düşürmek."],
+["Bağlam izolasyonu","Alt görevleri ayrı bağlamlarda çalıştırıp yalnızca sonucu ana akışa taşımak."],
+["Bağlam hata modları","Bağlam zehirlenmesi, dikkat dağılması, çelişkili bilgi ve önemli bilginin uzun bağlamda kaybolması."],
+["Bellek sistemleri","Kısa süreli (oturum) ve uzun süreli (kalıcı) bellek ile kullanıcıya özel bilgiyi saklamak."],
+["Harici bellek","Bilgiyi bağlam dışında (dosya, veritabanı) tutup gerektiğinde geri çağırmak."],
+["Durum ve geçmiş bağlam","Uzun süren görevlerde ilerlemeyi, kararları ve açık adımları yapılandırılmış biçimde izlemek."],
+["Çoklu ajanlarda bağlam paylaşımı","Ajanlar arasında ne kadar bağlam aktarılacağına karar vermek; fazlası gürültü, azı bilgi kaybıdır."],
+["Uzun bağlam işleme","Çok uzun belgelerde önemli bilgiyi başa/sona koymak, bölümlemek ve alıntıyla çalışmak."],
+["Bağlam güvenliği","Bağlama giren dış içeriğin talimat gibi davranmasını (enjeksiyon) önlemek."],
+["Bağlam değerlendirmesi","Bağlama giren her parçanın yanıt kalitesine katkısını ölçmek."]],
+quiz:{q:"Bir alt ajanın tüm araştırmasını ana ajana taşımak yerine yalnızca özetini aktarmak hangi tekniktir?",o:["Bağlam izolasyonu","Top-P sampling","Fine-tuning","Embedding"],a:0,why:"Alt görevi ayrı bağlamda yürütüp yalnızca sonucu döndürmek bağlam izolasyonudur."},
+project:{t:"Hafızalı sohbet botu",s:["Konuşmayı her 10 mesajda özetle","Kullanıcı tercihlerini ayrı bir JSON bellekte tut","Her istekte özeti + belleği bağlama ekle"]}},
+
+{id:"guvenlik",t:"AI Güvenliği ve Etik",goal:"Kötüye kullanıma ve zarara karşı dayanıklı sistemler kurmak.",
+intro:"Prompt enjeksiyonu, önyargı, gizlilik ve moderasyon. Üretime çıkmadan önce bilinmesi gerekenler.",
+lessons:[
+["Prompt enjeksiyonu saldırıları","Kullanıcı girdisi veya dış içerik içine gizlenen talimatlarla modelin davranışını ele geçirme girişimi."],
+["Önyargı ve adalet","Eğitim verisinden gelen önyargılar çıktılarda ayrımcılığa yol açabilir; farklı gruplarla test edilmelidir."],
+["Güvenlik ve gizlilik","Kişisel veriyi maskelemek, gereksiz veriyi modele göndermemek ve logları korumak."],
+["İçerik moderasyon API'leri","Zararlı girdi ve çıktıları otomatik olarak işaretleyen servisler.","tool"],
+["Adversarial test","Sistemi kasıtlı olarak kırmaya çalışan saldırgan senaryolarla test etmek (red teaming)."],
+["Prompt'lara son kullanıcı ID'si eklemek","Kötüye kullanımı izleyebilmek için isteklere anonim kullanıcı kimliği eklemek."],
+["Dayanıklı prompt engineering","Talimatı veriden ayırmak ve beklenmedik girdilere karşı açık sınırlar koymak."],
+["Müşterini / kullanım senaryonu tanı","Riskler kullanıcı kitlesine ve kullanım alanına göre değişir; korumaları buna göre ayarla."],
+["Girdi ve çıktıları kısıtlamak","Serbest metin yerine seçenekler, uzunluk limitleri ve şema doğrulaması kullanmak."]],
+quiz:{q:"Bir web sayfasında gizli \"önceki talimatları yok say\" metni modele ulaşıyor. Bu nedir?",o:["Halüsinasyon","Dolaylı prompt enjeksiyonu","Overfitting","Rate limit"],a:1,why:"Dış içerik üzerinden gelen gizli talimatlar dolaylı prompt enjeksiyonudur."},
+project:{t:"Red-team listesi",s:["Kendi botun için 15 saldırı prompt'u yaz","Her birini çalıştır, başarılı olanları kaydet","Savunmaları ekleyip testi tekrarla"]}},
+
+{id:"acik-kaynak",t:"Açık Kaynak ve Self-Hosted AI",goal:"Modelleri kendi altyapında ve yerelde çalıştırmak.",
+intro:"Hugging Face ekosistemi, yerel çalıştırma araçları ve çıkarım optimizasyonu.",
+lessons:[
+["Hugging Face","Açık modeller, veri setleri ve demolar için merkezi platform.","tool"],
+["Hugging Face Hub","Model ve veri setlerinin barındırıldığı, sürümlendiği depo.","tool"],
+["Hugging Face modelleri ve görevleri","Modeller görev türüne göre (sınıflandırma, özetleme, çeviri…) etiketlenir; doğru görevle aramak işi hızlandırır."],
+["Inference SDK","Hub'daki modelleri sunucu kurmadan API üzerinden çağırma.","tool"],
+["Ollama","Açık modelleri tek komutla yerelde indirip çalıştırma aracı.","tool"],
+["LM Studio","Yerel modelleri arayüzle deneme ve OpenAI uyumlu sunucu açma.","tool"],
+["Transformers.js","Modelleri doğrudan tarayıcıda veya Node.js'te çalıştırma.","tool"],
+["Self-hosted modeller","Kendi GPU'larında model sunmak: tam kontrol, ama ölçekleme ve bakım sende."],
+["Inference Engineering","Quantization, batching ve KV cache gibi tekniklerle çıkarımı hızlı ve ucuz hale getirmek."]],
+code:{lang:"bash",title:"Ollama ile yerel model",src:`ollama pull llama3.2
+ollama run llama3.2 <span class="s">"RAG'i iki cümlede açıkla"</span>
+
+<span class="c"># OpenAI uyumlu uç nokta: http://localhost:11434/v1</span>`},
+quiz:{q:"Quantization'ın amacı nedir?",o:["Modeli daha büyük yapmak","Ağırlıkları düşük hassasiyete çevirip bellek ve hızdan kazanmak","Yeni dil eklemek","Bağlam penceresini sıfırlamak"],a:1,why:"Daha düşük bit hassasiyeti bellek kullanımını düşürür ve çıkarımı hızlandırır."},
+project:{t:"Çevrimdışı asistan",s:["Ollama ile küçük bir model çalıştır","OpenAI uyumlu uç noktaya bağlan","Aynı kodu bulut modeliyle karşılaştır"]}},
+
+{id:"embeddings",t:"Embeddings",goal:"Anlamsal temsil ile arama ve sınıflandırma yapmak.",
+intro:"Embedding nedir, nerede kullanılır ve hangi modeller tercih edilir.",
+lessons:[
+["Embedding nedir?","Metni, anlamını koruyan sabit uzunlukta sayı vektörüne çeviren temsil."],
+["Anlamsal arama","Anahtar kelime yerine anlam benzerliğiyle arama: \"iade süreci\" sorgusu \"ürünü geri gönderme\" belgesini bulur."],
+["Öneri sistemleri","Kullanıcının beğendiği içeriğe vektörce yakın içerikleri önermek."],
+["Anomali tespiti","Diğerlerinden vektörce uzak düşen kayıtları sıra dışı olarak işaretlemek."],
+["Veri sınıflandırma","Etiketli örneklerin vektörleriyle yeni metni en yakın sınıfa atamak."],
+["Embedding modelleri","Boyut, dil desteği, maliyet ve alan uyumuna göre seçilir."],
+["OpenAI Embeddings API","Yaygın kullanılan barındırılan embedding servisi.","tool"],
+["Gemini Embedding","Google'ın çok dilli embedding modeli.","tool"],
+["Cohere Embeddings","Arama ve rerank için optimize edilmiş embedding'ler.","tool"],
+["Jina AI","Çok dilli ve uzun metin destekli embedding modelleri.","tool"],
+["Sentence Transformers","Yerelde ücretsiz çalıştırılabilen açık embedding kütüphanesi.","tool"]],
+quiz:{q:"İki embedding arasındaki benzerlik genellikle nasıl ölçülür?",o:["Karakter sayısı farkı","Kosinüs benzerliği","Token fiyatı","Dosya boyutu"],a:1,why:"Kosinüs benzerliği iki vektör arasındaki açıyı ölçer; anlamca yakın metinlerde yüksektir."},
+project:{t:"SSS anlamsal arama",s:["50 soru-cevaplık bir SSS hazırla","Tüm soruların embedding'ini çıkar","Kullanıcı sorusunu en yakın 3 soruyla eşleştir"]}},
+
+{id:"vektor",t:"Vektör Veritabanları",goal:"Milyonlarca vektörde hızlı benzerlik araması yapmak.",
+intro:"İndeksleme, benzerlik araması ve yaygın vektör veritabanları.",
+lessons:[
+["Vektör veritabanı nedir?","Vektörleri metadata ile saklayan ve yaklaşık en yakın komşu (ANN) aramasını hızlı yapan sistem."],
+["Embedding'leri indekslemek","HNSW, IVF gibi indeks yapıları aramayı hızlandırır; hız ile doğruluk arasında denge kurulur."],
+["Benzerlik araması yapmak","Sorgu vektörüne en yakın K kaydı metadata filtreleriyle birlikte getirmek."],
+["Chroma","Hafif, geliştirici dostu açık kaynak vektör veritabanı.","tool"],
+["Pinecone","Tam yönetilen, ölçeklenebilir vektör veritabanı servisi.","tool"],
+["Weaviate","Hibrit arama ve modüler yapıya sahip açık kaynak veritabanı.","tool"],
+["FAISS","Meta'nın yüksek performanslı vektör arama kütüphanesi.","tool"],
+["LanceDB","Gömülü çalışan, disk tabanlı vektör veritabanı.","tool"],
+["Qdrant","Rust ile yazılmış, filtrelemede güçlü açık kaynak veritabanı.","tool"],
+["Supabase (pgvector)","Postgres içinde vektör araması; mevcut veriyle aynı yerde.","tool"],
+["MongoDB Atlas","Doküman veritabanına entegre vektör araması.","tool"]],
+quiz:{q:"Zaten Postgres kullanan küçük bir ekip için en sade başlangıç hangisi olabilir?",o:["pgvector","Kendi indeksini sıfırdan yazmak","Yeni bir veri merkezi","Fine-tuning"],a:0,why:"pgvector, vektörleri mevcut Postgres verisiyle aynı yerde tutar ve ek altyapı gerektirmez."},
+project:{t:"Belge arama motoru",s:["Chroma'yı kur","100 belgeyi metadata ile ekle","Kategoriye göre filtreli arama yap"]}},
+
+{id:"rag",t:"RAG (Retrieval-Augmented Generation)",goal:"Modeli kendi verinle güncel ve kaynaklı yanıtlar vermeye bağlamak.",
+intro:"RAG hattının adımları, fine-tuning ile farkı ve yaygın çerçeveler.",
+lessons:[
+["RAG kullanım alanları","Şirket içi bilgi asistanı, müşteri desteği, doküman soru-cevap ve hukuk/mevzuat araması."],
+["RAG vs Fine-tuning","RAG bilgi ekler ve güncel tutar; fine-tuning davranış ve üslubu değiştirir. Bilgi sorunu için önce RAG denenir."],
+["Chunking","Belgeleri anlamlı ve uygun boyutlu parçalara bölmek; parça boyutu ve örtüşme kaliteyi doğrudan etkiler."],
+["Embedding","Her parçanın vektörünü çıkarıp vektör veritabanına yazmak."],
+["Getirme süreci (Retrieval)","Sorguya en ilgili parçaları bulmak; hibrit arama ve rerank ile isabet artırılır."],
+["Üretim (Generation)","Bulunan parçaları prompt'a ekleyip modelden kaynak göstererek yanıt istemek."],
+["RAG ve dinamik filtreler","Tarih, departman veya yetki gibi metadata filtreleriyle yalnızca uygun belgeleri getirmek."],
+["LangChain","LLM uygulamaları için zincir, araç ve getirici bileşenleri sunan çerçeve.","tool"],
+["LlamaIndex","Veri bağlama ve indeksleme odaklı RAG çerçevesi.","tool"],
+["Haystack","Üretim odaklı arama ve RAG boru hatları kurma çerçevesi.","tool"],
+["RAGFlow","Derin belge ayrıştırmalı açık kaynak RAG motoru.","tool"]],
+code:{lang:"python",title:"Minimal RAG akışı",src:`<span class="c"># 1) Getir</span>
+sonuclar = koleksiyon.query(query_texts=[soru], n_results=<span class="s">4</span>)
+baglam = <span class="s">"\\n\\n"</span>.join(sonuclar[<span class="s">"documents"</span>][<span class="s">0</span>])
+
+<span class="c"># 2) Üret</span>
+prompt = <span class="s">f"""Yalnızca aşağıdaki belgelere dayanarak yanıtla.
+Bilgi yoksa "Belgelerde yok" de.
+&lt;belgeler&gt;{baglam}&lt;/belgeler&gt;
+Soru: {soru}"""</span>`},
+quiz:{q:"Model RAG'e rağmen yanlış belgeye dayanıyor. İlk nereye bakarsın?",o:["Temperature'ı artırmaya","Getirme adımının sonuçlarına (chunking/retrieval)","Modeli yeniden eğitmeye","Yanıt uzunluğuna"],a:1,why:"RAG hatalarının çoğu üretimde değil, yanlış veya eksik getirmede başlar."},
+project:{t:"Şirket el kitabı asistanı",s:["Bir PDF el kitabını parçalara böl","Vektör veritabanına yükle","Kaynak sayfa numarasıyla yanıt veren bir uç nokta yaz"]}},
+
+{id:"ajanlar",t:"AI Ajanları",goal:"Araç kullanan ve çok adımlı görevleri tamamlayan sistemler kurmak.",
+intro:"Ajan döngüsü, araçlar, çoklu ajan sistemleri ve ajan SDK'ları.",
+lessons:[
+["Ajan kullanım alanları","Araştırma, kod yazma, veri analizi, müşteri işlemleri ve iş akışı otomasyonu."],
+["ReAct deseni","Düşün → eylem yap (araç çağır) → gözlemle döngüsünü hedefe ulaşana kadar tekrar etmek."],
+["Ajanı elle uygulamak","Çerçevesiz basit bir döngü yazmak: modeli çağır, araç isteği varsa çalıştır, sonucu geri ver, bitince dur."],
+["Ajanlarda araçlar ve function calling","Net isimli, iyi açıklanmış ve dar kapsamlı araçlar ajan başarısını belirleyen en önemli etkendir."],
+["Çoklu ajan sistemleri","Planlayıcı ve uzman alt ajanlara iş bölmek; karmaşıklık ve maliyet artar, yalnızca gerektiğinde kullanılmalı."],
+["OpenAI AgentKit","OpenAI'nin ajan kurma ve dağıtma araç seti.","tool"],
+["Claude Agent SDK","Claude Code'un ajan altyapısını kendi ajanlarında kullanmanı sağlayan SDK.","tool"],
+["Google ADK","Google'ın Agent Development Kit'i.","tool"]],
+code:{lang:"python",title:"Elle yazılmış ajan döngüsü",src:`mesajlar = [{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: gorev}]
+<span class="k">for</span> adim <span class="k">in</span> range(<span class="s">10</span>):                     <span class="c"># sonsuz döngüye karşı limit</span>
+    yanit = model_cagir(mesajlar, araclar=ARACLAR)
+    <span class="k">if</span> <span class="k">not</span> yanit.arac_istekleri:
+        <span class="k">break</span>                                 <span class="c"># görev bitti</span>
+    <span class="k">for</span> istek <span class="k">in</span> yanit.arac_istekleri:
+        sonuc = ARACLAR[istek.ad](**istek.argumanlar)
+        mesajlar.append(arac_sonucu(istek.id, sonuc))`},
+quiz:{q:"Ajan döngüsüne adım limiti koymanın ana nedeni nedir?",o:["Yanıtı süslemek","Sonsuz döngü ve kontrolsüz maliyeti önlemek","Token'ları artırmak","Embedding üretmek"],a:1,why:"Ajanlar takılıp aynı aracı tekrar çağırabilir; limit maliyeti ve süreyi kontrol altında tutar."},
+project:{t:"Araştırma ajanı",s:["web_ara ve sayfa_oku araçlarını tanımla","Ajanın 3 kaynaktan özet çıkarmasını sağla","Her adımı loglayıp izle"]}},
+
+{id:"mcp",t:"Model Context Protocol (MCP)",goal:"Araçları ve veri kaynaklarını modellere standart biçimde bağlamak.",
+intro:"MCP mimarisi, katmanları ve kendi sunucu/istemcini yazmak.",
+lessons:[
+["MCP nedir, ne işe yarar?","Uygulamaların araç, kaynak ve prompt'ları LLM'lere ortak bir protokolle sunmasını sağlayan açık standart. Her entegrasyonu baştan yazma ihtiyacını azaltır."],
+["MCP Host","Kullanıcının etkileşim kurduğu uygulama (ör. bir IDE veya sohbet istemcisi); istemcileri yönetir."],
+["MCP Client","Host içinde bir sunucuyla birebir bağlantıyı yürüten bileşen."],
+["MCP Server","Araçları (tools), kaynakları (resources) ve prompt'ları dışarı açan hizmet."],
+["Veri katmanı","JSON-RPC tabanlı mesajlar: yetenek keşfi, araç çağrısı, kaynak okuma ve bildirimler."],
+["Taşıma katmanı","Yerel süreçler için stdio, uzak sunucular için akışlı HTTP."],
+["Yerel sunucuya bağlanmak","stdio ile aynı makinede çalışan sunucuyu host'a eklemek."],
+["Uzak sunucuya bağlanmak","HTTP üzerinden, genellikle OAuth kimlik doğrulamasıyla bağlanmak."],
+["MCP sunucusu yazmak","Resmi SDK ile araç tanımlayıp şema ve açıklamalarını yazmak."],
+["MCP istemcisi yazmak","Sunucunun araçlarını listeleyip modelin araç çağrılarına yönlendirmek."]],
+code:{lang:"python",title:"Python ile basit MCP sunucusu",src:`<span class="k">from</span> mcp.server.fastmcp <span class="k">import</span> FastMCP
+
+mcp = FastMCP(<span class="s">"kur-servisi"</span>)
+
+<span class="k">@mcp.tool()</span>
+<span class="k">def</span> doviz_cevir(miktar: float, kur: float) -> float:
+    <span class="s">"""TL miktarını verilen kura göre çevirir."""</span>
+    <span class="k">return</span> round(miktar / kur, <span class="s">2</span>)
+
+<span class="k">if</span> __name__ == <span class="s">"__main__"</span>:
+    mcp.run()  <span class="c"># varsayılan taşıma: stdio</span>`},
+quiz:{q:"Aynı makinede çalışan bir MCP sunucusu genellikle hangi taşıma ile bağlanır?",o:["stdio","SMTP","FTP","WebRTC"],a:0,why:"Yerel sunucular host tarafından alt süreç olarak başlatılır ve stdio üzerinden konuşur."},
+project:{t:"Kendi MCP sunucun",s:["Takvim veya not uygulaman için 2 araç yaz","Bir MCP host'una ekle","Modelin aracı doğru seçip seçmediğini test et"]}},
+
+{id:"multimodal",t:"Multimodal AI",goal:"Metnin ötesine geçip görsel, ses ve video ile çalışmak.",
+intro:"Görsel anlama ve üretme, ses işleme ve çok modlu uygulama çerçeveleri.",
+lessons:[
+["Multimodal kullanım alanları","Fatura okuma, ürün fotoğrafı analizi, toplantı dökümü, erişilebilirlik ve görsel arama."],
+["Görsel anlama","Modelin görseldeki nesne, metin ve ilişkileri yorumlaması."],
+["Görsel üretme","Metin açıklamasından görsel oluşturma ve düzenleme."],
+["Video anlama","Video karelerini ve sesini birlikte işleyip özet veya cevap çıkarmak."],
+["Ses işleme","Konuşmayı yazıya ve yazıyı konuşmaya çevirme, ses sınıflandırma."],
+["Speech-to-Text","Konuşmayı metne çevirmek; toplantı ve çağrı merkezi analizlerinin temeli."],
+["Text-to-Speech","Metni doğal sesle seslendirmek."],
+["OpenAI Vision API","Görsel girdiyi anlayan model uç noktası.","tool"],
+["DALL-E API","OpenAI'nin görsel üretim API'si.","tool"],
+["NanoBanana API","Google'ın Gemini tabanlı görsel üretme/düzenleme modeli.","tool"],
+["Whisper API","Çok dilli konuşma tanıma modeli.","tool"],
+["LangChain / LlamaIndex ile multimodal","Çerçevelerin görsel ve ses girdilerini RAG ve ajan akışlarına bağlayan bileşenleri.","tool"]],
+quiz:{q:"Toplantı kayıtlarından aksiyon listesi çıkarmak için ilk adım hangisidir?",o:["Text-to-Speech","Speech-to-Text","Görsel üretme","Top-K sampling"],a:1,why:"Önce ses yazıya dökülür, ardından LLM metinden aksiyonları çıkarır."},
+project:{t:"Fiş okuyucu",s:["Fiş fotoğrafını görsel modele gönder","Tutar, tarih ve satıcıyı JSON olarak al","Aylık harcama tablosuna ekle"]}},
+
+{id:"evals",t:"LLM Değerlendirme (Evals)",goal:"Kaliteyi ölçerek iyileştirmek ve gerilemeleri yakalamak.",
+intro:"Deterministik, model tabanlı ve insan değerlendirmeleri; metrikler ve araçlar.",
+lessons:[
+["LLM değerlendirmeleri","Sistemi sabit bir test setinde ölçmek; prompt veya model değişikliklerinin etkisini görmek."],
+["Deterministik değerlendirmeler","Kesin kurallarla kontrol: JSON geçerli mi, doğru etiket mi, yasaklı kelime var mı?"],
+["Model tabanlı değerlendirmeler","Bir LLM'i hakem (LLM-as-judge) olarak kullanıp doğruluk, alaka veya tonu puanlatmak."],
+["İnsan değerlendirmeleri","Uzmanların örneklemi puanlaması; en güvenilir ama en pahalı yöntem."],
+["Değerlendirme metrikleri","Doğruluk, sadakat (faithfulness), alaka, bağlam isabeti, gecikme ve maliyet."],
+["Regresyon testi","Her değişiklikte aynı test setini çalıştırıp önceden geçen vakaların bozulmadığını doğrulamak."],
+["RAGAS","RAG hatları için sadakat ve bağlam metrikleri sunan çerçeve.","tool"],
+["DeepEval","LLM çıktıları için birim test tarzı değerlendirme çerçevesi.","tool"]],
+quiz:{q:"Prompt'u değiştirdin ve eski senaryoların hâlâ çalıştığından emin olmak istiyorsun. Ne yaparsın?",o:["Regresyon testi","Daha büyük model","Prompt caching","Kullanıcılara sormak"],a:0,why:"Regresyon testi, mevcut davranışın yeni değişiklikle bozulmadığını sistematik olarak doğrular."},
+project:{t:"Eval hattı",s:["30 örnekli altın test seti oluştur","Deterministik + LLM-hakem puanlaması ekle","Her commit'te otomatik çalıştır"]}},
+
+{id:"gozlem",t:"Gözlemlenebilirlik ve İzleme",goal:"Üretimde ne olduğunu görmek, maliyet ve gecikmeyi kontrol etmek.",
+intro:"İzleme, loglama, maliyet takibi ve LLM gözlemlenebilirlik platformları.",
+lessons:[
+["LLM gözlemlenebilirliği","Her isteğin girdisini, çıktısını, araç çağrılarını, süresini ve maliyetini görünür kılmak."],
+["İzleme ve loglama (tracing)","Çok adımlı akışlarda her adımı tek bir iz (trace) altında birleştirip hatanın nerede başladığını bulmak."],
+["Maliyet ve gecikme izleme","Kullanıcı, özellik ve model bazında token harcamasını ve yanıt süresini takip etmek."],
+["Üretim izleme","Hata oranı, kullanıcı geri bildirimi ve kalite metriklerine alarm kurmak."],
+["LangSmith","LangChain ekosistemi için izleme ve değerlendirme platformu.","tool"],
+["LangFuse","Açık kaynak LLM izleme ve analiz platformu.","tool"],
+["Helicone","Proxy tabanlı, hızlı kurulan LLM gözlemlenebilirlik aracı.","tool"],
+["Arize AI","Model ve LLM performans izleme platformu.","tool"],
+["PostHog","Ürün analitiğiyle birlikte LLM kullanımını izleme.","tool"]],
+quiz:{q:"Bir ajan yavaş; hangi adımın yavaş olduğunu görmek için ne gerekir?",o:["Tracing","Daha uzun prompt","Fine-tuning","Embedding"],a:0,why:"Trace, her adımın süresini ayrı ayrı göstererek darboğazı ortaya çıkarır."},
+project:{t:"Maliyet panosu",s:["Her isteğe kullanıcı ve özellik etiketi ekle","LangFuse veya Helicone'a gönder","Günlük maliyet ve p95 gecikme grafiği oluştur"]}},
+
+{id:"araclar",t:"AI Destekli Geliştirme Araçları",goal:"Kendi geliştirme sürecini AI araçlarıyla hızlandırmak.",
+intro:"Kod yazan ve kod tabanında çalışan ajan araçları.",
+lessons:[
+["Geliştirme araçları","AI kodlama asistanları tekrarlayan işi azaltır; çıktıyı yine de gözden geçirmek ve test etmek gerekir."],
+["Claude Code","Terminalde ve IDE'de çalışan, kod tabanını okuyup değiştirebilen ajan.","tool"],
+["Cursor","AI odaklı kod editörü.","tool"],
+["Codex","OpenAI'nin kodlama ajanı.","tool"],
+["OpenCode","Açık kaynak terminal kodlama ajanı.","tool"],
+["Replit","Tarayıcıda uygulama geliştirme ve yayınlama ortamı, yerleşik ajanla.","tool"],
+["Devin","Otonom yazılım mühendisi olarak konumlanan ajan.","tool"]],
+quiz:{q:"AI kodlama ajanının ürettiği değişikliği birleştirmeden önce en önemli adım nedir?",o:["Hemen yayınlamak","İncelemek ve testleri çalıştırmak","Daha fazla yorum eklemek","Dosya adlarını değiştirmek"],a:1,why:"Ajanlar hızlıdır ama hata yapabilir; inceleme ve test sorumluluğu sende kalır."},
+project:{t:"Bitirme projesi",s:["Önceki modüllerdeki RAG + ajan + eval parçalarını birleştir","Bir AI kodlama aracıyla geliştir","İzleme ekleyip canlıya al"]}}
+];
+const QUIZ = {
+giris:[
+ {q:"Aşağıdakilerden hangisi tipik olarak AI Engineer'ın değil, ML Engineer'ın işidir?",o:["RAG hattı kurmak","Sıfırdan model eğitmek için veri seti hazırlamak","Prompt'ları değerlendirmek","API maliyetlerini izlemek"],a:1,h:"AI Engineer hazır modellerle çalışır. Hangi seçenek modelin kendisini üretmekle ilgili?",why:"Model eğitimi ve veri hazırlığı ML Engineer'ın alanıdır."},
+ {q:"Bugün kullandığımız LLM tabanlı asistanlar hangi sınıfa girer?",o:["AGI","Dar (narrow) AI","Süper zeka","Kural tabanlı uzman sistem"],a:1,h:"AGI henüz var olmayan, her alanda insan düzeyinde öğrenen varsayımsal bir sistem.",why:"Güçlü olsalar da bugünkü sistemler dar AI sayılır; AGI henüz yoktur."},
+ {q:"AI özellikleri ürüne eklenirken klasik yazılımdan farklı olarak hangi risk öne çıkar?",o:["Derleme hataları","Deterministik olmayan, değişken çıktılar","Daha az bellek kullanımı","Veritabanı şeması"],a:1,h:"Aynı girdiyi iki kez verdiğinde ne olabileceğini düşün.",why:"LLM'ler aynı girdiye farklı yanıtlar verebilir; ürün kararları bu belirsizliği yönetmelidir."}],
+terimler:[
+ {q:"Bağlam penceresi neyi sınırlar?",o:["Modelin eğitim verisini","Tek istekte görülebilen toplam token sayısını","Dakikadaki istek sayısını","Modelin dil sayısını"],a:1,h:"Prompt, geçmiş ve yanıtın toplamını düşün.",why:"Context window, tek seferde işlenebilen token miktarıdır."},
+ {q:"LLM bir yanıtı nasıl üretir?",o:["Hazır cevapları veritabanından çeker","Bir sonraki token'ı olasılıkla tahmin edip tekrarlar","İnternette arama yapar","Kural ağacını izler"],a:1,h:"Model her adımda tek bir şey tahmin eder ve bunu döngüyle sürdürür.",why:"LLM'ler sonraki token için olasılık dağılımı üretir ve yanıtı adım adım oluşturur."},
+ {q:"Kullanıcının bir isteğe yanıt alması hangi aşamadır?",o:["Ön eğitim","Fine-tuning","Çıkarım (inference)","Veri etiketleme"],a:2,h:"Model ağırlıkları değişmiyor, sadece kullanılıyor.",why:"Eğitilmiş modelin yeni girdiye yanıt üretmesi çıkarımdır."}],
+modeller:[
+ {q:"Hassas sağlık verisi şirket dışına çıkamıyorsa hangi seçenek öne çıkar?",o:["En büyük kapalı modeli kullanmak","Kendi altyapında çalışan açık ağırlıklı model","Modeli tamamen kaldırmak","Daha yüksek temperature"],a:1,h:"Verinin nerede işlendiği önemli.",why:"Self-hosted açık modeller veriyi kendi altyapında tutmanı sağlar."},
+ {q:"İki model arasında seçim yaparken en güvenilir yöntem nedir?",o:["Popülerlik sıralamasına bakmak","Kendi görevine ait test setinde karşılaştırmak","En yeni olanı seçmek","En pahalı olanı seçmek"],a:1,h:"Genel benchmark'lar senin kullanım senaryonu bilmez.",why:"Kalite, maliyet ve gecikmeyi kendi verinde ölçmek en doğru seçimi verir."},
+ {q:"Açık ağırlıklı modellerin kapalı API modellerine göre tipik avantajı nedir?",o:["Her zaman daha akıllı olmaları","Özelleştirme ve maliyet/veri kontrolü","Bakım gerektirmemeleri","Sınırsız bağlam"],a:1,h:"Ağırlıklar elindeyse neyi kontrol edebilirsin?",why:"Açık modeller ince ayar, yerel çalıştırma ve veri kontrolü sağlar; bakım yükü ise sende olur."}],
+api:[
+ {q:"Function calling'de fonksiyonu kim çalıştırır?",o:["Model, sağlayıcının sunucusunda","Senin uygulama kodun","Tarayıcı","Vektör veritabanı"],a:1,h:"Model yalnızca hangi fonksiyonu hangi argümanla çağırmak istediğini söyler.",why:"Çalıştırma ve sonucu geri gönderme senin kodundadır."},
+ {q:"Kullanıcı uzun yanıtı beklerken boş ekran görüyor. İlk iyileştirme hangisi?",o:["Streaming'i açmak","Temperature'ı artırmak","Top-K'yı düşürmek","Daha uzun prompt"],a:0,h:"Toplam süre aynı kalsa bile algılanan bekleme süresi kısalabilir.",why:"Akış, ilk token'ları hemen göstererek algılanan gecikmeyi düşürür."},
+ {q:"Sınıflandırma gibi tutarlılık gereken görevlerde temperature nasıl ayarlanır?",o:["Yüksek (1.5+)","Düşük (0–0.3)","Rastgele","Önemsizdir"],a:1,h:"Daha az yaratıcılık, daha çok tekrarlanabilirlik.",why:"Düşük temperature daha tutarlı ve öngörülebilir çıktılar verir."}],
+prompt:[
+ {q:"Few-shot prompting'in temel faydası nedir?",o:["Modeli yeniden eğitmek","Beklenen formatı örnekle göstermek","Token sayısını azaltmak","Gecikmeyi sıfırlamak"],a:1,h:"'Shot' kelimesi örnek demek.",why:"Örnekler, istenen çıktı formatını ve üslubu açıklamadan daha net aktarır."},
+ {q:"Çok adımlı matematik sorusunda doğruluğu artırmak için hangi teknik uygundur?",o:["Chain-of-Thought","Daha kısa prompt","Repetition penalty","Top-P = 0"],a:0,h:"Modelin sonuca atlamak yerine yolu yazmasını iste.",why:"Adım adım düşünme, çok adımlı akıl yürütmede hataları azaltır."},
+ {q:"Kullanıcı verisini talimatlardan ayırmak için iyi bir yöntem hangisi?",o:["Hepsini tek paragrafta yazmak","XML etiketi gibi ayraçlar kullanmak","Büyük harf kullanmak","Veriyi en başa koyup talimatı silmek"],a:1,h:"Model neyin talimat neyin veri olduğunu nereden anlar?",why:"Ayraçlar, veriyi talimattan net biçimde ayırır ve enjeksiyon riskini de azaltır."}],
+context:[
+ {q:"Bir alt ajanın tüm araştırmasını aktarmak yerine yalnızca özetini döndürmek hangi tekniktir?",o:["Bağlam izolasyonu","Top-P sampling","Fine-tuning","Embedding"],a:0,h:"Alt görev kendi ayrı alanında çalışıyor.",why:"Alt görevi ayrı bağlamda yürütüp sonucu döndürmek bağlam izolasyonudur."},
+ {q:"Uzun bir sohbet bağlam sınırına yaklaşıyor. Önemli bilgiyi koruyarak ne yaparsın?",o:["Geçmişi tamamen silmek","Geçmişi özetleyerek sıkıştırmak","Modeli değiştirmek","Temperature'ı düşürmek"],a:1,h:"Bilgiyi koru ama daha az token'la.",why:"Compaction, geçmişi özetleyip token tüketimini düşürür."},
+ {q:"Bağlama çelişkili ve alakasız belgeler eklendiğinde yanıt kalitesi düşüyor. Buna ne denir?",o:["Bağlam hata modu (dikkat dağılması/çatışma)","Overfitting","Rate limiting","Quantization"],a:0,h:"Sorun modelde değil, ona verilen girdide.",why:"Fazla, alakasız veya çelişkili bağlam bilinen bağlam hata modlarıdır."}],
+guvenlik:[
+ {q:"Bir web sayfasındaki gizli \"önceki talimatları yok say\" metni modele ulaşıyor. Bu nedir?",o:["Halüsinasyon","Dolaylı prompt enjeksiyonu","Overfitting","Rate limit"],a:1,h:"Saldırı kullanıcıdan değil, modelin okuduğu dış içerikten geliyor.",why:"Dış içerik üzerinden gelen gizli talimatlar dolaylı prompt enjeksiyonudur."},
+ {q:"İsteklere anonim son kullanıcı ID'si eklemenin amacı nedir?",o:["Yanıtı hızlandırmak","Kötüye kullanımı kişi bazında izleyebilmek","Token'ı azaltmak","Modeli kişiselleştirmek"],a:1,h:"Sorunlu bir istek geldiğinde 'kim?' sorusuna cevap.",why:"Kullanıcı ID'si, kötüye kullanımın kaynağını tespit edip engellemeye yarar."},
+ {q:"Sistemi kasıtlı saldırı senaryolarıyla test etmeye ne denir?",o:["A/B testi","Adversarial test / red teaming","Birim testi","Yük testi"],a:1,h:"Takımın bir kısmı saldırgan rolüne geçiyor.",why:"Adversarial test, zayıf noktaları saldırgan gözüyle bulur."}],
+"acik-kaynak":[
+ {q:"Quantization'ın amacı nedir?",o:["Modeli büyütmek","Ağırlıkları düşük hassasiyete çevirip bellek ve hızdan kazanmak","Yeni dil eklemek","Bağlamı sıfırlamak"],a:1,h:"32 bit yerine 4 bit ile saklamayı düşün.",why:"Daha düşük bit hassasiyeti bellek kullanımını düşürür, çıkarımı hızlandırır."},
+ {q:"Modeli doğrudan tarayıcıda çalıştırmak için hangi araç uygundur?",o:["Transformers.js","Pinecone","LangSmith","Whisper API"],a:0,h:"JavaScript ile çalışan bir kütüphane.",why:"Transformers.js modelleri tarayıcıda ve Node.js'te çalıştırır."},
+ {q:"Ollama'nın sunduğu OpenAI uyumlu uç nokta ne sağlar?",o:["Ücretsiz GPT erişimi","Mevcut kodu az değişiklikle yerel modele yönlendirmek","Model eğitimi","Vektör araması"],a:1,h:"Aynı istek formatı, farklı adres.",why:"Uyumlu API sayesinde yalnızca base URL'i değiştirerek yerel modele geçebilirsin."}],
+embeddings:[
+ {q:"İki embedding arasındaki benzerlik genellikle nasıl ölçülür?",o:["Karakter sayısı farkı","Kosinüs benzerliği","Token fiyatı","Dosya boyutu"],a:1,h:"İki vektör arasındaki açıyı düşün.",why:"Kosinüs benzerliği, anlamca yakın metinlerde yüksektir."},
+ {q:"\"İade süreci\" araması \"ürünü geri gönderme\" belgesini buluyor. Bu nedir?",o:["Anahtar kelime araması","Anlamsal arama","Regex","Tam eşleşme"],a:1,h:"Kelimeler ortak değil ama anlam aynı.",why:"Embedding tabanlı arama kelime değil anlam eşleştirir."},
+ {q:"Vektörce diğerlerinden çok uzak düşen bir işlem kaydı neyi işaret edebilir?",o:["Anomali","Öneri","Chunk","Token"],a:0,h:"Kalabalığın dışında kalan nokta.",why:"Uzak düşen kayıtlar anomali tespiti için adaydır."}],
+vektor:[
+ {q:"Zaten Postgres kullanan küçük bir ekip için en sade başlangıç hangisi?",o:["pgvector","Kendi indeksini sıfırdan yazmak","Yeni bir veri merkezi","Fine-tuning"],a:0,h:"Mevcut veritabanına eklenti.",why:"pgvector, vektörleri mevcut Postgres verisiyle aynı yerde tutar."},
+ {q:"HNSW gibi indeksler neyi hızlandırır?",o:["Yaklaşık en yakın komşu aramasını","Model eğitimini","Tokenizasyonu","Ses tanımayı"],a:0,h:"Milyonlarca vektörde tek tek karşılaştırma yapmak yavaş olurdu.",why:"ANN indeksleri doğruluktan çok az ödün vererek aramayı büyük ölçüde hızlandırır."},
+ {q:"Sadece \"İK\" departmanı belgelerinde arama yapmak için ne kullanılır?",o:["Metadata filtresi","Daha yüksek temperature","Yeni embedding modeli","Daha uzun chunk"],a:0,h:"Vektörün yanında saklanan ek bilgi.",why:"Metadata filtreleri aramayı belirli alt kümeye daraltır."}],
+rag:[
+ {q:"Model RAG'e rağmen yanlış belgeye dayanıyor. İlk nereye bakarsın?",o:["Temperature'a","Getirme adımının sonuçlarına","Modeli yeniden eğitmeye","Yanıt uzunluğuna"],a:1,h:"Model ancak önüne konan belgelerle iyi olabilir.",why:"RAG hatalarının çoğu yanlış veya eksik getirmede başlar."},
+ {q:"Şirketin her gün değişen fiyat listesini modele öğretmek için hangisi uygundur?",o:["Fine-tuning","RAG","Daha büyük model","Few-shot"],a:1,h:"Bilgi sık değişiyor; her gün yeniden eğitmek pahalı.",why:"RAG güncel bilgiyi eğitim gerektirmeden bağlama ekler."},
+ {q:"Chunk'lar çok büyük seçilirse ne olur?",o:["İlgisiz içerik bağlamı doldurur, isabet düşer","Arama hızlanır ve isabet artar","Embedding gereksiz olur","Hiçbir şey değişmez"],a:0,h:"Tek bir parçada birçok farklı konu olduğunu düşün.",why:"Büyük parçalar ilgisiz metin taşır; küçük parçalar bağlamı kaybedebilir. Denge gerekir."}],
+ajanlar:[
+ {q:"Ajan döngüsüne adım limiti koymanın ana nedeni nedir?",o:["Yanıtı süslemek","Sonsuz döngü ve kontrolsüz maliyeti önlemek","Token'ları artırmak","Embedding üretmek"],a:1,h:"Ajan aynı aracı tekrar tekrar çağırırsa ne olur?",why:"Limit, maliyeti ve süreyi kontrol altında tutar."},
+ {q:"Ajan başarısını en çok etkileyen tasarım unsuru hangisidir?",o:["Logo","Net isimli, iyi açıklanmış araçlar","Renk teması","Model adı"],a:1,h:"Model hangi aracı ne zaman kullanacağını neye bakarak seçer?",why:"Araç isimleri ve açıklamaları modelin doğru aracı seçmesini belirler."},
+ {q:"ReAct döngüsünün doğru sırası hangisidir?",o:["Eylem → Düşün → Gözlem","Düşün → Eylem → Gözlem","Gözlem → Eğit → Eylem","Düşün → Eğit → Yayınla"],a:1,h:"Reason + Act; sonra sonucu gör.",why:"Model düşünür, araç çağırır, sonucu gözlemler ve tekrarlar."}],
+mcp:[
+ {q:"Aynı makinede çalışan bir MCP sunucusu genellikle hangi taşıma ile bağlanır?",o:["stdio","SMTP","FTP","WebRTC"],a:0,h:"Host sunucuyu bir alt süreç olarak başlatır.",why:"Yerel sunucular stdio üzerinden konuşur."},
+ {q:"MCP sunucusu dışarıya hangilerini açabilir?",o:["Araçlar, kaynaklar ve prompt'lar","Yalnızca model ağırlıkları","Sadece veritabanı şeması","GPU"],a:0,h:"Üç temel yapı taşı var.",why:"MCP sunucuları tools, resources ve prompts sunar."},
+ {q:"Kullanıcının etkileşim kurduğu ve istemcileri yöneten uygulamaya ne denir?",o:["MCP Host","MCP Server","Transport","Resource"],a:0,h:"Ev sahibi.",why:"Host, içinde bir veya daha fazla MCP istemcisi barındıran uygulamadır."}],
+multimodal:[
+ {q:"Toplantı kayıtlarından aksiyon listesi çıkarmak için ilk adım hangisidir?",o:["Text-to-Speech","Speech-to-Text","Görsel üretme","Top-K"],a:1,h:"LLM metinle çalışır; önce ses ne olmalı?",why:"Önce ses yazıya dökülür, sonra LLM aksiyonları çıkarır."},
+ {q:"Fiş fotoğrafından tutar ve tarihi çıkarmak hangi yetenektir?",o:["Görsel anlama","Görsel üretme","TTS","Embedding"],a:0,h:"Model görseli okuyor, yeni görsel çizmiyor.",why:"Görsel anlama, görseldeki metin ve nesneleri yorumlar."},
+ {q:"Bir blog yazısını sesli podcast'e çevirmek için hangisi kullanılır?",o:["Whisper","Text-to-Speech","Vision API","FAISS"],a:1,h:"Yönü düşün: metinden sese.",why:"TTS metni doğal sese dönüştürür."}],
+evals:[
+ {q:"Prompt'u değiştirdin, eski senaryoların hâlâ çalıştığını doğrulamak istiyorsun. Ne yaparsın?",o:["Regresyon testi","Daha büyük model","Prompt caching","Hiçbir şey"],a:0,h:"Eskiden geçen testler hâlâ geçiyor mu?",why:"Regresyon testi, değişikliğin mevcut davranışı bozmadığını doğrular."},
+ {q:"\"Çıktı geçerli JSON mu?\" kontrolü hangi tür değerlendirmedir?",o:["Deterministik","İnsan","LLM-hakem","A/B"],a:0,h:"Kesin bir kuralla evet/hayır.",why:"Kurala dayalı kontroller deterministik değerlendirmedir."},
+ {q:"Yanıtın tonunu ve yardımseverliğini ölçeklenebilir biçimde puanlamak için?",o:["LLM-as-judge","Regex","Birim testi","Ping"],a:0,h:"Öznel bir kriter, ama binlerce örnek var.",why:"Model tabanlı değerlendirme öznel kriterleri ölçekli puanlar; insan örneklemiyle kalibre edilmelidir."}],
+gozlem:[
+ {q:"Bir ajan yavaş; hangi adımın yavaş olduğunu görmek için ne gerekir?",o:["Tracing","Daha uzun prompt","Fine-tuning","Embedding"],a:0,h:"Her adımın süresini ayrı ayrı görmek istiyorsun.",why:"Trace, darboğazı adım adım ortaya çıkarır."},
+ {q:"Aylık faturanın hangi özellikten şiştiğini anlamak için isteklere ne eklenir?",o:["Özellik ve kullanıcı etiketleri","Daha çok emoji","Yüksek temperature","Rastgele ID"],a:0,h:"Maliyeti gruplayabilmek için bir anahtar lazım.",why:"Etiketler maliyeti özellik ve kullanıcı bazında kırmanı sağlar."},
+ {q:"Gecikme izlemede ortalama yerine neden p95 tercih edilir?",o:["Yavaş uç vakaları görünür kılar","Daha kolay hesaplanır","Her zaman düşüktür","Maliyeti düşürür"],a:0,h:"Ortalama, en kötü deneyim yaşayan kullanıcıları gizleyebilir.",why:"p95, kullanıcıların %5'inin yaşadığı yavaşlığı gösterir."}],
+araclar:[
+ {q:"AI kodlama ajanının değişikliğini birleştirmeden önce en önemli adım nedir?",o:["Hemen yayınlamak","İncelemek ve testleri çalıştırmak","Daha çok yorum eklemek","Dosya adlarını değiştirmek"],a:1,h:"Hız iyi, ama sorumluluk kimde?",why:"İnceleme ve test sorumluluğu sende kalır."},
+ {q:"Kodlama ajanına görev verirken en faydalı şey hangisidir?",o:["Belirsiz tek kelime","Net hedef, bağlam ve kabul kriterleri","Sadece dosya adı","Hiçbir açıklama"],a:1,h:"Bir meslektaşa görev devrederken ne söylerdin?",why:"Net hedef ve kabul kriterleri ajanın doğru işi yapma olasılığını artırır."},
+ {q:"Bitirme projesinde hangi modül parçaları birleşir?",o:["RAG, ajanlar, değerlendirme ve izleme","Sadece logo","Yalnızca CSS","Hiçbiri"],a:0,h:"Yolculuk boyunca öğrendiğin her şey.",why:"Üretim kalitesinde bir AI ürünü bu katmanların hepsini kullanır."}]
+};
+const RES = {"giris": [[["Makale", "How to Become an AI Engineer: Duties, Skills, and Salary", "https://www.simplilearn.com/tutorials/artificial-intelligence-tutorial/how-to-become-an-ai-engineer"], ["Makale", "AI Engineers: What they do and how to become one", "https://www.techtarget.com/whatis/feature/How-to-become-an-artificial-intelligence-engineer"], ["Makale", "I Transitioned from Data Science to AI Engineering: Here’s Everything You Need to Know", "https://towardsdatascience.com/i-transitioned-from-data-science-to-ai-engineering-heres-everything-you-need-to-know/"]], [["Makale", "What is AGI?", "https://aws.amazon.com/what-is/artificial-general-intelligence/"], ["Makale", "The crucial difference between AI and AGI", "https://www.forbes.com/sites/bernardmarr/2024/05/20/the-crucial-difference-between-ai-and-agi/"], ["Makale", "Stop Worrying about AGI: The Immediate Danger is Reduced General Intelligence (RGI)", "https://towardsdatascience.com/stop-worrying-about-agi-the-immediate-danger-is-reduced-general-intelligence-rgi/"]], [["Makale", "What does an AI Engineer do?", "https://www.codecademy.com/resources/blog/what-does-an-ai-engineer-do/"], ["Makale", "What is an ML Engineer?", "https://www.coursera.org/articles/what-is-machine-learning-engineer"], ["Makale", "Machine Learning vs AI Engineer: What Are the Differences?", "https://towardsdatascience.com/machine-learning-vs-ai-engineer-no-confusing-jargon/"], ["Video", "AI vs ML", "https://www.youtube.com/watch?v=4RixMPF4xis"]], [["Makale", "AI Engineer Job Description", "https://resources.workable.com/ai-engineer-job-description"], ["Makale", "How To Become an AI Engineer (Plus Job Duties and Skills)", "https://www.indeed.com/career-advice/finding-a-job/ai-engineer"]], [["Makale", "AI in Product Development: Netflix, BMW, and PepsiCo", "https://www.virtasant.com/ai-today/ai-in-product-development-netflix-bmw#:~:text=AI%20can%20help%20make%20product,and%20gain%20a%20competitive%20edge."], ["Makale", "AI Product Development: Why Are Founders So Fascinated By The Potential?", "https://www.techmagic.co/blog/ai-product-development/"]]], "terimler": [[["Makale", "What is a large language model (LLM)?", "https://www.cloudflare.com/en-gb/learning/ai/what-is-large-language-model/"], ["Makale", "New to LLMs? Start Here", "https://towardsdatascience.com/new-to-llms-start-here/"], ["Video", "How Large Language Models Work", "https://www.youtube.com/watch?v=5sLYAQS9sWQ"]], [["Makale", "What is a large language model (LLM)?", "https://www.cloudflare.com/en-gb/learning/ai/what-is-large-language-model/"], ["Makale", "New to LLMs? Start Here", "https://towardsdatascience.com/new-to-llms-start-here/"], ["Video", "How Large Language Models Work", "https://www.youtube.com/watch?v=5sLYAQS9sWQ"]], [["Makale", "Explaining Tokens — the Language and Currency of AI", "https://blogs.nvidia.com/blog/ai-tokens-explained/"], ["Makale", "Understanding Tokens and Parameters in Model Training: A Deep Dive", "https://www.functionize.com/blog/understanding-tokens-and-parameters-in-model-training"]], [["Makale", "What is a context window?", "https://www.ibm.com/think/topics/context-window"], ["Makale", "Coding Agents Don’t Need Bigger Context Windows", "https://towardsdatascience.com/coding-agents-dont-need-bigger-context-windows-they-need-a-context-compiler/"], ["Video", "What is a Context Window? Unlocking LLM Secrets", "https://www.youtube.com/watch?v=-QVoIxEpFkM"], ["Video", "Why LLMs get dumb (Context Windows Explained)", "https://www.youtube.com/watch?v=TeQDr4DkLYo"]], [["Makale", "What is Model Training?", "https://oden.io/glossary/model-training/"], ["Makale", "Machine learning model training: What it is and why it’s important", "https://domino.ai/blog/what-is-machine-learning-model-training"], ["Makale", "Training ML Models - Amazon", "https://docs.aws.amazon.com/machine-learning/latest/dg/training-ml-models.html"]], [["Makale", "Inference vs Training", "https://www.cloudflare.com/learning/ai/inference-vs-training/"], ["Makale", "What is Machine Learning Inference?", "https://hazelcast.com/glossary/machine-learning-inference/"]], [["Makale", "What are Embeddings in Machine Learning?", "https://www.cloudflare.com/en-gb/learning/ai/what-are-embeddings/"], ["Makale", "What is Embedding?", "https://www.ibm.com/topics/embedding"], ["Video", "What are Word Embeddings", "https://www.youtube.com/watch?v=wgfSDrqYMJ4"]], [["Makale", "Vector Databases", "https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/"], ["Makale", "What are Vector Databases?", "https://www.mongodb.com/resources/basics/databases/vector-databases"]], [["Makale", "What is Retrieval-Augmented Generation? - Google", "https://cloud.google.com/use-cases/retrieval-augmented-generation"], ["Makale", "RAG Explained: Understanding Embeddings, Similarity, and Retrieval", "https://towardsdatascience.com/rag-explained-understanding-embeddings-similarity-and-retrieval/"], ["Video", "What is Retrieval-Augmented Generation? - IBM", "https://www.youtube.com/watch?v=T-D1OfcDW1M"]], [["Makale", "What is Prompt Engineering? - AI Prompt Engineering Explained - AWS", "https://aws.amazon.com/what-is/prompt-engineering/"], ["Makale", "Advanced Prompt Engineering for Data Science Projects", "https://towardsdatascience.com/advanced-prompt-engineering-for-data-science-projects/"], ["Video", "What is Prompt Engineering?", "https://www.youtube.com/watch?v=nf1e-55KKbg"], ["Makale", "Context engineering vs. prompt engineering", "https://www.elastic.co/search-labs/blog/context-engineering-vs-prompt-engineering"]], [["Makale", "Building an AI Agent Tutorial - LangChain", "https://python.langchain.com/docs/tutorials/agents/"], ["Makale", "How to Design My First AI Agent", "https://towardsdatascience.com/how-to-design-my-first-ai-agent/"], ["Video", "The Complete Guide to Building AI Agents for Beginners", "https://youtu.be/MOyl58VF2ak?si=-QjRD_5y3iViprJX"], ["Makale", "AI Agents and Their Types", "https://www.digitalocean.com/resources/articles/types-of-ai-agents"]], [["Makale", "What is fine-tuning?", "https://www.ibm.com/think/topics/fine-tuning"], ["Makale", "How I Fine-Tuned Granite-Vision 2B to Beat a 90B Model — Insights and Lessons Learned", "https://towardsdatascience.com/how-i-fine-tuned-granite-vision-2b-to-beat-a-90b-model-insights-and-lessons-learned/"], ["Video", "RAG vs Fine-Tuning vs Prompt Engineering: Optimizing AI Models", "https://www.youtube.com/watch?v=zYGDpG-pTho"]], [["Makale", "Recap of all types of LLM Agents", "http://towardsdatascience.com/recap-of-all-types-of-llm-agents/"]]], "modeller": [[["Makale", "Pre-trained Models: Past, Present and Future", "https://www.sciencedirect.com/science/article/pii/S2666651021000231"], ["Video", "Transforming Language with Generative Pre-trained Transformers (GPT)", "https://www.youtube.com/watch?v=bdICz_sBI34"]], [["Makale", "https://hatchworks.com/blog/gen-ai/open-source-vs-closed-llms-guide/", "https://hatchworks.com/blog/gen-ai/open-source-vs-closed-llms-guide/"], ["Video", "Open Source vs Closed AI: LLMs, Agents & the AI Stack Explained", "https://www.youtube.com/watch?v=_QfxGZGITGw"], ["Video", "Open-Source vs Closed-Source LLMs", "https://www.youtube.com/watch?v=710PDpuLwOc"]], [["Makale", "Choosing the right model", "https://bentoml.com/llm/getting-started/choosing-the-right-model"], ["Makale", "Beyond vibes: How to properly select the right LLM for the right task", "https://aws.amazon.com/blogs/machine-learning/beyond-vibes-how-to-properly-select-the-right-llm-for-the-right-task/"]], [["Resmi", "OpenAI Platform", "https://openai.com/api/"], ["Resmi", "OpenAI Models", "https://developers.openai.com/api/docs/models"], ["Makale", "Your guide to the complete OpenAI models list", "https://www.eesel.ai/blog/openai-models-list"]], [["Kurs", "Claude 101", "https://anthropic.skilljar.com/claude-101"], ["Resmi", "Claude", "https://claude.ai"], ["Video", "How To Use Claude Pro For Beginners", "https://www.youtube.com/watch?v=J3X_JWQkvo8"], ["Video", "Claude FULL COURSE 1 HOUR (Build & Automate Anything)", "https://www.youtube.com/watch?v=KrKhfm2Xuho"]], [["Kurs", "Google AI Training", "https://grow.google/ai/"], ["Resmi", "Google Gemini", "https://gemini.google.com/"], ["Resmi", "Google's Gemini Documentation", "https://workspace.google.com/solutions/ai/"], ["Video", "Welcome to the Gemini era", "https://www.youtube.com/watch?v=_fuimO6ErKI"]], [["Kurs", "Building with Llama 4", "https://www.deeplearning.ai/short-courses/building-with-llama-4/"], ["Resmi", "Llama", "https://www.llama.com/"]], [["Resmi", "Mistral AI", "https://mistral.ai/"], ["Video", "Mistral AI: The Gen AI Start-up you did not know existed", "https://www.youtube.com/watch?v=vzrRGd18tAg"]], [["Resmi", "Deepseek", "https://www.deepseek.com/en/"], ["Makale", "DeepSeek explained: Everything you need to know", "https://www.techtarget.com/whatis/feature/DeepSeek-explained-Everything-you-need-to-know"], ["Video", "What is DeepSeek? AI Model Basics Explained", "https://www.youtube.com/watch?v=KTonvXhsxpc"]], [["Resmi", "Qwen", "https://chat.qwen.ai/"], ["Makale", "What is Qwen AI?", "https://zapier.com/blog/qwen/"]], [["Resmi", "Gemma", "https://deepmind.google/models/gemma/"]], [["Resmi", "Introduction to Embeddings at Cohere", "https://docs.cohere.com/docs/embeddings"], ["Resmi", "What are embedding models? Benefits and best practices", "https://cohere.com/blog/embedding-models"], ["Resmi", "Cohere", "https://cohere.com/"], ["Resmi", "LLM University - Cohere", "https://cohere.com/llmu"]]], "api": [[["Resmi", "Langchain Text Splitter Package", "https://www.npmjs.com/package/@langchain/textsplitters"], ["Resmi", "OpenAI Embedding API", "https://platform.openai.com/docs/guides/embeddings"], ["Resmi", "Supabase AI & Vector Documentation", "https://supabase.com/docs/guides/ai"]], [["Resmi", "Responses API", "https://developers.openai.com/api/reference/resources/responses/"], ["Açık kaynak", "Why we built the Responses API", "https://developers.openai.com/blog/responses-api/"], ["Video", "OpenAI Responses API Tutorial (2025)", "https://www.youtube.com/playlist?list=PL4HikwTaYE0EWV3qieOYooyxb9osQLgou"]], [["Resmi", "Messages API", "https://platform.claude.com/docs/en/api/messages"], ["Resmi", "Using the Messages API", "https://platform.claude.com/docs/en/build-with-claude/working-with-messages"], ["Makale", "Claude API: How to get a key and use the API", "https://zapier.com/blog/claude-api/"]], [["Resmi", "Gemini API", "https://ai.google.dev/gemini-api/docs"], ["Makale", "Everything you need to know about the Gemini API as a developer in less than 5 minutes", "https://medium.com/around-the-prompt/everything-you-need-to-know-about-the-gemini-api-as-a-developer-in-less-than-5-minutes-5e75343ccff9"], ["Video", "Introduction to Gemini APIs and AI Studio", "https://www.youtube.com/watch?v=4oyqd7CB09c"]], [["Makale", "OpenAI-compatible API", "https://bentoml.com/llm/llm-inference-basics/openai-compatible-api"], ["Makale", "OpenAI compatibility - Gemini", "https://ai.google.dev/gemini-api/docs/openai"]], [["Resmi", "OpenRouter", "https://openrouter.ai/"], ["Makale", "What is OpenRouter? A Guide with Practical Examples", "https://www.codecademy.com/article/what-is-openrouter"], ["Video", "What is Open Router ?", "https://www.youtube.com/watch?v=pfT6l0yMsB0"]], [["Makale", "Streaming Responses in AI: How AI Outputs Are Generated in Real Time", "https://dev.to/pranshu_kabra_fe98a73547a/streaming-responses-in-ai-how-ai-outputs-are-generated-in-real-time-18kb"], ["Makale", "Streaming vs Non-Streaming LLM Responses", "https://medium.com/@vasanthancomrads/streaming-vs-non-streaming-llm-responses-db297ba5467e"], ["Makale", "AI for Web Devs: Faster Responses with HTTP Streaming", "https://austingil.com/ai-for-web-devs-streaming/"]], [["Makale", "Structured Output", "https://abdullin.com/structured-output/"], ["Makale", "Generating Structured Outputs from LLMs", "https://towardsdatascience.com/generating-structured-outputs-from-llms/"], ["Makale", "How do Structured Outputs Work?", "https://docs.cohere.com/docs/structured-outputs"]], [["Makale", "A Comprehensive Guide to Function Calling in LLMs", "https://thenewstack.io/a-comprehensive-guide-to-function-calling-in-llms/"], ["Makale", "Function Calling with LLMs | Prompt Engineering Guide", "https://www.promptingguide.ai/applications/function_calling"], ["Video", "LLM Function Calling - AI Tools Deep Dive", "https://www.youtube.com/watch?v=gMeTK6zzaO4"]], [["Makale", "What is Prompt Caching?", "https://www.ibm.com/think/topics/prompt-caching"], ["Video", "What is Prompt Caching? Optimize LLM Latency with AI Transformers", "https://www.youtube.com/watch?v=u57EnkQaUTY"]], [["Makale", "What Temperature Means in Natural Language Processing and AI", "https://thenewstack.io/what-temperature-means-in-natural-language-processing-and-ai/"], ["Makale", "What is LLM Temperature? - IBM", "https://www.ibm.com/think/topics/llm-temperature"], ["Makale", "How Temperature Settings Transform Your AI Agent's Responses", "https://docsbot.ai/article/how-temperature-settings-transform-your-ai-agents-responses"]], [["Makale", "What Temperature Means in Natural Language Processing and AI", "https://thenewstack.io/what-temperature-means-in-natural-language-processing-and-ai/"], ["Makale", "What is LLM Temperature? - IBM", "https://www.ibm.com/think/topics/llm-temperature"], ["Makale", "How Temperature Settings Transform Your AI Agent's Responses", "https://docsbot.ai/article/how-temperature-settings-transform-your-ai-agents-responses"]], [["Makale", "Understanding Top-K and Top-P in Prompt Engineering:", "https://medium.com/@8926581/understanding-top-k-and-top-p-in-prompt-engineering-00a3b93dcd40"], ["Makale", "How do Top-k and Top-p Sampling work?", "https://outcomeschool.com/blog/how-do-top-k-and-top-p-sampling-work"], ["Makale", "Mastering Language Models", "https://towardsdatascience.com/mastering-language-models-32e1d891511a/#a476"], ["Video", "What are the LLM’s Top-P + Top-K ?", "https://www.youtube.com/watch?v=aDmp2Uim0zQ"]], [["Video", "What are the LLM’s Top-P + Top-K ?", "https://www.youtube.com/watch?v=aDmp2Uim0zQ"]], [["Makale", "Stop the LLM From Rambling: Using Penalties to Control Repetition", "https://dev.to/superorange0707/stop-the-llm-from-rambling-using-penalties-to-control-repetition-5h8"], ["Video", "What are LLM Presence and Frequency Penalties?", "https://www.youtube.com/watch?v=J66CRz6s734"]]], "prompt": [[["Makale", "What is zero-shot prompting?", "https://www.ibm.com/think/topics/zero-shot-prompting"], ["Makale", "Zero-Shot Prompting", "https://www.promptingguide.ai/techniques/zeroshot"], ["Video", "Zero-shot, One-shot and Few-shot Prompting Explained | Prompt Engineering 101", "https://www.youtube.com/watch?v=sW5xoicq5TY"]], [["Makale", "Few-Shot Prompting", "https://www.promptingguide.ai/techniques/fewshot"], ["Makale", "What is few shot prompting?", "https://www.ibm.com/think/topics/few-shot-prompting"], ["Video", "Discover Few-Shot Prompting | Google AI Essentials", "https://www.youtube.com/watch?v=9qdgEBVkWR4"]], [["Makale", "What is chain of thought (CoT) prompting?", "https://www.ibm.com/think/topics/chain-of-thoughts"], ["Makale", "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models", "https://arxiv.org/abs/2201.11903"], ["Makale", "Evoking Chain of Thought Reasoning in LLMs - Prompting Guide", "https://www.promptingguide.ai/techniques/cot"], ["Video", "ChatGPT Prompt Engineering Principles: Chain of Thought Prompting", "https://www.youtube.com/watch?v=Kar2qfLDQ2c"]], [["Makale", "ReAct Prompting", "https://www.promptingguide.ai/techniques/react"], ["Makale", "ReAct Prompting: How We Prompt for High-Quality Results from LLMs", "https://www.width.ai/post/react-prompting"]], [["Makale", "User prompts vs. system prompts: What’s the difference?", "https://www.regie.ai/blog/user-prompts-vs-system-prompts"], ["Video", "System Prompt Fundamentals", "https://www.youtube.com/watch?v=RMR0Y8esSmE"]], [["Makale", "Beyond Basics: Contextual & Role Prompting That Actually Works", "https://medium.com/@the_manoj_desai/beyond-basics-contextual-role-prompting-that-actually-works-bd75a0c5086b"]], [["Makale", "What is a Context Window in AI?", "https://www.ibm.com/think/topics/context-window"], ["Makale", "What Is an AI Context Window?", "https://www.coursera.org/articles/context-window"], ["Makale", "Cutting Through the Noise: Smarter Context Management for LLM-Powered Agents", "https://blog.jetbrains.com/research/2025/12/efficient-context-management/"], ["Video", "What is a Context Window? Unlocking LLM Secrets", "https://www.youtube.com/watch?v=-QVoIxEpFkM"]], [["Makale", "Introduction: The Power of Clear Instructions", "https://codesignal.com/learn/courses/prompting-foundations/lessons/defining-constraints-and-requirements-for-effective-prompts"]], [["Makale", "Elements of a Prompt", "https://www.promptingguide.ai/introduction/elements"], ["Makale", "Does Prompt Formatting Have Any Impact on LLM Performance?", "https://arxiv.org/html/2411.10541v1"]]], "context": [[["Makale", "Effective context engineering for AI agents", "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"], ["Makale", "Context Engineering Guide", "https://www.promptingguide.ai/guides/context-engineering-guide"], ["Video", "Context Engineering Clearly Explained", "https://www.youtube.com/watch?v=jLuwLJBQkIs"], ["Video", "Context engineering explained: What every AI developer should know", "https://www.youtube.com/watch?v=BBPQYtR7oUk"]], [["Makale", "Context engineering vs. prompt engineering", "https://www.elastic.co/search-labs/blog/context-engineering-vs-prompt-engineering"], ["Makale", "Effective context engineering for AI agents", "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"], ["Makale", "Beyond Prompting: The Power of Context Engineering", "https://towardsdatascience.com/beyond-prompting-the-power-of-context-engineering/"], ["Video", "Context Engineering vs. Prompt Engineering: Smarter AI with RAG & Agents", "https://www.youtube.com/watch?v=vD0E3EUb8-8"]], [["Makale", "The Context Layer for AI: What Enterprises Get Wrong", "https://datahub.com/blog/context-layer-for-ai/"], ["Makale", "Context Engineering for AI Agents: The Complete Guide", "https://medium.com/@khanzzirfan/context-engineering-for-ai-agents-the-complete-guide-5047f84595c7"], ["Video", "Most devs don’t understand how context windows work", "https://www.youtube.com/watch?v=-uW5-TaVXu4"]], [["Makale", "How to Build a Context Layer and a Company Brain", "https://towardsdatascience.com/how-to-build-a-context-layer-and-a-company-brain/"], ["Makale", "What is a context layer? AI agent infrastructure", "https://redis.io/blog/what-is-a-context-layer/"], ["Makale", "Context Layer vs Semantic Layer: What the Debate Gets Right and What It Misses", "https://datahub.com/blog/context-layer-vs-semantic-layer/"]], [["Resmi", "Altan", "https://atlan.com/"], ["Video", "What Does Atlan Do? The Context Layer for Enterprise AI", "https://www.youtube.com/watch?v=GhtLIRsbUV8"], ["Resmi", "DataHub", "https://datahub.com/"], ["Video", "DataHub Context Platform demo: AI agent with and without DataHub context", "https://www.youtube.com/watch?v=eCW925m_el0"]], [["Makale", "Context Engineering", "https://blog.langchain.com/context-engineering-for-agents/"], ["Makale", "Context Compaction", "https://gist.github.com/badlogic/cd2ef65b0697c4dbe2d13fbecb0a0a5f"], ["Video", "Context Engineering for Agents", "https://www.youtube.com/watch?v=4GiqzUHD5AA"]], [["Makale", "4 context engineering strategies every AI engineer needs to know", "https://newsletter.owainlewis.com/p/4-context-engineering-strategies"], ["Makale", "Context Engineering", "https://blog.langchain.com/context-engineering-for-agents/"]], [["Makale", "How Long Contexts Fail", "https://www.dbreunig.com/2025/06/22/how-contexts-fail-and-how-to-fix-them.html"], ["Makale", "Understanding LLM Failure Modes (And Why They Matter More Than the Model Itself)", "https://medium.com/@RamPrakashD/understanding-llm-failure-modes-and-why-they-matter-more-than-the-model-itself-2104edccf3cd"], ["Makale", "Coding Agents Don’t Need Bigger Context Windows — They Need a Context Compiler", "https://towardsdatascience.com/coding-agents-dont-need-bigger-context-windows-they-need-a-context-compiler/"], ["Video", "RAG Failure Patterns, Explained", "https://www.youtube.com/watch?v=1nI0hX9dvD4&t=32s"]], [["Makale", "A Practical Guide to Memory for Autonomous LLM Agents", "https://towardsdatascience.com/a-practical-guide-to-memory-for-autonomous-llm-agents/"], ["Makale", "The Ultimate Guide to LLM Memory: From Context Windows to Advanced Agent Memory Systems", "https://medium.com/@sonitanishk2003/the-ultimate-guide-to-llm-memory-from-context-windows-to-advanced-agent-memory-systems-3ec106d2a345"], ["Video", "CAG vs Long Context: How AI Models Use and Remember Information", "https://www.youtube.com/watch?v=B_RrXwDupIg"]], [["Makale", "How to Maximize Agentic Memory for Continual Learning", "https://towardsdatascience.com/how-to-maximize-agentic-memory-for-continual-learning/"]], [["Açık kaynak", "Understanding State and State Management in LLM-Based AI Agents", "https://github.com/mind-network/Awesome-LLM-based-AI-Agents-Knowledge/blob/main/8-7-state.md"], ["Makale", "State, Memory, and Context in Agents: How AI Keeps Track of What You Asked", "https://medium.com/@koganti.saichandana14/state-memory-and-context-in-agents-how-ai-keeps-track-of-what-you-asked-a5f18de54dd8"], ["Video", "The Four Types of Memory Every AI Agent Needs", "https://www.youtube.com/watch?v=BacJ6sEhqMo"]], [["Makale", "Decentralized Multi-Agent Systems with Shared Context", "https://arxiv.org/abs/2606.10662"], ["Makale", "How to Implement Multi-Agent Context Sharing Patterns", "https://fast.io/resources/multi-agent-context-sharing-patterns/"], ["Video", "Multi Agent Systems Explained: How AI Agents & LLMs Work Together", "https://www.youtube.com/watch?v=sWH0T4Zez6I"], ["Video", "A2A vs MCP: AI Agent Communication Explained", "https://www.youtube.com/watch?v=BMDFPOyezH4"]], [["Makale", "Beyond the Window: The Complete Guide to Long Context Language Models (And Why They’re Changing AI)", "https://towardsdev.com/beyond-the-window-the-complete-guide-to-long-context-language-models-and-why-theyre-changing-ai-ee28f6c2b428"], ["Makale", "The Prompt: What is long context — and why does it matter for your AI?", "https://cloud.google.com/transform/the-prompt-what-are-long-context-windows-and-why-do-they-matter"], ["Makale", "Long-Context LLM Infrastructure: Building Systems for Million-Token Windows", "https://introl.com/blog/long-context-llm-infrastructure-million-token-windows-guide"], ["Video", "Deep Dive into Long Context", "https://www.youtube.com/watch?v=NHMJ9mqKeMQ"]], [["Makale", "Context Engineering Is Security Engineering. RSA 2026 Made the Case.", "https://zenity.io/blog/events/context-engineering-security-engineering"], ["Makale", "When Data Becomes Instructions: AI Agents Need a Chain of Custody for Context", "https://blog.checkpoint.com/ai-security/ai-agent-context-chain-of-custody/"]], [["Makale", "AI Agent Evaluation", "https://machinelearningmastery.com/effective-context-engineering-for-ai-agents-a-developers-guide/"], ["Video", "The agent evaluation revolution", "https://www.youtube.com/watch?v=WZZLtwnZ4w0"]]], "guvenlik": [[["Makale", "Prompt Injection in LLMs", "https://www.promptingguide.ai/prompts/adversarial-prompting/prompt-injection"], ["Makale", "What is a Prompt Injection Attack?", "https://www.wiz.io/academy/prompt-injection-attack"]], [["Makale", "What Do We Do About the Biases in AI?", "https://hbr.org/2019/10/what-do-we-do-about-the-biases-in-ai"], ["Makale", "What about fairness, bias and discrimination?", "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/how-do-we-ensure-fairness-in-ai/what-about-fairness-bias-and-discrimination/"]], [["Kurs", "AI Security Labs: OWASP LLM, Agentic and MCP Top 10", "https://ransomleak.com/catalogue/ai-security/"], ["Makale", "Examining Privacy Risks in AI Systems", "https://transcend.io/blog/ai-and-privacy"], ["Video", "AI Is Dangerous, but Not for the Reasons You Think | Sasha Luccioni | TED", "https://www.youtube.com/watch?v=eXdVDhOGqoE"]], [["Resmi", "Moderation API", "https://platform.openai.com/docs/guides/moderation"], ["Makale", "How to use the moderation API", "https://cookbook.openai.com/examples/how_to_use_moderation"], ["Makale", "Content moderation: What it is, how it works, and the best APIs", "https://www.assemblyai.com/blog/content-moderation-what-it-is-how-it-works-best-apis-2"]], [["Makale", "Adversarial Testing for Generative AI", "https://developers.google.com/machine-learning/resources/adv-testing"], ["Makale", "Adversarial Testing: Definition, Examples and Resources", "https://www.leapwork.com/blog/adversarial-testing"]], [["Resmi", "Sending End-user IDs - OpenAI", "https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids"]], [["Makale", "Effective Prompt Engineering: A Comprehensive Guide", "https://medium.com/@nmurugs/effective-prompt-engineering-a-comprehensive-guide-803160c571ed"]], [["Makale", "Assigning Roles", "https://learnprompting.org/docs/basics/roles"]], [["Makale", "Preventing Prompt Injection", "https://learnprompting.org/docs/prompt_hacking/defensive_measures/introduction"], ["Makale", "Introducing Structured Outputs in the API - OpenAI", "https://openai.com/index/introducing-structured-outputs-in-the-api/"]]], "acik-kaynak": [[["Kurs", "Hugging Face Official Video Course", "https://www.youtube.com/watch?v=00GKzGyWFEs&list=PLo2EIpI_JMQvWfQndUesu0nPBAtZ9gP1o"], ["Resmi", "Hugging Face", "https://huggingface.co"], ["Video", "What is Hugging Face? - Machine Learning Hub Explained", "https://www.youtube.com/watch?v=1AUjKfpRZVo"]], [["Kurs", "The Hugging Face Hub (LLM Course)", "https://huggingface.co/learn/nlp-course/en/chapter4/1"], ["Resmi", "Hugging Face Documentation", "https://huggingface.co/docs/hub/en/index"]], [["Resmi", "Hugging Face Embedding Models", "https://huggingface.co/models?pipeline_tag=feature-extraction"], ["Video", "Hugging Face - Text embeddings & semantic search", "https://www.youtube.com/watch?v=OATCgQtNX2o"], ["Resmi", "Task and Model", "https://huggingface.co/learn/computer-vision-course/en/unit4/multimodal-models/tasks-models-part1"], ["Resmi", "Task Summary", "https://huggingface.co/docs/transformers/v4.14.1/en/task_summary"]], [["Resmi", "Inference", "https://huggingface.co/docs/huggingface_hub/en/package_reference/inference_client"], ["Makale", "Endpoint Setup", "https://www.npmjs.com/package/@huggingface/inference"]], [["Resmi", "Ollama", "https://ollama.com/"], ["Makale", "Ollama: Easily run LLMs locally", "https://klu.ai/glossary/ollama"], ["Video", "What is Ollama? Running Local LLMs Made Simple", "https://www.youtube.com/watch?v=5RIOQuHOihY"]], [["Resmi", "LMStudio", "https://lmstudio.ai/"], ["Video", "LM Studio Tutorial: Run Large Language Models (LLM) on Your Laptop", "https://www.youtube.com/watch?v=ygUEbCpOOLg"]], [["Resmi", "Transformers.js on Hugging Face", "https://huggingface.co/docs/transformers.js/en/index"], ["Video", "How Transformer.js Can Help You Create Smarter AI In Your Browser", "https://www.youtube.com/watch?v=MNJHu9zjpqg"]], [["Makale", "Self-Hosted LLM: A Practical Guide for DevOps", "https://www.plural.sh/blog/self-hosting-large-language-models/"], ["Makale", "Serverless vs. self-hosted LLM inference", "https://bentoml.com/llm/llm-inference-basics/serverless-vs-self-hosted-llm-inference"]], [["Makale", "What Is Inference Engineering? The 2026 GPU Cloud Guide", "https://www.spheron.network/blog/inference-engineering-guide-2026/"], ["Makale", "A Guide to AI Inference Engineering", "https://blog.bytebytego.com/p/a-guide-to-ai-inference-engineering"], ["Video", "Inference Engines explained in 10min..", "https://www.youtube.com/watch?v=_xM8scs4_x4&t=8s"]]], "embeddings": [[["Makale", "What is Embedding? -IBM", "https://www.ibm.com/topics/embedding"], ["Makale", "What are Embeddings in Machine Learning?", "https://www.cloudflare.com/en-gb/learning/ai/what-are-embeddings/"], ["Video", "What are Word Embeddings", "https://www.youtube.com/watch?v=wgfSDrqYMJ4"]], [["Makale", "What is Semantic Search?", "https://www.elastic.co/what-is/semantic-search"], ["Video", "What is Semantic Search? - Cohere", "https://www.youtube.com/watch?v=fFt4kR4ntAA"]], [["Makale", "What Role does AI Play in Recommendation Systems and Engines?", "https://www.algolia.com/blog/ai/what-role-does-ai-play-in-recommendation-systems-and-engines/"], ["Makale", "What is a Recommendation Engine?", "https://www.ibm.com/think/topics/recommendation-engine"]], [["Makale", "Anomaly in Embeddings", "https://ai.google.dev/gemini-api/tutorials/anomaly_detection"], ["Makale", "Boosting Your Anomaly Detection With LLMs", "https://towardsdatascience.com/boosting-your-anomaly-detection-with-llms/"]], [["Makale", "What Is Data Classification?", "https://www.paloaltonetworks.com/cyberpedia/data-classification"], ["Video", "Text Embeddings, Classification, and Semantic Search (w/ Python Code)", "https://www.youtube.com/watch?v=sNa_uiqSlJo"]], [["Makale", "What are Embedding Models? An Overview", "https://www.couchbase.com/blog/embedding-models/"], ["Makale", "Best Open-Source Embedding Models Benchmarked and Ranked", "https://supermemory.ai/blog/best-open-source-embedding-models-benchmarked-and-ranked/"]], [["Resmi", "OpenAI Embeddings API", "https://platform.openai.com/docs/api-reference/embeddings/create"], ["Video", "Master OpenAI Embedding API", "https://www.youtube.com/watch?v=9oCS-VQupoc"]], [["Resmi", "Embeddings", "https://ai.google.dev/gemini-api/docs/embeddings"], ["Resmi", "Gemini Embedding now generally available in the Gemini API", "https://developers.googleblog.com/gemini-embedding-available-gemini-api/"], ["Video", "What are text embeddings?", "https://www.youtube.com/watch?v=vlcQV4j2kTo&t=117s"]], [["Resmi", "Introduction to Embeddings at Cohere", "https://docs.cohere.com/docs/embeddings"], ["Resmi", "What are embedding models? Benefits and best practices", "https://cohere.com/blog/embedding-models"], ["Resmi", "Cohere", "https://cohere.com/"], ["Resmi", "LLM University - Cohere", "https://cohere.com/llmu"]], [["Resmi", "Jina Embeddings", "https://jina.ai/en-US/embeddings/"], ["Resmi", "https://jina.ai/news/jina-embeddings-v5-text-distilling-4b-quality-into-sub-1b-multilingual-embeddings/", "https://jina.ai/news/jina-embeddings-v5-text-distilling-4b-quality-into-sub-1b-multilingual-embeddings/"]], [["Makale", "What is BERT?", "https://h2o.ai/wiki/bert/"], ["Makale", "SentenceTransformers Documentation", "https://sbert.net/"], ["Makale", "Using Sentence Transformers at Hugging Face", "https://huggingface.co/docs/hub/sentence-transformers"]]], "vektor": [[["Makale", "Vector Databases", "https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/"], ["Makale", "What are Vector Databases?", "https://www.mongodb.com/resources/basics/databases/vector-databases"]], [["Makale", "Indexing & Embeddings", "https://developers.llamaindex.ai/python/framework/understanding/rag/indexing/"], ["Video", "Vector Databases Simply Explained! (Embeddings & Indexes)", "https://www.youtube.com/watch?v=dN0lsF2cvm4"]], [["Makale", "What is Similarity Search & How Does it work?", "https://www.truefoundry.com/blog/similarity-search"]], [["Resmi", "Chroma", "https://www.trychroma.com/"], ["Makale", "Chroma Tutorials", "https://lablab.ai/tech/chroma"], ["Video", "Chroma - Chroma - Vector Database for LLM Applications", "https://youtu.be/Qs_y0lTJAp0?si=Z2-eSmhf6PKrEKCW"]], [["Resmi", "Pinecone", "https://www.pinecone.io"], ["Makale", "Everything you need to know about Pinecone", "https://www.packtpub.com/article-hub/everything-you-need-to-know-about-pinecone-a-vector-database?srsltid=AfmBOorXsy9WImpULoLjd-42ERvTzj3pQb7C2EFgamWlRobyGJVZKKdz"], ["Video", "Introducing Pinecone Serverless", "https://www.youtube.com/watch?v=iCuR6ihHQgc"]], [["Resmi", "Weaviate", "https://weaviate.io/"], ["Video", "Advanced AI Agents with RAG", "https://www.youtube.com/watch?v=UoowC-hsaf0&list=PLTL2JUbrY6tVmVxY12e6vRDmY-maAXzR1"]], [["Resmi", "FAISS", "https://ai.meta.com/tools/faiss/"], ["Makale", "What Is Faiss (Facebook AI Similarity Search)?", "https://www.datacamp.com/blog/faiss-facebook-ai-similarity-search"], ["Video", "FAISS Vector Library with LangChain and OpenAI", "https://www.youtube.com/watch?v=ZCSsIkyCZk4"]], [["Resmi", "LanceDB", "https://lancedb.com/"], ["Resmi", "LanceDB Documentation", "https://docs.lancedb.com/enterprise"], ["Açık kaynak", "LanceDB on GitHub", "https://github.com/lancedb/lancedb"]], [["Resmi", "Qdrant", "https://qdrant.tech/"], ["Açık kaynak", "Qdrant on GitHub", "https://github.com/qdrant/qdrant"], ["Video", "Getting started with Qdrant", "https://www.youtube.com/watch?v=LRcZ9pbGnno"]], [["Resmi", "Supabase Vector", "https://supabase.com/docs/guides/ai"], ["Video", "Supabase Vector: The Postgres Vector database", "https://www.youtube.com/watch?v=MDxEXKkxf2Q"]], [["Resmi", "Vector Search in MongoDB Atlas", "https://www.mongodb.com/products/platform/atlas-vector-search"]]], "rag": [[["Makale", "Retrieval augmented generation use cases: Transforming data into insights", "https://www.glean.com/blog/retrieval-augmented-generation-use-cases"], ["Makale", "Retrieval Augmented Generation (RAG) – 5 Use Cases", "https://theblue.ai/blog/rag-news/"], ["Makale", "How to Train a Chatbot Using RAG and Custom Data", "https://towardsdatascience.com/how-to-train-a-chatbot-using-rag-and-custom-data/"], ["Video", "Introduction to RAG", "https://www.youtube.com/watch?v=LmiFeXH-kq8&list=PL-pTHQz4RcBbz78Z5QXsZhe9rHuCs1Jw-"]], [["Makale", "RAG vs Fine Tuning: How to Choose the Right Method", "https://www.montecarlodata.com/blog-rag-vs-fine-tuning/"], ["Makale", "RAG vs Finetuning — Which Is the Best Tool to Boost Your LLM Application?", "https://towardsdatascience.com/rag-vs-finetuning-which-is-the-best-tool-to-boost-your-llm-application-94654b1eaba7"], ["Video", "RAG vs Fine-tuning", "https://www.youtube.com/watch?v=00Q0G84kq3M"]], [["Makale", "Understanding LangChain's RecursiveCharacterTextSplitter", "https://dev.to/eteimz/understanding-langchains-recursivecharactertextsplitter-2846"], ["Makale", "Chunking Strategies for LLM Applications", "https://www.pinecone.io/learn/chunking-strategies/"], ["Makale", "A Guide to Chunking Strategies for Retrieval Augmented Generation", "https://zilliz.com/learn/guide-to-chunking-strategies-for-rag"]], [["Makale", "Understanding the role of embeddings in RAG LLMs", "https://www.aporia.com/learn/understanding-the-role-of-embeddings-in-rag-llms/"], ["Makale", "Mastering RAG: How to Select an Embedding Model", "https://www.rungalileo.io/blog/mastering-rag-how-to-select-an-embedding-model"]], [["Makale", "What is Retrieval-Augmented Generation (RAG)?", "https://cloud.google.com/use-cases/retrieval-augmented-generation"], ["Makale", "What Is Retrieval-Augmented Generation, aka RAG?", "https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation/"]], [["Makale", "What is RAG (Retrieval-Augmented Generation)?", "https://aws.amazon.com/what-is/retrieval-augmented-generation/"], ["Video", "Retrieval Augmented Generation (RAG) Explained in 8 Minutes!", "https://www.youtube.com/watch?v=HREbdmOSQ18"]], [["Makale", "4 context engineering strategies every AI engineer needs to know", "https://newsletter.owainlewis.com/p/4-context-engineering-strategies"], ["Makale", "Context Engineering", "https://blog.langchain.com/context-engineering-for-agents/"], ["Makale", "Is RAG Dead? The Rise of Context Engineering and Semantic Layers for Agentic AI", "https://towardsdatascience.com/beyond-rag/"]], [["Resmi", "Langchain", "https://www.langchain.com/"], ["Video", "What is LangChain?", "https://www.youtube.com/watch?v=1bUy-1hGZpI"]], [["Resmi", "Llama Index", "https://docs.llamaindex.ai/en/stable/"], ["Video", "Introduction to LlamaIndex with Python (2025)", "https://www.youtube.com/watch?v=cCyYGYyCka4"]], [["Resmi", "Haystack", "https://haystack.deepset.ai/"], ["Resmi", "Haystack Overview", "https://docs.haystack.deepset.ai/docs/intro"], ["Açık kaynak", "deepset-ai/haystack", "https://github.com/deepset-ai/haystack"]], [["Resmi", "RagFlow", "https://ragflow.io/"], ["Açık kaynak", "ragflow", "https://github.com/infiniflow/ragflow"], ["Video", "RagFlow: Ultimate RAG Engine", "https://www.youtube.com/watch?v=ApA-7G7FGRc"]]], "ajanlar": [[["Makale", "Top 15 Use Cases Of AI Agents In Business", "https://www.ampcome.com/post/15-use-cases-of-ai-agents-in-business"], ["Makale", "A Brief Guide on AI Agents: Benefits and Use Cases", "https://www.codica.com/blog/brief-guide-on-ai-agents/"], ["Makale", "How to Build Effective AI Agents to Process Millions of Requests", "https://towardsdatascience.com/how-to-build-effective-ai-agents-to-process-millions-of-requests/"], ["Video", "The Complete Guide to Building AI Agents for Beginners", "https://youtu.be/MOyl58VF2ak?si=-QjRD_5y3iViprJX"]], [["Makale", "ReAct Prompting", "https://www.promptingguide.ai/techniques/react"], ["Video", "4 Methods of Prompt Engineering", "https://youtu.be/vD0E3EUb8-8?si=Y6MCLPzjmhMB4jSu&t=203"]], [["Resmi", "A practical guide to building agents - OpenAI", "https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf"], ["Resmi", "Create custom subagents - Claude", "https://code.claude.com/docs/en/sub-agents"]], [["Kurs", "A Comprehensive Guide to Function Calling in LLMs", "https://thenewstack.io/a-comprehensive-guide-to-function-calling-in-llms/"], ["Resmi", "What are Tools? - Hugging Face", "https://huggingface.co/learn/agents-course/en/unit1/tools"], ["Makale", "Compare 50+ AI Agent Tools in 2026", "https://aimultiple.com/ai-agent-tools"], ["Makale", "AI Agents Explained in Simple Terms for Beginners", "https://www.geeky-gadgets.com/ai-agents-explained-for-beginners/"]], [["Makale", "What is a multi-agent system?", "https://www.ibm.com/think/topics/multiagent-system"], ["Makale", "Multi-Agent Systems", "https://huggingface.co/learn/agents-course/en/unit2/smolagents/multi_agent_systems"], ["Makale", "Guide to multi-agent systems (MAS)", "https://cloud.google.com/discover/what-is-a-multi-agent-system"], ["Makale", "Agentic AI 103: Building Multi-Agent Teams", "https://towardsdatascience.com/agentic-ai-103-building-multi-agent-teams/"]], [["Resmi", "Introducing AgentKit", "https://openai.com/index/introducing-agentkit/"], ["Resmi", "Build every step of agents on one platform", "https://openai.com/agent-platform/"], ["Video", "OpenAI Agents SDK Tutorial (FULL SERIES)", "https://www.youtube.com/watch?v=gFcAfU3V1Zo"]], [["Resmi", "Agent SDK overview", "https://platform.claude.com/docs/en/agent-sdk/overview"], ["Makale", "Getting Started with the Claude Agent SDK", "https://www.kdnuggets.com/getting-started-with-the-claude-agent-sdk"], ["Video", "Building Custom AI Agents Just Got EASIER - Claude Agent SDK", "https://www.youtube.com/watch?v=NsROagHaKxA"], ["Video", "Claude Agents SDK BEATS all Agent Framework! (Beginners Guide)", "https://www.youtube.com/watch?v=i6N8oQQ0tUE"]], [["Kurs", "ADK Crash Course - From Beginner To Expert", "https://codelabs.developers.google.com/onramp/instructions#0"], ["Resmi", "Agent Development Kit", "https://google.github.io/adk-docs/"], ["Resmi", "Overview of Agent Development Kit", "https://docs.cloud.google.com/agent-builder/agent-development-kit/overview"]]], "mcp": [[["Kurs", "Model Context Protocol (MCP) Course", "https://huggingface.co/learn/mcp-course/en/unit0/introduction"], ["Resmi", "Model Context Protocol", "https://modelcontextprotocol.io/"], ["Açık kaynak", "Model Context Protocol", "https://github.com/modelcontextprotocol"], ["Makale", "Discover more articles on MCP", "https://towardsdatascience.com/tag/mcp/"]], [["Kurs", "Model Context Protocol (MCP) Course", "https://huggingface.co/learn/mcp-course/en/unit0/introduction"], ["Resmi", "Concepts of MCP", "https://modelcontextprotocol.io/docs/learn/architecture#concepts-of-mcp"]], [["Kurs", "Model Context Protocol (MCP) Course", "https://huggingface.co/learn/mcp-course/en/unit0/introduction"], ["Resmi", "Understanding MCP clients", "https://modelcontextprotocol.io/docs/learn/client-concepts#understanding-mcp-clients"], ["Video", "The Complete Guide to Building AI Agents for Beginners", "https://youtu.be/MOyl58VF2ak?si=-QjRD_5y3iViprJX"]], [["Kurs", "Model Context Protocol (MCP) Course", "https://huggingface.co/learn/mcp-course/en/unit0/introduction"], ["Resmi", "Understanding MCP Servers", "https://modelcontextprotocol.io/docs/learn/server-concepts#understanding-mcp-servers"], ["Makale", "Awesome MCP Servers", "https://mcpservers.org/"], ["Video", "The Complete Guide to Building AI Agents for Beginners", "https://youtu.be/MOyl58VF2ak?si=-QjRD_5y3iViprJX"]], [["Resmi", "Layer", "https://modelcontextprotocol.io/docs/learn/architecture#layers"]], [["Resmi", "Layer", "https://modelcontextprotocol.io/docs/learn/architecture#layers"]], [["Resmi", "Connect to local MCP servers", "https://modelcontextprotocol.io/docs/develop/connect-local-servers"], ["Video", "Local MCP Servers for Cursor (Step by step)", "https://www.youtube.com/watch?v=_Qr0WTgR5EM"]], [["Resmi", "Connect to remote MCP Servers", "https://modelcontextprotocol.io/docs/develop/connect-remote-servers"], ["Makale", "Remote MCP Servers", "https://mcpservers.org/remote-mcp-servers"], ["Video", "Deploy Remote MCP Servers in Python (Step by Step)", "https://www.youtube.com/watch?v=wXAqv8uvY0M"]], [["Resmi", "Build an MCP server", "https://modelcontextprotocol.io/docs/develop/build-server#build-an-mcp-server"], ["Makale", "MCP server: A step-by-step guide to building from scratch", "https://composio.dev/blog/mcp-server-step-by-step-guide-to-building-from-scrtch"], ["Video", "Build and Ship Any MCP Server in MINUTES (Full Guide)", "https://www.youtube.com/watch?v=Zw3sfAIpeH8"]], [["Resmi", "Build an MCP client", "https://modelcontextprotocol.io/docs/develop/build-client"], ["Makale", "MCP Client - Step by Step Guide to Building from Scratch", "https://composio.dev/blog/mcp-client-step-by-step-guide-to-building-from-scratch"], ["Video", "Create an MCP Client in Python - FastAPI Tutorial", "https://www.youtube.com/watch?v=mhdGVbJBswA"]]], "multimodal": [[["Resmi", "Hugging Face Multimodal Models", "https://huggingface.co/learn/computer-vision-course/en/unit4/multimodal-models/a_multimodal_world"], ["Makale", "Multimodal AI - Google", "https://cloud.google.com/use-cases/multimodal-ai?hl=en"], ["Makale", "What Is Multimodal AI? A Complete Introduction", "https://www.splunk.com/en_us/blog/learn/multimodal-ai.html"]], [["Makale", "Low or High Fidelity Image Understanding - OpenAI", "https://platform.openai.com/docs/guides/images"]], [["Resmi", "DALL-E", "https://openai.com/index/dall-e-2/"], ["Makale", "How DALL-E 2 Actually Works", "https://www.assemblyai.com/blog/how-dall-e-2-actually-works/"], ["Video", "How AI Image Generators Work (Stable Diffusion / Dall-E)", "https://www.youtube.com/watch?v=1CIpzeNxIhU"]], [["Açık kaynak", "Awesome LLM for Video Understanding", "https://github.com/yunlong10/Awesome-LLMs-for-Video-Understanding"], ["Makale", "Video Understanding", "https://dl.acm.org/doi/10.1145/3503161.3551600"]], [["Makale", "The State of Audio Processing", "https://appwrite.io/blog/post/state-of-audio-processing"], ["Video", "Audio Signal Processing for Machine Learning", "https://www.youtube.com/watch?v=iCwMQJnKk2c"]], [["Makale", "What is Speech to Text?", "https://aws.amazon.com/what-is/speech-to-text/"], ["Makale", "Turn Speech into Text using Google AI", "https://cloud.google.com/speech-to-text"], ["Makale", "How is Speech to Text Used?", "https://h2o.ai/wiki/speech-to-text/"]], [["Makale", "What is Text-to-Speech?", "https://aws.amazon.com/polly/what-is-text-to-speech/"], ["Makale", "From Text to Speech: A Deep Dive into TTS Technologies", "https://medium.com/@zilliz_learn/from-text-to-speech-a-deep-dive-into-tts-technologies-18ea409f20e8"]], [["Resmi", "Vision", "https://developers.openai.com/api/docs/guides/images-vision"], ["Video", "OpenAI Vision API Crash Course", "https://www.youtube.com/watch?v=ZjkS11DSeEk"]], [["Resmi", "OpenAI Image Generation", "https://platform.openai.com/docs/guides/images"], ["Video", "DALL E API - Introduction (Generative AI Pictures from OpenAI)", "https://www.youtube.com/watch?v=Zr6vAWwjHN0"]], [["Resmi", "NanoBanana API", "https://nanobananaapi.ai/"]], [["Resmi", "OpenAI Whisper", "https://openai.com/index/whisper/"], ["Açık kaynak", "Whisper on GitHub", "https://github.com/openai/whisper"]], [["Resmi", "LangChain", "https://www.langchain.com/"], ["Video", "Build a Multimodal GenAI App with LangChain and Gemini LLMs", "https://www.youtube.com/watch?v=bToMzuiOMhg"], ["Resmi", "LlamaIndex Multi-modal", "https://docs.llamaindex.ai/en/stable/use_cases/multimodal/"], ["Video", "Multi-modal Retrieval Augmented Generation with LlamaIndex", "https://www.youtube.com/watch?v=35RlrrgYDyU"]]], "evals": [[["Makale", "LLM evaluation: a beginner's guide", "https://www.evidentlyai.com/llm-guide/llm-evaluation"], ["Video", "Welcome to the LLM evaluation course", "https://www.youtube.com/watch?v=rHs0sP7b5fM&list=PL9omX6impEuMgDFCK_NleIB0sMzKs2boI"]], [["Makale", "How I Built Deterministic LLM Evaluation Metrics for DeepEval", "https://www.confident-ai.com/blog/how-i-built-deterministic-llm-evaluation-metrics-for-deepeval"], ["Makale", "Demystifying evals for AI agents", "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"]], [["Makale", "A pragmatic guide to LLM evals for devs", "https://newsletter.pragmaticengineer.com/p/evals"], ["Makale", "LLM-as-a-judge: a complete guide to using LLMs for evaluations", "https://www.evidentlyai.com/llm-guide/llm-as-a-judge"], ["Video", "LLM as a Judge: Scaling AI Evaluation Strategies", "https://www.youtube.com/watch?v=trfUBIDeI1Y"]], [["Makale", "LLM-as-a-judge vs. human evaluation: Why together is better", "https://www.superannotate.com/blog/llm-as-a-judge-vs-human-evaluation"], ["Makale", "How to run human-in-the-loop evals for LLM apps", "https://www.braintrust.dev/articles/human-in-the-loop-evals-for-llm-apps"]], [["Makale", "LLM evaluation metrics and methods, explained simply", "https://www.evidentlyai.com/llm-guide/llm-evaluation-metrics"], ["Makale", "A list of metrics for evaluating LLM-generated content", "https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/working-with-llms/evaluation/list-of-eval-metrics"]], [["Makale", "Automated Regression Testing: The Complete 2026 Guide", "https://roadmap.sh/ai-engineer/automated-regression-testing"], ["Makale", "Watch the language: A tutorial on regression testing for LLMs", "https://www.evidentlyai.com/blog/llm-regression-testing-tutorial"], ["Video", "Regression Testing for LLMs: Golden Datasets Explained", "https://www.youtube.com/watch?v=7vqU_Yj5kUc"]], [["Resmi", "Ragas Docs", "https://docs.ragas.io/en/stable/"], ["Açık kaynak", "ragas", "https://github.com/vibrantlabsai/ragas"], ["Video", "RAGAS: How to Evaluate a RAG Application", "https://www.youtube.com/watch?v=5fp6e5nhJRk"]], [["Resmi", "DeepEval Docs", "https://deepeval.com/docs/introduction"], ["Açık kaynak", "deepeval", "https://github.com/confident-ai/deepeval"], ["Video", "How to Setup DeepEval for Fast, Easy, and Powerful LLM Evaluations", "https://www.youtube.com/watch?v=7YgpH5PauRM"]]], "gozlem": [[["Makale", "What is LLM observability?", "https://www.ibm.com/think/topics/llm-observability"], ["Makale", "LLM Evaluation and AI Observability for Agent Monitoring", "https://blog.jetbrains.com/pycharm/2026/05/llm-evaluation-and-ai-observability-for-agent-monitoring/"]], [["Makale", "A guide to LLM debugging, tracing, and monitoring", "https://wandb.ai/onlineinference/genai-research/reports/A-guide-to-LLM-debugging-tracing-and-monitoring--VmlldzoxMzk1MjAyOQ"]], [["Makale", "The LLM Inference Trilemma: Throughput, Latency, Cost", "https://www.digitalocean.com/blog/llm-inference-tradeoffs"], ["Makale", "LLM Cost Optimization: 5 Levers That Cut API Spend 70-85%", "https://www.morphllm.com/llm-cost-optimization"]], [["Makale", "LLM Observability: The Complete Guide to Monitoring LLMs in Production", "https://www.swept.ai/post/llm-observability-complete-guide"]], [["Resmi", "LagLangSmith docsnS", "https://docs.langchain.com/langsmith/home"], ["Video", "Why Evals Matter | LangSmith Evaluations", "https://www.youtube.com/watch?v=vygFgCNR7WA&list=PLfaIDFEXuae0um8Fj0V4dHG37fGFU8Q5S"]], [["Resmi", "Langfuse Overview", "https://langfuse.com/docs"], ["Video", "Get Started with Langfuse - Open-Source LLM Monitoring", "https://www.youtube.com/watch?v=epnPfe5am3I&list=PL4v4zZF1rGG5slCdloT33O7Qe_Zq1zHfo"]], [["Resmi", "Helicone Docs", "https://docs.helicone.ai/getting-started/quick-start"], ["Video", "ES  Skip navigation Helicone tutorial     Create   Avatar image Helicone AI — The Open-source LLM Observability for Developers", "https://www.youtube.com/watch?v=RNFa8bl3RdE"]], [["Resmi", "Arize AI Docs", "https://arize.com/docs/ax"], ["Video", "How to Evaluate Tool-Calling Agents", "https://www.youtube.com/watch?v=JytjrbDaI44&list=PL86ARIu_ElO5F3LCwM-k3ZDhvnuigxqbw"]], [["Resmi", "PostHob Docs", "https://posthog.com/handbook"], ["Video", "What is PostHog? (Official Demo & Tutorial)", "https://www.youtube.com/watch?v=1FZji2L-LmM"]]], "araclar": [[["Makale", "AI Engineering", "https://en.wikipedia.org/wiki/Artificial_intelligence_engineering"], ["Video", "AI vs Machine Learning", "https://www.youtube.com/watch?v=4RixMPF4xis"], ["Video", "AI vs Machine Learning vs Deep Learning vs GenAI", "https://youtu.be/qYNweeDHiyU?si=eRJXjtk8Q-RKQ8Ms"]], [["Kurs", "Claude Code in Action", "https://anthropic.skilljar.com/claude-code-in-action"], ["Makale", "Claude Cowork vs. Code vs. Chat: When to use each", "https://roadmap.sh/claude-code/vs-cowork-vs-chat"], ["Makale", "Vibe coding tutorial: Build your first app with Claude Code", "https://roadmap.sh/vibe-coding/tutorial"]], [["Resmi", "Cursor Docs", "https://cursor.com/docs"], ["Resmi", "Cursor Learn", "https://cursor.com/learn"], ["Makale", "Claude Code vs Cursor: Which AI Coding Tool To Choose", "https://roadmap.sh/claude-code/vs-cursor"], ["Video", "Cursor AI Tutorial for Beginners", "https://www.youtube.com/watch?v=3289vhOUdKA"]], [["Resmi", "Codex - Official Website", "https://chatgpt.com/codex"], ["Makale", "Claude Code or Codex? How to Pick the Right AI Agent", "https://roadmap.sh/claude-code/vs-codex"], ["Video", "Getting started with Codex", "https://www.youtube.com/watch?v=px7XlbYgk7I"]], [["Resmi", "Devin Docs", "https://docs.devin.ai/get-started/devin-intro"], ["Video", "Devin AI Is the Future of Coding… Full Tutorial", "https://www.youtube.com/watch?v=GFlFABWeqDc"], ["Video", "Devin AI Tutorial - 2026 | How to Use Devin AI? (Step-by-step Guide)", "https://www.youtube.com/watch?v=X533xEtOEDo"]], [["Resmi", "Replit", "https://replit.com/"], ["Makale", "What is Replit? An honest look at the AI app builder in 2025", "https://www.eesel.ai/blog/replit"], ["Video", "Getting Started with Replit", "https://www.youtube.com/watch?v=St95nPOwsa8&list=PLto9KpJAqHMTzEMDAFT4r5LlI4NByngyT"]], [["Resmi", "Devin Docs", "https://docs.devin.ai/get-started/devin-intro"], ["Video", "Devin AI Is the Future of Coding… Full Tutorial", "https://www.youtube.com/watch?v=GFlFABWeqDc"], ["Video", "Devin AI Tutorial - 2026 | How to Use Devin AI? (Step-by-step Guide)", "https://www.youtube.com/watch?v=X533xEtOEDo"], ["Resmi", "OpenCode Docs", "https://opencode.ai/v2/docs"]]]};
+
+const reduced=()=>!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+/* ---------- Kurallar ---------- */
+const XP_LESSON=10, XP_Q=30, XP_PROJ=50;
+const RANKS=[[0,"Meraklı"],[200,"Prompt Çırağı"],[500,"Bağlam Kaşifi"],[1000,"RAG Mimarı"],[1600,"Ajan Ustası"],[2400,"AI Engineer"],[3300,"Efsane"]];
+
+/* ---------- Durum ---------- */
+const KEY="aiea-progress-v1", GKEY="aiea-game-v1", LAST="aiea-last-v1", AKEY="aiea-accounts-v1", CKEY="aiea-current-v1";
+let done={}, G={quiz:{},proj:{},free:false};
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+let accounts=LS.get(AKEY,{})||{}, me=null, prevSeen=null;
+const normEmail=e=>String(e||"").trim().toLocaleLowerCase("en");
+const validEmail=e=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
+
+/* Bulut: viewer'ın Claude hesabına özel alan (data/users/<id>/akademi). Yoksa sadece tarayıcı. */
+let cloud=null, cloudT=null;
+async function cloudInit(){
+  try{
+    if(!window.claude||!window.claude.use) return null;
+    const [db,user]=await Promise.all([window.claude.use("db"),window.claude.use("user")]);
+    if(!db||!user) return null;
+    const uid=await user.id(); if(!uid) return null;
+    cloud={db,user,uid,ref:db.doc("data/users/"+uid+"/akademi"),reg:db.doc("players/"+uid),owner:false};
+    try{cloud.owner=!!(await user.isOwner())}catch(e){}
+    return cloud;
+  }catch(e){return null}
+}
+async function cloudGet(){ if(!cloud) return null; try{const s=await cloud.ref.get();return s.exists?JSON.parse(JSON.stringify(s.data())):null}catch(e){return null} }
+let cloudBusy=false, cloudDirty=false;
+function cloudSave(){
+  if(!cloud||!me) return;
+  clearTimeout(cloudT);
+  cloudT=setTimeout(async function push(){
+    if(cloudBusy){cloudDirty=true;return}
+    cloudBusy=true;
+    try{await cloud.ref.set({email:me.email,name:me.name,created:me.created,lastSeen:me.lastSeen,visits:me.visits,done,game:G})}catch(e){}
+    pushRegistry();
+    cloudBusy=false;
+    if(cloudDirty){cloudDirty=false;push()}
+  },1500);
+}
+function mergeProgress(a,b){ // iki ilerlemeyi birleştir, hiçbir kazanımı kaybetme
+  const d=Object.assign({},a.done||{},b.done||{});
+  const g={quiz:{},proj:Object.assign({},(a.game||{}).proj,(b.game||{}).proj),free:!!((a.game||{}).free||(b.game||{}).free)};
+  const qa=(a.game||{}).quiz||{}, qb=(b.game||{}).quiz||{};
+  for(const id of new Set([...Object.keys(qa),...Object.keys(qb)])){
+    const A=qa[id]||[],B=qb[id]||[],n=Math.max(A.length,B.length),out=[];
+    for(let i=0;i<n;i++){const x=A[i],y=B[i];out[i]=(x&&x.ok)&&(y&&y.ok)?(x.xp>=y.xp?x:y):(x&&x.ok?x:(y&&y.ok?y:(x||y||null)))}
+    g.quiz[id]=out;
+  }
+  return {done:d,game:g};
+}
+
+const save=()=>{
+  if(!me) return;
+  me.done=done; me.game=G; accounts[me.email]=me; LS.set(AKEY,accounts);
+  cloudSave();
+  if(typeof apiRegister==="function") apiRegister();
+};
+function signIn(email,name,fromCloud){
+  email=normEmail(email);
+  const now=new Date().toISOString();
+  let acc=accounts[email], isNew=!acc;
+  if(isNew){
+    acc={email,name:name||email.split("@")[0],created:now,lastSeen:null,visits:0,done:{},game:{quiz:{},proj:{},free:false}};
+    // ilk hesap, eski (hesapsız) ilerlemeyi devralır
+    if(!Object.keys(accounts).length){
+      const od=LS.get(KEY,null), og=LS.get(GKEY,null);
+      if(od) acc.done=od; if(og) acc.game=Object.assign(acc.game,og);
+    }
+  } else if(name) acc.name=name;
+  if(fromCloud&&normEmail(fromCloud.email)===email){
+    const m=mergeProgress(acc,fromCloud); acc.done=m.done; acc.game=m.game;
+    if(!acc.created||fromCloud.created<acc.created) acc.created=fromCloud.created;
+    acc.visits=Math.max(acc.visits||0,fromCloud.visits||0);
+    if(fromCloud.lastSeen&&(!acc.lastSeen||fromCloud.lastSeen>acc.lastSeen)) acc.lastSeen=fromCloud.lastSeen;
+    if(!isNew&&!name&&fromCloud.name) acc.name=acc.name||fromCloud.name;
+    isNew=false;
+  }
+  prevSeen=acc.lastSeen; acc.lastSeen=now; acc.visits=(acc.visits||0)+1;
+  me=acc; done=Object.assign({},acc.done); G=Object.assign({quiz:{},proj:{},free:false},acc.game);
+  LS.set(CKEY,email); save();
+  return {isNew};
+}
+function signOut(){ try{sessionStorage.removeItem("aiea-admin-ok");sessionStorage.removeItem("aiea-admin-token")}catch(e){} if(typeof adminUnsub==="function"){adminUnsub();} adminUnsub=null; adminRows=[]; adminGreeted=false; save(); me=null; LS.del(CKEY); done={}; G={quiz:{},proj:{},free:false}; for(const k in live) delete live[k]; showGate(); }
+
+function ago(iso){
+  if(!iso) return "";
+  const s=(Date.now()-new Date(iso).getTime())/1000;
+  if(s<90) return "az önce"; if(s<3600) return Math.round(s/60)+" dakika önce";
+  if(s<86400) return Math.round(s/3600)+" saat önce"; if(s<86400*30) return Math.round(s/86400)+" gün önce";
+  return new Date(iso).toLocaleDateString("tr-TR",{day:"numeric",month:"long",year:"numeric"});
+}
+const initials=n=>(n||"?").trim().split(/\s+/).slice(0,2).map(w=>w[0]).join("").toLocaleUpperCase("tr")||"?";
+let filter="all";
+const live={}; // oturum içi boss durumu: {mid:{q, wrong:Set, hint, t}}
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad=n=>String(n).padStart(2,"0");
+const lid=(m,i)=>m.id+":"+i;
+const modDone=m=>m.lessons.filter((_,i)=>done[lid(m,i)]).length;
+const lessonsComplete=m=>modDone(m)===m.lessons.length;
+const qState=m=>G.quiz[m.id]||(G.quiz[m.id]=[]);
+const qSolved=m=>QUIZ[m.id].filter((_,i)=>qState(m)[i]&&qState(m)[i].ok).length;
+const cleared=m=>lessonsComplete(m)&&qSolved(m)===QUIZ[m.id].length;
+const idxOf=m=>MODULES.indexOf(m);
+const unlocked=m=>G.free||idxOf(m)===0||cleared(MODULES[idxOf(m)-1]);
+const current=()=>MODULES.find(m=>m.id===location.hash.slice(1))||MODULES[0];
+const query=()=>$("#q").value.trim().toLocaleLowerCase("tr");
+const hay=m=>(m.t+" "+m.lessons.map(l=>l[0]+" "+l[1]).join(" ")).toLocaleLowerCase("tr");
+
+function totalXP(){
+  let x=Object.keys(done).filter(k=>done[k]).length*XP_LESSON;
+  for(const id in G.quiz) for(const s of G.quiz[id]) if(s&&s.ok) x+=s.xp;
+  for(const id in G.proj) if(G.proj[id]) x+=XP_PROJ;
+  return x;
+}
+function rankOf(x){let r=0;RANKS.forEach((k,i)=>{if(x>=k[0])r=i});return r}
+const level=()=>Math.min(MODULES.length,MODULES.filter(cleared).length+1);
+
+const I={
+ lock:`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`,
+ lockS:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`,
+ bulb:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3z"/></svg>`,
+ tick:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>`,
+ trophy:`<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></svg>`,
+ sword:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14.5 17.5 3 6V3h3l11.5 11.5M13 19l6-6M16 16l4 4M19 21l2-2"/></svg>`,
+ ext:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>`,
+ x:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>`
+};
+
+let toastT;
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),2400)}
+
+/* ---------- Üst bilgi ---------- */
+function renderHud(){
+  const x=totalXP(), r=rankOf(x), lo=RANKS[r][0], hi=RANKS[r+1]?RANKS[r+1][0]:lo;
+  $("#lvlNum").textContent=level();
+  $("#rankName").textContent=RANKS[r][1];
+  $("#xpTxt").textContent=RANKS[r+1]?`${x} / ${hi} XP`:`${x} XP · maks. rütbe`;
+  $("#xpBar").style.width=(RANKS[r+1]?(x-lo)/(hi-lo)*100:100)+"%";
+  $("#stLvl").textContent=level(); $("#stXp").textContent=x;
+  const won=MODULES.filter(m=>qSolved(m)===QUIZ[m.id].length).length;
+  $("#stBoss").textContent=won;
+  $("#hatTxt").textContent=`${MODULES.filter(cleared).length} / ${MODULES.length} seviye geçildi`;
+  const cur=current();
+  $("#track").innerHTML=MODULES.map((m,i)=>{
+    const r2=modDone(m)/m.lessons.length, lk=!unlocked(m);
+    return `<button class="seg ${m.id===cur.id?"active":""} ${lk?"locked":""} ${cleared(m)?"cleared":""}" type="button" data-go="${m.id}" title="Seviye ${i+1} · ${esc(m.t)}${lk?" (kilitli)":""}" aria-label="Seviye ${i+1}: ${esc(m.t)}">${lk?`<span class="lk">${I.lockS}</span>`:`<i style="height:${Math.round(r2*100)}%"></i>`}</button>`;
+  }).join("");
+  const got=MODULES.filter(cleared).length;
+  $("#bdgTxt").textContent=`${got} / ${MODULES.length}`;
+  $("#badges").innerHTML=MODULES.map((m,i)=>`<span class="bdg ${cleared(m)?"got":""}" title="${esc(m.t)} rozeti${cleared(m)?"":" (henüz yok)"}">${pad(i+1)}</span>`).join("");
+  $("#track").querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+}
+function renderNav(){
+  const cur=current(), q=query();
+  $("#nav").innerHTML=MODULES.map((m,i)=>{
+    const d=modDone(m),n=m.lessons.length,lk=!unlocked(m),cl=cleared(m);
+    const hide=q&&!hay(m).includes(q);
+    return `<li class="${m.id===cur.id?"active":""} ${cl?"complete":""} ${lk?"locked":""}" ${hide?"hidden":""}><button type="button" data-go="${m.id}">
+      <span class="num">${cl?"✓":lk?I.lockS:pad(i+1)}</span><span class="nm">${esc(m.t)}</span><span class="mini"><i style="width:${d/n*100}%"></i></span></button></li>`;
+  }).join("");
+  $("#nav").querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+  const a=$("#nav li.active"); if(a&&innerWidth<=960) a.scrollIntoView({inline:"center",block:"nearest"});
+}
+
+/* ---------- Ders kartları ---------- */
+function cardsHtml(m){
+  const q=query();
+  const items=m.lessons.map((l,i)=>{
+    const id=lid(m,i), on=!!done[id], tool=l[2]==="tool", rc=(RES[m.id][i]||[]).length;
+    if(q&&!(l[0]+" "+l[1]).toLocaleLowerCase("tr").includes(q)) return "";
+    if(filter==="todo"&&on||filter==="done"&&!on) return "";
+    return `<article class="card ${on?"on":""}">
+      <button class="open" type="button" data-open="${i}" aria-label="${esc(l[0])} dersini aç"></button>
+      <div class="card-top"><span class="tag ${tool?"tool":""}">${tool?"Araç":"Kavram"}</span>
+        <button class="tickbtn" type="button" data-tick="${i}" aria-pressed="${on}" aria-label="${esc(l[0])}: ${on?"tamamlandı, geri al":"tamamlandı olarak işaretle"}"><span class="tick">${I.tick}</span></button></div>
+      <div><h4>${esc(l[0])}</h4><p>${esc(l[1])}</p>
+      <div class="meta"><span class="xp">+${XP_LESSON} XP</span><span>${rc} kaynak</span></div></div></article>`;
+  }).join("");
+  return items||`<div class="empty">${q?`“${esc(q)}” ile eşleşen ders bu seviyede yok.`:filter==="todo"?"Bu seviyedeki tüm dersleri bitirdin. Boss seni bekliyor.":"Henüz tamamlanan ders yok."}</div>`;
+}
+function bindCards(m){
+  const box=$("#cards"); if(!box) return;
+  box.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>openSheet(m,+b.dataset.open));
+  box.querySelectorAll("[data-tick]").forEach(b=>b.onclick=()=>toggleLesson(m,+b.dataset.tick));
+}
+function toggleLesson(m,i,force){
+  if(!unlocked(m)) return;
+  const id=lid(m,i), was=!!done[id], now=force===undefined?!was:force;
+  if(now===was) return;
+  const before={cl:cleared(m),rank:rankOf(totalXP())};
+  if(now) done[id]=true; else delete done[id];
+  save();
+  if(now) toast(`+${XP_LESSON} XP · ${m.lessons[i][0]}`);
+  if(now&&lessonsComplete(m)&&qSolved(m)<QUIZ[m.id].length) setTimeout(()=>toast("Tüm dersler bitti. Boss kapısı açıldı!"),900);
+  afterChange(m,before);
+}
+function afterChange(m,before){
+  renderModule(true); renderNav(); renderHud(); renderMap();
+  const r=rankOf(totalXP());
+  if(r>before.rank) setTimeout(()=>toast(`Yeni rütbe: ${RANKS[r][1]}`),400);
+  if(!before.cl&&cleared(m)) levelUp(m);
+}
+
+/* ---------- Ders paneli ---------- */
+let sheetCtx=null, lastFocus=null;
+function openSheet(m,i){
+  sheetCtx={m,i}; lastFocus=document.activeElement;
+  const l=m.lessons[i], on=!!done[lid(m,i)], res=RES[m.id][i]||[];
+  const cls=t=>t==="Video"?"v":(t==="Resmi"||t==="Açık kaynak")?"o":"";
+  $("#sheet").innerHTML=`
+    <div class="sheet-head"><span>Seviye ${pad(idxOf(m)+1)} · Ders ${i+1}/${m.lessons.length}</span><button class="xbtn" type="button" id="sheetX" aria-label="Kapat">${I.x}</button></div>
+    <div class="sheet-body">
+      <span class="tag ${l[2]==="tool"?"tool":""}">${l[2]==="tool"?"Araç":"Kavram"}</span>
+      <h3>${esc(l[0])}</h3>
+      <p class="desc">${esc(l[1])}</p>
+      <p class="res-k">roadmap.sh kaynakları (İngilizce)</p>
+      <ul class="res">${res.map(r=>`<li><a href="${esc(r[2])}" target="_blank" rel="noopener"><span class="ty ${cls(r[0])}">${esc(r[0])}</span><span class="tt">${esc(r[1])}</span><span class="ar">${I.ext}</span></a></li>`).join("")||`<li class="stuck">Bu ders için kaynak listelenmemiş.</li>`}</ul>
+      <div class="stuck"><b>Takıldın mı?</b>Önce kısa bir video kaynağıyla başla, ardından resmi dokümana geç. Kavramı kendi cümlelerinle bir satırda yazabiliyorsan dersi tamamlandı say.</div>
+    </div>
+    <div class="sheet-foot">
+      ${i>0?`<button class="btn" type="button" id="sPrev">← Önceki</button>`:""}
+      <button class="btn primary ${on?"done":""}" type="button" id="sDone">${on?"Tamamlandı ✓ (geri al)":`Öğrendim · +${XP_LESSON} XP`}</button>
+      ${i<m.lessons.length-1?`<button class="btn" type="button" id="sNext">Sonraki →</button>`:""}
+    </div>`;
+  const bg=$("#sheetBg"), sh=$("#sheet");
+  bg.hidden=false; sh.hidden=false;
+  requestAnimationFrame(()=>{bg.classList.add("show");sh.classList.add("show")});
+  $("#sheetX").onclick=closeSheet; bg.onclick=closeSheet;
+  $("#sDone").onclick=()=>{
+    const was=!!done[lid(m,i)];
+    toggleLesson(m,i);
+    if(!was&&i<m.lessons.length-1&&!done[lid(m,i+1)]) openSheet(m,i+1); else openSheet(m,i);
+  };
+  const p=$("#sPrev"); if(p) p.onclick=()=>openSheet(m,i-1);
+  const n=$("#sNext"); if(n) n.onclick=()=>openSheet(m,i+1);
+  $("#sheetX").focus();
+}
+function closeSheet(){
+  const bg=$("#sheetBg"), sh=$("#sheet");
+  bg.classList.remove("show"); sh.classList.remove("show");
+  setTimeout(()=>{bg.hidden=true;sh.hidden=true},280);
+  sheetCtx=null; if(lastFocus&&lastFocus.focus) lastFocus.focus();
+}
+
+/* ---------- Boss ---------- */
+function bossHtml(m){
+  const Q=QUIZ[m.id], st=qState(m), solved=qSolved(m);
+  const dots=Q.map((_,i)=>{const L=live[m.id];return `<i class="${st[i]&&st[i].ok?"ok":(L&&L.q===i&&!(st[i]&&st[i].ok))?"cur":""}"></i>`}).join("");
+  let body;
+  if(!lessonsComplete(m)&&!G.free){
+    const d=modDone(m),n=m.lessons.length;
+    body=`<div class="boss-gate"><span class="ic">${I.lock}</span><b>Boss kapısı kapalı</b><span>Kapıyı açmak için bu seviyedeki tüm dersleri tamamla.</span>
+      <div class="gatebar"><i style="width:${d/n*100}%"></i></div><span style="font-family:var(--f-mono);font-size:12px">${d} / ${n} ders · ${n-d} kaldı</span></div>`;
+  } else if(solved===Q.length&&!(live[m.id]&&live[m.id].practice)){
+    const earned=st.reduce((s,x)=>s+(x&&x.ok?x.xp:0),0);
+    const next=MODULES[idxOf(m)+1];
+    body=`<div class="boss-won"><span class="trophy">${I.trophy}</span><b>Boss yenildi</b><p>${earned} / ${Q.length*XP_Q} XP kazandın.${cleared(m)&&next?" Sonraki seviye açık.":""}</p>
+      <div class="row" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px">
+      <button class="btn" type="button" id="bossRetry">Tekrar oyna (XP değişmez)</button>
+      ${next&&unlocked(next)?`<button class="btn primary" type="button" data-go="${next.id}">Seviye ${idxOf(next)+1}'e geç →</button>`:""}</div></div>`;
+  } else {
+    if(!live[m.id]) live[m.id]={q:Q.findIndex((_,k)=>!(st[k]&&st[k].ok)),wrong:new Set(),hint:false,t:Date.now()};
+    const L=live[m.id]; if(L.q<0) L.q=0;
+    const q=Q[L.q];
+    const potential=Math.max(5,XP_Q-L.wrong.size*10-(L.hint?10:0));
+    body=`<div class="boss-body">
+      <p class="q">${esc(q.q)}</p>
+      <div class="opts">${q.o.map((o,i)=>`<button class="opt ${L.wrong.has(i)?"wrong":""}" type="button" data-i="${i}" ${L.wrong.has(i)?"disabled":""}><b>${"ABCD"[i]}</b><span>${esc(o)}</span></button>`).join("")}</div>
+      <div id="bossFb">${L.wrong.size?`<div class="fb bad">Yanlış. Tekrar dene.</div>`:""}</div>
+      ${L.hint?`<div class="hint">${I.bulb}<div><small>İpucu</small>${esc(q.h)}</div></div>`:""}
+      <div class="boss-actions">
+        ${L.hint?`<span></span>`:`<button class="hintbtn ${L.wrong.size?"nudge":""}" type="button" id="hintBtn">${I.bulb} İpucu al <span style="font-weight:400;color:var(--muted)">(−10 XP)</span></button>`}
+        <span class="note">Bu soru: +${potential} XP</span>
+      </div></div>`;
+  }
+  return `<div class="boss" id="boss">
+    <div class="boss-head"><h4>${I.sword} Boss: ${esc(m.t)}</h4><div class="qdots" aria-label="${solved}/${Q.length} soru çözüldü">${dots}</div></div>${body}</div>`;
+}
+let nudgeT;
+function bindBoss(m){
+  const b=$("#boss"); if(!b) return;
+  b.querySelectorAll("[data-go]").forEach(x=>x.onclick=()=>go(x.dataset.go));
+  const rt=$("#bossRetry"); if(rt) rt.onclick=()=>{live[m.id]={q:0,wrong:new Set(),hint:false,t:Date.now(),practice:true};renderBossOnly(m,true)};
+  const hb=$("#hintBtn"); if(hb) hb.onclick=()=>{live[m.id].hint=true;renderBossOnly(m)};
+  clearTimeout(nudgeT);
+  if(hb&&!hb.classList.contains("nudge")) nudgeT=setTimeout(()=>{if(document.body.contains(hb)){hb.classList.add("nudge");toast("Takıldın mı? İpucu alabilirsin.")}},45000);
+  b.querySelectorAll(".opt").forEach(o=>o.onclick=()=>answer(m,+o.dataset.i));
+}
+function answer(m,i){
+  const L=live[m.id], Q=QUIZ[m.id], q=Q[L.q], st=qState(m);
+  if(i!==q.a){
+    L.wrong.add(i);
+    if(L.wrong.size>=2&&!L.hint){L.hint=true;renderBossOnly(m);toast("İki yanlış oldu, ipucu otomatik açıldı.");return}
+    renderBossOnly(m); return;
+  }
+  const xp=Math.max(5,XP_Q-L.wrong.size*10-(L.hint?10:0));
+  const before={cl:cleared(m),rank:rankOf(totalXP())};
+  if(!L.practice&&!(st[L.q]&&st[L.q].ok)){ st[L.q]={ok:true,xp,wrong:L.wrong.size,hint:L.hint}; save(); }
+  const b=$("#boss");
+  b.querySelectorAll(".opt").forEach(o=>{o.disabled=true;if(+o.dataset.i===q.a)o.classList.add("right")});
+  const nextQ=L.practice?(L.q+1<Q.length?L.q+1:-1):Q.findIndex((_,k)=>!(st[k]&&st[k].ok));
+  $("#bossFb").innerHTML=`<div class="fb good">Doğru! ${L.practice?"":`+${xp} XP`}</div><p class="why" style="margin-top:10px">${esc(q.why)}</p>
+    <div style="margin-top:12px"><button class="btn primary" type="button" id="bossNext">${nextQ>=0?"Sonraki soru →":L.practice?"Bitir":"Boss'u bitir →"}</button></div>`;
+  const ha=b.querySelector(".boss-actions"); if(ha) ha.remove();
+  clearTimeout(nudgeT);
+  $("#bossNext").onclick=()=>{
+    if(nextQ>=0) live[m.id]={q:nextQ,wrong:new Set(),hint:false,t:Date.now(),practice:L.practice};
+    else delete live[m.id];
+    afterChange(m,before);
+  };
+  renderHud();
+  if(!L.practice) toast(`+${xp} XP`);
+}
+function renderBossOnly(m){
+  const b=$("#boss"); if(!b) return;
+  b.outerHTML=bossHtml(m); bindBoss(m);
+}
+
+/* ---------- Seviye ekranı ---------- */
+function renderModule(keepScroll){
+  const m=current(), idx=idxOf(m), lk=!unlocked(m);
+  try{if(!lk)localStorage.setItem(LAST,m.id)}catch(e){}
+  const n=m.lessons.length, tools=m.lessons.filter(l=>l[2]==="tool").length, d=modDone(m);
+  const prev=MODULES[idx-1], next=MODULES[idx+1];
+  const need=MODULES[idx-1];
+  $("#main").innerHTML=`<div class="${keepScroll?"":"fade"} ${lk?"is-locked":""}">
+    <section class="mod-head">
+      <span class="big" aria-hidden="true">${pad(idx+1)}</span>
+      <div class="chips"><span class="chip">Seviye ${pad(idx+1)} / ${MODULES.length}</span><span class="chip plain">${n-tools} kavram</span>${tools?`<span class="chip hot">${tools} araç</span>`:""}
+        ${cleared(m)?`<span class="chip" style="background:var(--gold-soft);color:var(--gold)">Rozet kazanıldı</span>`:""}</div>
+      <h2>${esc(m.t)}</h2>
+      <p class="mod-intro">${esc(m.intro)}</p>
+      <div class="goal"><b>Görev</b><span>${esc(m.goal)}</span></div>
+      ${lk?`<div class="lockbox"><span class="ic">${I.lock}</span><div><p><b>Bu seviye kilitli.</b> Açmak için Seviye ${idx}: <b>${esc(need.t)}</b> seviyesinin derslerini bitir ve boss'unu yen. Sadece göz atmak istersen Serbest modu açabilirsin.</p>
+        <button class="btn primary" type="button" data-go="${need.id}">Seviye ${idx}'e git</button></div></div>`
+      :`<div class="mod-bar"><div class="bar"><i style="width:${d/n*100}%"></i></div><span>${d} / ${n} ders · boss ${qSolved(m)}/${QUIZ[m.id].length}</span></div>`}
+    </section>
+
+    <div class="sec"><h3>Dersler</h3>
+      <div class="seg-ctl" role="group" aria-label="Filtre">
+        <button type="button" data-f="all" aria-pressed="${filter==="all"}">Tümü</button>
+        <button type="button" data-f="todo" aria-pressed="${filter==="todo"}">Kalan</button>
+        <button type="button" data-f="done" aria-pressed="${filter==="done"}">Biten</button>
+      </div></div>
+    <div class="cards" id="cards">${cardsHtml(m)}</div>
+
+    ${!lk&&m.code?`<div class="sec"><h3>Örnek kod</h3><span>${esc(m.code.lang)}</span></div>
+    <div class="code"><div class="code-head"><span class="dots"><i></i><i></i><i></i></span><span class="t">${esc(m.code.title)}</span><button class="copy" id="copyBtn" type="button">Kopyala</button></div>
+      <div class="code-body"><pre id="codeBlock">${m.code.src}</pre></div></div>`:""}
+
+    ${lk?"":`<div class="sec"><h3>Seviye sonu</h3><span>Boss'u yen, seviyeyi geç</span></div>
+    ${bossHtml(m)}
+    <div class="panel proj" style="margin-top:12px"><div class="panel-k"><i>↗</i>Yan görev · uygulama projesi</div><p class="q">${esc(m.project.t)}</p>
+      <ol class="steps">${m.project.s.map(s=>`<li><span>${esc(s)}</span></li>`).join("")}</ol>
+      <button class="btn projbtn ${G.proj[m.id]?"done":""}" type="button" id="projBtn">${G.proj[m.id]?"Yan görev tamamlandı ✓":`Projeyi bitirdim · +${XP_PROJ} XP`}</button></div>`}
+
+    <nav class="pager" aria-label="Seviyeler arası">
+      ${prev?`<button class="pg" type="button" data-go="${prev.id}"><small>← ÖNCEKİ SEVİYE</small><b>${esc(prev.t)}</b></button>`:"<span></span>"}
+      ${next?`<button class="pg next" type="button" data-go="${next.id}"><small>SONRAKİ SEVİYE ${unlocked(next)?"→":"· KİLİTLİ"}</small><b>${esc(next.t)}</b></button>`:""}
+    </nav></div>`;
+
+  bindCards(m); bindBoss(m);
+  $("#main").querySelectorAll(".mod-head [data-go], .pager [data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+  $("#main").querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{
+    filter=b.dataset.f;
+    $("#main").querySelectorAll("[data-f]").forEach(x=>x.setAttribute("aria-pressed",x===b));
+    $("#cards").innerHTML=cardsHtml(m); bindCards(m);
+  });
+  const pb=$("#projBtn");
+  if(pb) pb.onclick=()=>{const before={cl:cleared(m),rank:rankOf(totalXP())};G.proj[m.id]=!G.proj[m.id];save();if(G.proj[m.id])toast(`+${XP_PROJ} XP · yan görev`);afterChange(m,before)};
+  const cb=$("#copyBtn");
+  if(cb) cb.onclick=()=>{
+    const t=$("#codeBlock").innerText;
+    const sel=()=>{const r=document.createRange();r.selectNodeContents($("#codeBlock"));const s=getSelection();s.removeAllRanges();s.addRange(r);cb.textContent="Seçildi"};
+    try{navigator.clipboard.writeText(t).then(()=>{cb.textContent="Kopyalandı";setTimeout(()=>cb.textContent="Kopyala",1500)},sel)}catch(e){sel()}
+  };
+}
+
+/* ---------- Seviye atlama kutlaması ---------- */
+function levelUp(m){
+  const idx=idxOf(m), next=MODULES[idx+1], el=$("#lvlup");
+  el.innerHTML=`<canvas id="confetti"></canvas><div class="lvlup-card" role="dialog" aria-modal="true" aria-label="Seviye tamamlandı">
+    <span class="k">Seviye ${idx+1} tamamlandı</span><div class="big">${next?"LV "+(idx+2):"MAX"}</div>
+    <h3>${next?`Yeni seviye açıldı: ${esc(next.t)}`:"Tüm seviyeleri bitirdin!"}</h3>
+    <p>“${esc(m.t)}” rozetini kazandın. Rütbe: <b>${RANKS[rankOf(totalXP())][1]}</b> · ${totalXP()} XP</p>
+    <div class="row">${next?`<button class="btn primary" type="button" id="luNext">Seviye ${idx+2}'ye başla →</button>`:""}<button class="btn" type="button" id="luClose">Kapat</button></div></div>`;
+  el.hidden=false;
+  const close=()=>{el.hidden=true;el.innerHTML=""};
+  $("#luClose").onclick=close;
+  const n=$("#luNext"); if(n){n.onclick=()=>{close();go(next.id)};n.focus()} else $("#luClose").focus();
+  if(!reduced()) confetti($("#confetti"));
+}
+function confetti(cv){
+  const ctx=cv.getContext&&cv.getContext("2d"), dpr=devicePixelRatio||1; if(!ctx) return;
+  const W=cv.width=cv.offsetWidth*dpr, H=cv.height=cv.offsetHeight*dpr;
+  const cs=getComputedStyle(document.documentElement);
+  const cols=["--accent","--hot","--gold","--ok"].map(v=>cs.getPropertyValue(v).trim());
+  const P=Array.from({length:140},()=>({x:W/2+(Math.random()-.5)*W*.2,y:H*.45,vx:(Math.random()-.5)*16*dpr,vy:(-Math.random()*14-6)*dpr,s:(4+Math.random()*5)*dpr,r:Math.random()*6,vr:(Math.random()-.5)*.3,c:cols[Math.floor(Math.random()*cols.length)]}));
+  let f=0;
+  (function tick(){
+    if(!document.body.contains(cv)) return;
+    ctx.clearRect(0,0,W,H);
+    P.forEach(p=>{p.vy+=.35*dpr;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.fillStyle=p.c;ctx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);ctx.restore()});
+    if(++f<220) requestAnimationFrame(tick);
+  })();
+}
+
+
+/* ---------- Yol haritası infografiği ---------- */
+const PHASES=[
+ {t:"Temeller",d:"Rolü, LLM kavramlarını, modelleri ve API'leri tanı.",ids:["giris","terimler","modeller","api","prompt"]},
+ {t:"Bağlam ve güven",d:"Bağlamı yönet, sistemi güvenli kıl, açık modelleri çalıştır.",ids:["context","guvenlik","acik-kaynak"]},
+ {t:"Bilgi ve arama",d:"Embedding, vektör veritabanı ve RAG ile modeli verine bağla.",ids:["embeddings","vektor","rag"]},
+ {t:"Ajanlar ve modlar",d:"Araç kullanan ajanlar, MCP ve çok modlu uygulamalar.",ids:["ajanlar","mcp","multimodal"]},
+ {t:"Üretim",d:"Ölç, izle ve AI araçlarıyla hızlan.",ids:["evals","gozlem","araclar"]}
+];
+function renderMap(){
+  const box=$("#phases"); if(!box) return;
+  const nextM=MODULES.find(m=>unlocked(m)&&!cleared(m));
+  box.innerHTML=PHASES.map((ph,pi)=>{
+    const mods=ph.ids.map(id=>MODULES.find(m=>m.id===id));
+    const tot=mods.reduce((s,m)=>s+m.lessons.length,0), dn=mods.reduce((s,m)=>s+modDone(m),0);
+    const tools=[...new Set(mods.flatMap(m=>m.lessons.filter(l=>l[2]==="tool").map(l=>l[0].split(/[ (/]/)[0])))].slice(0,6);
+    return `<article class="phase"><div class="ph-top"><div class="ph-k"><span class="ph-n">Aşama ${pi+1}</span><span class="ph-p">${dn}/${tot}</span></div>
+      <span class="ph-t">${esc(ph.t)}</span><span class="ph-d">${esc(ph.d)}</span><div class="ph-bar"><i style="width:${tot?dn/tot*100:0}%"></i></div></div>
+      <ol class="stops">${mods.map(m=>{
+        const i=idxOf(m), cl=cleared(m), lk=!unlocked(m), cur=nextM===m;
+        const st=cl?"cleared":cur?"current":lk?"locked":"";
+        const nT=m.lessons.filter(l=>l[2]==="tool").length;
+        const meta=cl?"Geçildi":cur?`Sıradaki · ${modDone(m)}/${m.lessons.length} ders`:lk?"Kilitli":`${m.lessons.length-nT} kavram · ${nT} araç`;
+        return `<li class="stop ${st}"><button type="button" data-go="${m.id}" aria-label="Seviye ${i+1}: ${esc(m.t)}, ${esc(meta)}"><span class="sdot">${cl?"✓":lk?I.lockS:pad(i+1)}</span><span><span class="stt">${esc(m.t)}</span><span class="smeta">${esc(meta)}</span></span></button></li>`;
+      }).join("")}</ol>
+      ${tools.length?`<div class="ph-tools">${tools.map(t=>`<span>${esc(t)}</span>`).join("")}</div>`:""}</article>`;
+  }).join("");
+  box.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+  const f=$("#rmapFoot"), clN=MODULES.filter(cleared).length;
+  f.innerHTML=nextM?`<span>${clN?`<b>${clN}</b> seviye geçtin.`:"Yolculuğun başında."} Sıradaki durak: <b>Seviye ${idxOf(nextM)+1} · ${esc(nextM.t)}</b></span><button class="btn primary" type="button" id="rmGo">Devam et →</button>`
+    :`<span><b>Tüm yol haritasını tamamladın.</b> Artık bir AI Engineer'sın.</span>`;
+  const g=$("#rmGo"); if(g) g.onclick=()=>go(nextM.id);
+}
+/* ---------- Yönlendirme ---------- */
+function renderAll(){renderModule();renderNav();renderHud();renderUser();renderMap()}
+function go(id){
+  if(location.hash.slice(1)===id) renderAll(); else location.hash=id;
+  const top=$(".layout").getBoundingClientRect().top+scrollY-80;
+  scrollTo({top,behavior:reduced()?"auto":"smooth"});
+}
+
+$("#q").addEventListener("input",()=>{
+  renderNav();
+  const q=query(), m=current();
+  if(q&&!hay(m).includes(q)){const hit=MODULES.find(x=>hay(x).includes(q)); if(hit){location.hash=hit.id;return}}
+  $("#cards").innerHTML=cardsHtml(m); bindCards(m);
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!$("#admin").hidden){closeAdmin();return}
+  if(e.key==="Escape"&&!$("#userMenu").hidden){$("#userMenu").hidden=true;return}
+  if(e.key==="Escape"){ if(!$("#lvlup").hidden){$("#lvlup").hidden=true;$("#lvlup").innerHTML=""} else if(sheetCtx) closeSheet(); }
+  if(e.key==="/"&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();$("#q").focus()}
+});
+$("#resume").onclick=()=>{
+  const target=MODULES.find(m=>unlocked(m)&&!cleared(m))||MODULES[MODULES.length-1];
+  go(target.id);
+};
+$("#freeMode").checked=!!G.free;
+$("#freeMode").onchange=e=>{G.free=e.target.checked;save();renderAll();toast(G.free?"Serbest mod açık: tüm seviyeler görülebilir":"Oyun modu: seviyeler sırayla açılır")};
+$("#reset").onclick=()=>{$("#resetConfirm").hidden=false};
+$("#resetNo").onclick=()=>{$("#resetConfirm").hidden=true};
+$("#resetYes").onclick=()=>{done={};G={quiz:{},proj:{},free:false};for(const k in live)delete live[k];save();$("#freeMode").checked=false;$("#resetConfirm").hidden=true;location.hash=MODULES[0].id;renderAll();toast("Oyun sıfırlandı")};
+window.addEventListener("hashchange",()=>{if(sheetCtx)closeSheet();renderAll()});
+/* ---------- Oyuncu kaydı ve yönetici paneli ---------- */
+const ADMIN_EMAIL="ozgur.celikv3@gmail.com";
+/* Sunucu modu (Vercel): window.AIEA_API tanımlıysa kayıt ve yönetici paneli /api üzerinden çalışır. */
+const API=window.AIEA_API||null;
+const adminToken=()=>{try{return sessionStorage.getItem("aiea-admin-token")}catch(e){return null}};
+let apiRegT=null;
+function apiRegister(){
+  if(!API||!me) return;
+  clearTimeout(apiRegT);
+  apiRegT=setTimeout(()=>{fetch(API+"/register",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(regEntry()),keepalive:true}).catch(()=>{})},1500);
+}
+const emailKey=e=>e.replace(/[^a-z0-9]/gi,c=>"_"+c.charCodeAt(0).toString(16));
+function regEntry(){
+  const lessons=Object.keys(done).filter(k=>done[k]).length;
+  return {email:me.email,name:me.name,level:level(),xp:totalXP(),lessons,bosses:MODULES.filter(m=>qSolved(m)===QUIZ[m.id].length).length,
+    created:me.created,lastSeen:me.lastSeen,visits:me.visits||1,updated:new Date().toISOString()};
+}
+let regBusy=false, regDirty=false;
+async function pushRegistry(){
+  if(!cloud||!cloud.reg||!me) return;
+  if(regBusy){regDirty=true;return}
+  regBusy=true;
+  const patch={accounts:{[emailKey(me.email)]:regEntry()}};
+  try{ await cloud.reg.update(patch) }catch(e){ try{ await cloud.reg.set(patch) }catch(e2){ cloud.regDenied=true } }
+  regBusy=false;
+  if(regDirty){regDirty=false;pushRegistry()}
+}
+const isAdmin=()=>!!(me&&me.email===ADMIN_EMAIL&&adminSessionOk()&&(API?!!adminToken():(cloud&&cloud.owner)));
+
+let adminRows=[], adminUnsub=null, adminQ="", adminSort="lastSeen";
+function startAdminFeed(){
+  if(adminUnsub||!isAdmin()) return;
+  if(API){
+    const load=async()=>{
+      try{
+        const r=await fetch(API+"/admin/players",{headers:{Authorization:"Bearer "+adminToken()},cache:"no-store"});
+        if(r.status===401){
+          try{sessionStorage.removeItem("aiea-admin-token");sessionStorage.removeItem("aiea-admin-ok")}catch(e){}
+          if(typeof adminUnsub==="function") adminUnsub(); adminUnsub=null; adminRows=[];
+          closeAdmin(); renderUser(); toast("Yönetici oturumu sona erdi. Çıkış yapıp şifreyle tekrar gir."); return;
+        }
+        if(!r.ok) return;
+        const j=await r.json(); adminRows=Array.isArray(j.players)?j.players:[];
+        if(!$("#admin").hidden) renderAdmin(); renderUser();
+      }catch(e){}
+    };
+    load(); const t=setInterval(load,30000); adminUnsub=()=>clearInterval(t);
+    return;
+  }
+  adminUnsub=cloud.db.collection("players").onSnapshot(snap=>{
+    const byEmail={};
+    snap.docs.forEach(d=>{const a=(d.data()||{}).accounts||{};for(const k in a){const r=a[k];if(r&&r.email){const o=byEmail[r.email];if(!o||(r.updated||"")>(o.updated||""))byEmail[r.email]=Object.assign({src:"Claude hesabı"},r)}}});
+    adminRows=Object.values(byEmail);
+    if(!$("#admin").hidden) renderAdmin();
+    renderUser();
+  },()=>{adminRows=[];if(!$("#admin").hidden) renderAdmin()});
+}
+function openAdmin(){
+  if(!isAdmin()) return;
+  startAdminFeed();
+  $("#userMenu").hidden=true;
+  const a=$("#admin"); a.hidden=false; document.body.classList.add("gated");
+  renderAdmin();
+}
+function closeAdmin(){ $("#admin").hidden=true; $("#admin").innerHTML=""; document.body.classList.remove("gated"); }
+function renderAdmin(){
+  const a=$("#admin"), q=adminQ.toLocaleLowerCase("tr");
+  let rows=adminRows.slice();
+  if(q) rows=rows.filter(r=>(r.email+" "+(r.name||"")).toLocaleLowerCase("tr").includes(q));
+  const key=adminSort;
+  rows.sort((x,y)=>key==="email"?x.email.localeCompare(y.email):((y[key]||0)>(x[key]||0)?1:(y[key]||0)<(x[key]||0)?-1:0));
+  const now=Date.now(), week=adminRows.filter(r=>r.lastSeen&&now-new Date(r.lastSeen)<7*864e5).length;
+  const avg=adminRows.length?Math.round(adminRows.reduce((s,r)=>s+(r.xp||0),0)/adminRows.length):0;
+  const th=(k,l,cls="")=>`<th class="${cls}"><button type="button" data-sort="${k}" aria-pressed="${adminSort===k}">${l}${adminSort===k?" ↓":""}</button></th>`;
+  a.innerHTML=`<div class="admin-card" role="dialog" aria-modal="true" aria-label="Yönetici paneli">
+    <div class="admin-head"><div><span class="chip" style="background:var(--gold-soft);color:var(--gold)">Yönetici</span><h2>Oyuncular</h2></div>
+      <button class="xbtn" type="button" id="adX" aria-label="Kapat">${I.x}</button></div>
+    <div class="admin-stats">
+      <div><b>${adminRows.length}</b><span>kayıtlı e-posta</span></div>
+      <div><b>${week}</b><span>son 7 günde aktif</span></div>
+      <div><b>${avg}</b><span>ortalama XP</span></div>
+      <div><b>${adminRows.filter(r=>(r.bosses||0)>=MODULES.length).length}</b><span>oyunu bitiren</span></div>
+    </div>
+    <div class="admin-tools">
+      <label class="searchbox" for="adQ" style="margin:0;max-width:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="adQ" type="search" placeholder="Ad veya e-posta ara" value="${esc(adminQ)}" autocomplete="off"></label>
+      <button class="btn" type="button" id="adCopy">Tüm e-postaları kopyala</button>
+    </div>
+    <div class="admin-table">${rows.length?`<table><thead><tr>${th("email","Oyuncu")}${th("level","Seviye","n")}${th("xp","XP","n")}${th("lessons","Ders","n")}${th("lastSeen","Son ziyaret")}${th("visits","Ziyaret","n")}</tr></thead>
+      <tbody>${rows.map(r=>`<tr><td><div class="pl"><span class="av sm">${esc(initials(r.name))}</span><span><b>${esc(r.name||"-")}</b><small>${esc(r.email)}</small></span></div></td>
+        <td class="n">${r.level||1}</td><td class="n">${r.xp||0}</td><td class="n">${r.lessons||0}</td><td>${esc(ago(r.lastSeen)||"-")}</td><td class="n">${r.visits||1}</td></tr>`).join("")}</tbody></table>`
+      :`<div class="empty">${adminRows.length?"Aramayla eşleşen oyuncu yok.":"Henüz kayıtlı oyuncu yok. Sayfayı paylaştığın kişiler giriş yaptıkça burada listelenir."}</div>`}</div>
+    <p class="gnote">${API?"Kayıtlar, giriş yapan her oyuncu için sunucuda tutulur. Liste 30 saniyede bir yenilenir.":"Kayıtlar, Claude'a giriş yapmış ve sayfada en az Katkıda bulunan (Contributor) yetkisi olan oyuncular için tutulur. Liste canlı güncellenir."}</p>
+  </div>`;
+  $("#adX").onclick=closeAdmin;
+  const qi=$("#adQ"); qi.oninput=()=>{adminQ=qi.value;const pos=qi.selectionStart;renderAdmin();const n=$("#adQ");n.focus();try{n.setSelectionRange(pos,pos)}catch(e){}};
+  a.querySelectorAll("[data-sort]").forEach(b=>b.onclick=()=>{adminSort=b.dataset.sort;renderAdmin()});
+  const cp=$("#adCopy");
+  cp.onclick=()=>{
+    const list=rows.map(r=>r.email).join(", ");
+    const sel=()=>{cp.insertAdjacentHTML("afterend",`<textarea class="copyarea" readonly>${esc(list)}</textarea>`);const t=a.querySelector(".copyarea");t.focus();t.select();cp.textContent="Seçildi, kopyalayabilirsin"};
+    try{navigator.clipboard.writeText(list).then(()=>{cp.textContent=`${rows.length} e-posta kopyalandı`;setTimeout(()=>cp.textContent="Tüm e-postaları kopyala",1800)},sel)}catch(e){sel()}
+  };
+}
+
+/* ---------- Giriş ve kullanıcıyı tanıma ---------- */
+let cloudKnown=null, adminGreeted=false, pwFails=0, pwLockUntil=0;
+const ADMIN_PW=null; // Vercel sürümünde şifre sunucuda doğrulanır
+async function checkAdminPw(pw){
+  if(API){
+    try{
+      const r=await fetch(API+"/admin/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:ADMIN_EMAIL,password:pw})});
+      if(r.status===429) pwLockUntil=Date.now()+60000;
+      if(!r.ok) return false;
+      const j=await r.json(); if(!j.token) return false;
+      try{sessionStorage.setItem("aiea-admin-token",j.token)}catch(e){}
+      return true;
+    }catch(e){return false}
+  }
+  try{
+    const enc=new TextEncoder(), c=window.crypto.subtle;
+    const key=await c.importKey("raw",enc.encode(pw),"PBKDF2",false,["deriveBits"]);
+    const bits=await c.deriveBits({name:"PBKDF2",hash:"SHA-256",salt:enc.encode(ADMIN_PW.salt),iterations:ADMIN_PW.iter},key,256);
+    const hex=[...new Uint8Array(bits)].map(b=>b.toString(16).padStart(2,"0")).join("");
+    return hex===ADMIN_PW.hash;
+  }catch(e){return false}
+}
+const adminSessionOk=()=>{try{return sessionStorage.getItem("aiea-admin-ok")===ADMIN_EMAIL}catch(e){return false}};
+function adminCheck(){ if(isAdmin()){ startAdminFeed(); renderUser(); if(!adminGreeted){adminGreeted=true;setTimeout(()=>toast("Yönetici olarak tanındın · oyuncu listesi avatar menüsünde"),2600)} } }
+function accSummary(a){
+  const cl=MODULES.filter(m=>{
+    const d=(a.done)||{}, q=((a.game||{}).quiz||{})[m.id]||[];
+    return m.lessons.every((_,i)=>d[m.id+":"+i])&&QUIZ[m.id].every((_,i)=>q[i]&&q[i].ok);
+  }).length;
+  return `Seviye ${Math.min(MODULES.length,cl+1)} · ${Object.keys(a.done||{}).length} ders${a.lastSeen?" · son ziyaret "+ago(a.lastSeen):""}`;
+}
+function showGate(prefill){
+  const g=$("#gate"), known=Object.values(accounts).sort((a,b)=>(b.lastSeen||"").localeCompare(a.lastSeen||""));
+  const ck=cloudKnown&&!accounts[normEmail(cloudKnown.email)]?cloudKnown:null;
+  g.innerHTML=`<form class="gate-card" id="gateForm" novalidate>
+    <svg width="44" height="44" viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="9" fill="var(--ink)"/><circle cx="9" cy="20" r="2.6" fill="var(--accent)"/><circle cx="15" cy="10" r="2.6" fill="var(--bg)"/><circle cx="21" cy="19" r="2.6" fill="var(--hot)"/><path d="M9 20 15 10 21 19" stroke="var(--bg)" stroke-width="1.4" fill="none" opacity=".55"/></svg>
+    <div><h2>Oyuna giriş</h2><p class="gsub">E-posta adresinle gir. Bir dahaki gelişinde seni tanır, ilerlemene ve XP'ine kaldığın yerden devam edersin.</p></div>
+    ${known.length||ck?`<div class="known"><span class="gk">Bu cihazda tanınan oyuncular</span>
+      ${ck?`<button type="button" class="acc" data-email="${esc(normEmail(ck.email))}" data-name="${esc(ck.name||"")}"><span class="av">${esc(initials(ck.name))}</span><span><b>${esc(ck.name||ck.email)}</b><small>${esc(ck.email)} · Claude hesabından</small></span></button>`:""}
+      ${known.slice(0,4).map(a=>`<button type="button" class="acc" data-email="${esc(a.email)}"><span class="av">${esc(initials(a.name))}</span><span><b>${esc(a.name)}</b><small>${esc(accSummary(a))}</small></span></button>`).join("")}
+    </div><div class="or"><span>veya</span></div>`:""}
+    <label class="fld" for="gEmail"><span>E-posta</span><input id="gEmail" type="email" inputmode="email" autocomplete="email" placeholder="ornek@sirket.com" required></label>
+    <div class="recog" id="gRecog" hidden></div>
+    <label class="fld" for="gPw" id="gPwWrap" hidden><span>Yönetici şifresi</span><input id="gPw" type="password" autocomplete="current-password" placeholder="Şifreni yaz"></label>
+    <label class="fld" for="gName" id="gNameWrap"><span>Adın <em>(isteğe bağlı)</em></span><input id="gName" type="text" autocomplete="given-name" placeholder="Oyunda görünecek ad" maxlength="40"></label>
+    <p class="gerr" id="gErr" role="alert" hidden></p>
+    <button class="btn primary gbtn" type="submit" id="gGo">Oyuna başla</button>
+    <p class="gnote">E-posta doğrulanmaz; sadece seni tanımak için kullanılır. Bu tarayıcıda ve, Claude'a giriş yaptıysan, hesabının yalnızca sana açık alanında saklanır.</p>
+  </form>`;
+  g.hidden=false; document.body.classList.add("gated");
+  const em=$("#gEmail"), nm=$("#gName");
+  const check=()=>{
+    const e=normEmail(em.value), a=accounts[e]||(cloudKnown&&normEmail(cloudKnown.email)===e?cloudKnown:null);
+    const r=$("#gRecog");
+    if(a&&validEmail(e)){
+      r.hidden=false; r.innerHTML=`<span class="av">${esc(initials(a.name))}</span><span><b>Seni tanıdık, ${esc(a.name||e)}!</b><small>${esc(accSummary(a))}</small></span>`;
+      $("#gNameWrap").hidden=true; $("#gGo").textContent="Kaldığın yerden devam et";
+    } else { r.hidden=true; $("#gNameWrap").hidden=false; $("#gGo").textContent="Oyuna başla"; }
+    const adm=e===ADMIN_EMAIL; $("#gPwWrap").hidden=!adm; if(adm){$("#gNameWrap").hidden=true;$("#gGo").textContent="Şifreyle giriş yap"}
+    $("#gErr").hidden=true;
+  };
+  em.addEventListener("input",check);
+  g.querySelectorAll(".acc").forEach(b=>b.onclick=()=>{em.value=b.dataset.email;check();if(normEmail(em.value)===ADMIN_EMAIL)$("#gPw").focus();else finishGate()});
+  if(prefill){em.value=prefill;check();}
+  $("#gateForm").addEventListener("submit",ev=>{ev.preventDefault();finishGate()});
+  async function finishGate(){
+    const e=normEmail(em.value), er=$("#gErr");
+    if(!validEmail(e)){er.hidden=false;er.textContent="Geçerli bir e-posta adresi yaz (ör. ad@alan.com).";em.focus();return}
+    if(e===ADMIN_EMAIL){
+      const wait=Math.ceil((pwLockUntil-Date.now())/1000);
+      if(wait>0){er.hidden=false;er.textContent=`Çok fazla hatalı deneme. ${wait} saniye sonra tekrar dene.`;return}
+      const pw=$("#gPw"), go=$("#gGo"); go.disabled=true;
+      const ok=await checkAdminPw(pw.value); go.disabled=false;
+      if(!ok){pwFails++; if(pwFails>=5){pwLockUntil=Date.now()+60000;pwFails=0}
+        er.hidden=false;er.textContent=pw.value?"Şifre hatalı.":"Bu hesap için şifre gerekli.";pw.value="";pw.focus();return}
+      pwFails=0; try{sessionStorage.setItem("aiea-admin-ok",e)}catch(x){}
+    }
+    const r=signIn(e,nm.value.trim(),cloudKnown);
+    g.hidden=true; g.innerHTML=""; document.body.classList.remove("gated");
+    $("#freeMode").checked=!!G.free;
+    renderAll(); greet(r.isNew);
+  }
+  setTimeout(()=>(prefill&&prefill===ADMIN_EMAIL?$("#gPw"):em).focus(),50);
+}
+function greet(isNew){
+  if(!me) return;
+  adminCheck();
+  toast(isNew?`Hoş geldin, ${me.name}! Seviye 1 seni bekliyor.`:`Tekrar hoş geldin, ${me.name}${prevSeen?" · son ziyaretin "+ago(prevSeen):""}`);
+}
+function renderUser(){
+  const h=$("#hello"), b=$("#userBtn");
+  if(!me){h.hidden=true;b.hidden=true;return}
+  h.hidden=false;
+  const nx=MODULES.find(m=>unlocked(m)&&!cleared(m));
+  h.innerHTML=prevSeen
+    ?`<span class="av sm">${esc(initials(me.name))}</span><span>Tekrar hoş geldin, <b>${esc(me.name)}</b>. Son ziyaretin ${esc(ago(prevSeen))}.${nx?` Sıradaki hedef: <b>${esc(nx.t)}</b>.`:""}</span>`
+    :`<span class="av sm">${esc(initials(me.name))}</span><span>Hoş geldin, <b>${esc(me.name)}</b>. İlk görevin: <b>${esc(MODULES[0].t)}</b>.</span>`;
+  if(isAdmin()){h.insertAdjacentHTML("beforeend",`<button class="btn adminbtn" type="button" id="helloAdmin" style="height:30px;padding:0 10px;font-size:12.5px;margin-left:auto">Yönetici paneli · ${adminRows.length}</button>`);$("#helloAdmin").onclick=openAdmin}
+  b.hidden=false; b.querySelector(".av").textContent=initials(me.name);
+}
+function openUserMenu(){
+  if(!me) return;
+  const m=$("#userMenu");
+  if(!m.hidden){m.hidden=true;return}
+  const others=Object.values(accounts).filter(a=>a.email!==me.email);
+  m.innerHTML=`<div class="um-head"><span class="av">${esc(initials(me.name))}</span><span><b>${esc(me.name)}</b><small>${esc(me.email)}</small></span></div>
+    <dl class="um-stats"><div><dt>Rütbe</dt><dd>${esc(RANKS[rankOf(totalXP())][1])}</dd></div><div><dt>XP</dt><dd>${totalXP()}</dd></div><div><dt>Ziyaret</dt><dd>${me.visits||1}</dd></div><div><dt>Katılım</dt><dd>${new Date(me.created).toLocaleDateString("tr-TR",{day:"numeric",month:"short",year:"numeric"})}</dd></div></dl>
+    <label class="fld um-name" for="umName"><span>Görünen ad</span><input id="umName" type="text" maxlength="40" value="${esc(me.name)}"></label>
+    <div class="um-sync">${cloud?"İlerlemen Claude hesabınla senkronize ediliyor.":"İlerlemen bu tarayıcıda saklanıyor."}</div>
+    ${isAdmin()?`<button class="btn adminbtn" type="button" id="umAdmin">Yönetici paneli · ${adminRows.length} oyuncu</button>`:""}
+    <button class="btn" type="button" id="umOut">${others.length?"Hesap değiştir / çıkış":"Çıkış yap"}</button>`;
+  m.hidden=false;
+  const n=$("#umName");
+  n.onchange=()=>{const v=n.value.trim();if(v&&v!==me.name){me.name=v;save();renderUser();toast("Adın güncellendi")}};
+  $("#umOut").onclick=()=>{m.hidden=true;signOut()};
+  const ua=$("#umAdmin"); if(ua) ua.onclick=openAdmin;
+}
+document.addEventListener("click",e=>{const m=$("#userMenu");if(m&&!m.hidden&&!m.contains(e.target)&&!$("#userBtn").contains(e.target))m.hidden=true});
+
+async function boot(){
+  const cur=LS.get(CKEY,null);
+  if(cur&&accounts[cur]&&cur===ADMIN_EMAIL&&!adminSessionOk()){ renderAll(); showGate(cur); }
+  else if(cur&&accounts[cur]){ const r=signIn(cur); $("#freeMode").checked=!!G.free; renderAll(); greet(r.isNew); }
+  else { renderAll(); showGate(); }
+  const c=await cloudInit();
+  if(!c) return;
+  const data=await cloudGet();
+  setTimeout(adminCheck,0);
+  if(me){
+    if(data&&normEmail(data.email)===me.email){
+      const m=mergeProgress({done,game:G},data);
+      const before=JSON.stringify([done,G]);
+      done=m.done; G=Object.assign(G,m.game);
+      if(JSON.stringify([done,G])!==before){ save(); renderAll(); toast("İlerlemen diğer cihazınla birleştirildi"); } else save();
+    } else save();
+  } else if(data&&data.email){
+    cloudKnown=data;
+    if(!$("#gate").hidden) showGate();
+  }
+}
+
+$("#userBtn").onclick=openUserMenu;
+boot();
+</script>
+</body>
+</html>

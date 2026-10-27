@@ -1,0 +1,14 @@
+{
+  "name": "ai-engineer-akademi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "roadmap.sh AI Engineer yol haritasına dayalı oyunlaştırılmış Türkçe eğitim sitesi",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "hash-password": "node scripts/hash-password.js"
+  },
+  "dependencies": {
+    "@upstash/redis": "1.38.4"
+  }
+}
